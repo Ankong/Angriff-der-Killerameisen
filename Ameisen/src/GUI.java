@@ -43,7 +43,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 650);
+		setBounds(100, 100, 1100, 650);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -99,9 +99,23 @@ public class GUI extends JFrame {
 		JLabel l_Leer4 = new JLabel("");
 		p_Para.add(l_Leer4);
 		
-		JLabel l_Pheromon = new JLabel("Anzahl der Iterationen: ");
+		JLabel l_Pheromon = new JLabel("\u03B1, Pheromon Parameter");
 		l_Pheromon.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Pheromon);
+		
+		JLabel l_Leer5 = new JLabel("");
+		p_Para.add(l_Leer5);
+		
+		JLabel l_heuristisch = new JLabel("\u03B2, heuristischer Parameter f\u00FCr die lokale Information");
+		l_heuristisch.setHorizontalAlignment(SwingConstants.LEFT);
+		p_Para.add(l_heuristisch);
+		
+		JLabel l_Leer6 = new JLabel("");
+		p_Para.add(l_Leer6);
+		
+		JLabel l_Verdunst = new JLabel("\u03C1, Verdunstundsfaktor");
+		l_Verdunst.setHorizontalAlignment(SwingConstants.LEFT);
+		p_Para.add(l_Verdunst);
 		
 		JPanel p_Erg = new JPanel();
 		contentPane.add(p_Erg, BorderLayout.SOUTH);
