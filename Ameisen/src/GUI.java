@@ -249,7 +249,7 @@ public class GUI extends JFrame {
 		
 		JPanel p_Control = new JPanel();
 		p_Para.add(p_Control);
-		p_Control.setLayout(new GridLayout(1, 2, 0, 0));
+		p_Control.setLayout(new GridLayout(1, 3, 0, 0));
 		
 		JButton b_Start = new JButton("");
 		b_Start.setIcon(new ImageIcon("../Ameisen/pfeil_gruen_r.gif"));
@@ -269,8 +269,67 @@ public class GUI extends JFrame {
 		
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
-		l_warten.setVisible(false);
+		l_warten.setVisible(true);
 		p_Erg.add(l_warten, BorderLayout.WEST);
+		
+		JPanel p_Ergebnisse = new JPanel();
+		p_Erg.add(p_Ergebnisse, BorderLayout.EAST);
+		p_Ergebnisse.setLayout(new GridLayout(3, 5, 0, 0));
+		p_Ergebnisse.setVisible(true);
+		
+		JLabel l_opt_Strecke = new JLabel("Optimale Strecke:");
+		p_Ergebnisse.add(l_opt_Strecke);
+		
+		JLabel l_Leer24 = new JLabel("lokal");
+		l_Leer24.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer24);
+		
+		JLabel l_local_opt = new JLabel("100");
+		l_local_opt.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Ergebnisse.add(l_local_opt);
+		
+		JLabel l_Leer25 = new JLabel("global");
+		l_Leer25.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer25);
+		
+		JLabel l_global_opt = new JLabel("100");
+		l_global_opt.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Ergebnisse.add(l_global_opt);
+		
+		JLabel l_durch_Strecke = new JLabel("Durchschnittliche Strecke:");
+		p_Ergebnisse.add(l_durch_Strecke);
+		
+		JLabel l_Leer26 = new JLabel("lokal");
+		l_Leer26.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer26);
+		
+		JLabel l_local_aver = new JLabel("100");
+		l_local_aver.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Ergebnisse.add(l_local_aver);
+		
+		JLabel l_Leer27 = new JLabel("global");
+		l_Leer27.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer27);
+		
+		JLabel l_global_aver = new JLabel("100");
+		l_global_aver.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Ergebnisse.add(l_global_aver);
+		
+		JLabel l_Zeit = new JLabel("Vergangene Zeit:");
+		p_Ergebnisse.add(l_Zeit);
+		
+		JLabel l_Time = new JLabel("100");
+		l_Time.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Ergebnisse.add(l_Time);
+		
+		JLabel l_Leer29 = new JLabel("");
+		p_Ergebnisse.add(l_Leer29);
+		
+		JLabel l_Leer30 = new JLabel("");
+		p_Ergebnisse.add(l_Leer30);
+		
+		JLabel l_Leer31 = new JLabel("");
+		p_Ergebnisse.add(l_Leer31);
 		
 		JPanel p_TSP = new JPanel();
 		p_TSP.setBackground(Color.WHITE);
