@@ -68,6 +68,10 @@ public class GUI extends JFrame {
 		
 		JMenuItem sfl_offnen = new JMenuItem("Datei \u00F6ffnen");
 		mnDatei.add(sfl_offnen);
+
+		JMenuItem sfl_speichern = new JMenuItem("Daten speichern");
+		sfl_speichern.setEnabled(false);
+		mnDatei.add(sfl_speichern);
 		
 		JMenuItem sfl_Doku = new JMenuItem("Dokumentation");
 		mnDatei.add(sfl_Doku);
