@@ -68,7 +68,7 @@ public class GUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JLabel l_Ameise = new JLabel("");
-		l_Ameise.setIcon(new ImageIcon("D:\\Java\\workspace\\Angriff-der-Killerameisen\\Ameisen\\ameise.gif"));
+		l_Ameise.setIcon(new ImageIcon("../Ameisen/ameise.gif"));
 		contentPane.add(l_Ameise, BorderLayout.EAST);
 		
 		JPanel p_Para = new JPanel();
@@ -122,7 +122,7 @@ public class GUI extends JFrame {
 		p_Erg.setLayout(new BorderLayout(0, 0));
 		
 		JLabel l_warten = new JLabel("");
-		l_warten.setIcon(new ImageIcon("D:\\Java\\workspace\\Angriff-der-Killerameisen\\Ameisen\\ameise-0005.gif"));
+		l_warten.setIcon(new ImageIcon("../Ameisen\\ameise-0005.gif"));
 		p_Erg.add(l_warten, BorderLayout.WEST);
 		
 		JPanel p_TSP = new JPanel();
