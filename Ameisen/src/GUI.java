@@ -21,6 +21,7 @@ import javax.swing.JSlider;
 import javax.swing.JCheckBox;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import javax.swing.JButton;
 
 
 public class GUI extends JFrame {
@@ -246,8 +247,17 @@ public class GUI extends JFrame {
 		JLabel l_Leer23 = new JLabel("");
 		p_Para.add(l_Leer23);
 		
-		JLabel l_Leer24 = new JLabel("");
-		p_Para.add(l_Leer24);
+		JPanel p_Control = new JPanel();
+		p_Para.add(p_Control);
+		p_Control.setLayout(new GridLayout(1, 2, 0, 0));
+		
+		JButton b_Start = new JButton("");
+		b_Start.setIcon(new ImageIcon("../Ameisen/pfeil_gruen_r.gif"));
+		p_Control.add(b_Start);
+		
+		JButton b_Stop = new JButton("");
+		b_Stop.setIcon(new ImageIcon("../Ameisen/quadrat-rot-hi.png"));
+		p_Control.add(b_Stop);
 		
 		JCheckBox chb_Schwelle = new JCheckBox("<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -259,7 +269,7 @@ public class GUI extends JFrame {
 		
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
-		l_warten.setVisible(true);
+		l_warten.setVisible(false);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 		
 		JPanel p_TSP = new JPanel();
