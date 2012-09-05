@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSlider;
 import javax.swing.JCheckBox;
+import java.awt.Color;
+import javax.swing.JScrollPane;
 
 
 public class GUI extends JFrame {
@@ -40,6 +42,8 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -229,10 +233,30 @@ public class GUI extends JFrame {
 		
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
+		l_warten.setVisible(true);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 		
 		JPanel p_TSP = new JPanel();
+		p_TSP.setBackground(Color.WHITE);
 		contentPane.add(p_TSP, BorderLayout.CENTER);
+		p_TSP.setLayout(new BorderLayout(0, 0));
+		
+		JLabel l_TSP = new JLabel("");
+		l_TSP.setIcon(new ImageIcon("../Ameisen/tsp_LK.png"));
+		l_TSP.setBounds(MAXIMIZED_HORIZ, MAXIMIZED_VERT, 700, 500);
+		p_TSP.add(l_TSP);
+		
+		JPanel p_north = new JPanel();
+		p_TSP.add(p_north, BorderLayout.NORTH);
+		
+		JPanel p_south = new JPanel();
+		p_TSP.add(p_south, BorderLayout.SOUTH);
+		
+		JPanel p_west = new JPanel();
+		p_TSP.add(p_west, BorderLayout.WEST);
+		
+		JPanel p_east = new JPanel();
+		p_TSP.add(p_east, BorderLayout.EAST);
 	}
 
 }
