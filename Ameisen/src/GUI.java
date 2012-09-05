@@ -122,7 +122,7 @@ public class GUI extends JFrame {
 		p_Erg.setLayout(new BorderLayout(0, 0));
 		
 		JLabel l_warten = new JLabel("");
-		l_warten.setIcon(new ImageIcon("../Ameisen\\ameise-0005.gif"));
+		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
 		p_Erg.add(l_warten, BorderLayout.WEST);
 		
 		JPanel p_TSP = new JPanel();
