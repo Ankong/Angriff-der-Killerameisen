@@ -8,11 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
-import java.awt.Canvas;
-import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.JSplitPane;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -20,20 +17,22 @@ import java.awt.Font;
 import javax.swing.JSlider;
 import javax.swing.JCheckBox;
 import java.awt.Color;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
 
 public class GUI extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField t_Ameisen;
-	private JTextField t_Stadte;
-	private JTextField t_Iteration;
-	private JTextField t_Pheromon;
-	private JTextField t_heuristisch;
-	private JTextField t_init_Pheromon;
-	private JTextField t_heur_Pheromon;
+	public static GUI frame;
+	public JPanel contentPane;
+	public static JLabel l_Slidewert;
+	public JTextField t_Ameisen;
+	public JTextField t_Stadte;
+	public JTextField t_Iteration;
+	public JTextField t_Pheromon;
+	public JTextField t_heuristisch;
+	public JTextField t_init_Pheromon;
+	public JTextField t_heur_Pheromon;
+	
 
 	/**
 	 * Launch the application.
@@ -42,7 +41,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = new GUI();
+					frame = new GUI();
 					frame.setVisible(true);
 					frame.setResizable(false);
 					frame.pack();
@@ -81,6 +80,8 @@ public class GUI extends JFrame {
 		
 		JMenuItem sfl_Ende = new JMenuItem("Beenden");
 		mnDatei.add(sfl_Ende);
+		sfl_Ende.addActionListener(new BeendenListener());
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -186,11 +187,13 @@ public class GUI extends JFrame {
 		s_Verdunst.setPaintTicks(true);
 		s_Verdunst.setMinorTickSpacing(10);
 		p_Para.add(s_Verdunst);
+		s_Verdunst.addChangeListener(new SlideListener());
 		
 		JLabel l_Leer13 = new JLabel("");
 		p_Para.add(l_Leer13);	
 		
-		JLabel l_Slidewert = new JLabel("0                                     1");
+		l_Slidewert = new JLabel("0,5");
+		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
 		p_Para.add(l_Slidewert);
 		
 		JLabel l_init_Pheromon = new JLabel("<HTML><BODY>\u03C40, initiale Pheromon-Werte:</BODY></HTML>");
@@ -357,5 +360,5 @@ public class GUI extends JFrame {
 		JPanel p_east = new JPanel();
 		p_TSP.add(p_east, BorderLayout.EAST);
 	}
-
+	
 }
