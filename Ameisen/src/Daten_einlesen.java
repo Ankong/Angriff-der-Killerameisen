@@ -1,32 +1,32 @@
 
 public class Daten_einlesen {
 
-	private int id;
-	private int xPos;
-	private int yPos;
+	private double id;
+	private double xPos;
+	private double yPos;
 	
-	public Daten_einlesen(int id, int xPos, int yPos) {
+	public Daten_einlesen(double id, double xPos, double yPos) {
 		super();
 		this.id = id;
 		this.xPos = xPos;
 		this.yPos = yPos;
 	}
-	public int getId() {
+	public double getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(double id) {
 		this.id = id;
 	}
-	public int getxPos() {
+	public double getxPos() {
 		return xPos;
 	}
-	public void setxPos(int xPos) {
+	public void setxPos(double xPos) {
 		this.xPos = xPos;
 	}
-	public int getyPos() {
+	public double getyPos() {
 		return yPos;
 	}
-	public void setyPos(int yPos) {
+	public void setyPos(double yPos) {
 		this.yPos = yPos;
 	}
 	

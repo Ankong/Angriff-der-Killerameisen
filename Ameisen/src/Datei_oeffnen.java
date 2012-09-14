@@ -42,11 +42,11 @@ public class Datei_oeffnen implements ActionListener {
 					StringTokenizer tokenizer = new StringTokenizer(line);
 					while (tokenizer.hasMoreTokens()) {
 						String sid = tokenizer.nextToken();
-						int id = Integer.parseInt(sid);
+						double id = Double.parseDouble(sid);
 						String sxPos = tokenizer.nextToken();
-						int xPos = Integer.parseInt(sxPos);
+						double xPos = Double.parseDouble(sxPos);
 						String syPos = tokenizer.nextToken();
-						int yPos = Integer.parseInt(syPos);
+						double yPos = Double.parseDouble(syPos);
 						Daten_einlesen einlesen = new Daten_einlesen(id, xPos, yPos);
 						list.add(einlesen); 
 					}
