@@ -15,10 +15,10 @@ public class Point_Canvas extends Component {
 		int xProbe = 100;
 		int yProbe = 100;
 		g.setColor(Color.black);
-		g.fillOval(xProbe, yProbe, width, high); //ProbePunkt
+		//g.fillOval(xProbe, yProbe, width, high); //ProbePunkt
 		for (int i = 0; i < Datei_oeffnen.list.size(); i++) {
-			//g.fillOval((int) Datei_oeffnen.xPos, (int) Datei_oeffnen.yPos, width, high);
-			System.out.println(Datei_oeffnen.list);
+			g.fillOval(Datei_oeffnen.list.get(i).getxPos(), Datei_oeffnen.list.get(i).getyPos(), width, high);
+			//System.out.println(Datei_oeffnen.list);
 		}
 	}
 }
