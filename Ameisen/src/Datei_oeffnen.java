@@ -20,12 +20,11 @@ public class Datei_oeffnen implements ActionListener {
 
 	public static List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
 	public static String sxPos;
-	public static int xPos; //= Double.parseDouble(sxPos);
+	public static int xPos;
 	public static String syPos;
-	public static int yPos; //= Double.parseDouble(syPos);
+	public static int yPos;
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		//List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
 		String line;
 		File file = new File("");
 		JFileChooser chooser = new JFileChooser();
@@ -49,16 +48,14 @@ public class Datei_oeffnen implements ActionListener {
 						String sid = tokenizer.nextToken();
 						int id = Integer.parseInt(sid);
 						sxPos = tokenizer.nextToken();
-						//xPos = Double.parseDouble(sxPos);
 						xPos = new Double(sxPos).intValue();
 						syPos = tokenizer.nextToken();
 						yPos = new Double(syPos).intValue();
-						//yPos = Double.parseDouble(syPos);
 						Daten_einlesen einlesen = new Daten_einlesen(id, xPos, yPos);
 						list.add(einlesen); 
 					}
 				}
-				Test_liste.liste_ausgeben();
+				//Test_liste.liste_ausgeben();
 				//Liste Probeweise ausgeben...
 				//for (int j = 0; j < list.size();j++){
 					//System.out.println(list.get(j));

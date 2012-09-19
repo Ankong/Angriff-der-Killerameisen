@@ -352,11 +352,7 @@ public class GUI extends JFrame {
 		//JFrame jFrame = new JFrame("TSP");
 		//jFrame.add(new Point_Canvas());
 		try {
-			if (Datei_oeffnen.list != null ) //Versuch Canvas erst aufzurufen,
-											//wenn die Liste gefüllt ist
-				{
-					p_TSP.add(new Point_Canvas());
-			}	
+			p_TSP.add(new Point_Canvas());
 		} catch (Exception e) {
 			System.out.println("geht nicht");
 		}
