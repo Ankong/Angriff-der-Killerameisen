@@ -343,11 +343,23 @@ public class GUI extends JFrame {
 		p_TSP.setBackground(Color.WHITE);
 		contentPane.add(p_TSP, BorderLayout.CENTER);
 		p_TSP.setLayout(new BorderLayout(0, 0));
-		
+		/*
 		JLabel l_TSP = new JLabel("");
 		l_TSP.setIcon(new ImageIcon("../Ameisen/tsp_LK.png"));
 		l_TSP.setBounds(MAXIMIZED_HORIZ, MAXIMIZED_VERT, 700, 500);
-		p_TSP.add(l_TSP);
+		p_TSP.add(l_TSP);*/
+		
+		//JFrame jFrame = new JFrame("TSP");
+		//jFrame.add(new Point_Canvas());
+		try {
+			if (Datei_oeffnen.list != null ) //Versuch Canvas erst aufzurufen,
+											//wenn die Liste gefüllt ist
+				{
+					p_TSP.add(new Point_Canvas());
+			}	
+		} catch (Exception e) {
+			System.out.println("geht nicht");
+		}
 		
 		JPanel p_north = new JPanel();
 		p_TSP.add(p_north, BorderLayout.NORTH);

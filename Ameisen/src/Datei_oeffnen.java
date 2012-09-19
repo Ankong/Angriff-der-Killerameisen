@@ -18,9 +18,14 @@ import sun.awt.DesktopBrowse;
 
 public class Datei_oeffnen implements ActionListener {
 
+	public static List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
+	/*public static String sxPos;
+	public static double xPos = Double.parseDouble(sxPos);
+	public static String syPos;
+	public static double yPos = Double.parseDouble(syPos);*/
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
+		//List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
 		String line;
 		File file = new File("");
 		JFileChooser chooser = new JFileChooser();
@@ -52,10 +57,10 @@ public class Datei_oeffnen implements ActionListener {
 					}
 				}
 				//Liste Probeweise ausgeben...
-				for (int j = 0; j < list.size();j++){
+				//for (int j = 0; j < list.size();j++){
 					//System.out.println(list.get(j));
-					System.out.println(list.get(j));
-				}	
+					//System.out.println(list.get(j));
+				//}	
 			} catch (IOException e) {
 				System.out.println("Exception");
 			}
