@@ -42,7 +42,7 @@ public class Datei_oeffnen implements ActionListener {
 					StringTokenizer tokenizer = new StringTokenizer(line);
 					while (tokenizer.hasMoreTokens()) {
 						String sid = tokenizer.nextToken();
-						double id = Double.parseDouble(sid);
+						int id = Integer.parseInt(sid);
 						String sxPos = tokenizer.nextToken();
 						double xPos = Double.parseDouble(sxPos);
 						String syPos = tokenizer.nextToken();
@@ -51,6 +51,11 @@ public class Datei_oeffnen implements ActionListener {
 						list.add(einlesen); 
 					}
 				}
+				//Liste Probeweise ausgeben...
+				for (int j = 0; j < list.size();j++){
+					//System.out.println(list.get(j));
+					System.out.println(list.get(j));
+				}	
 			} catch (IOException e) {
 				System.out.println("Exception");
 			}
