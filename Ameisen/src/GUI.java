@@ -31,6 +31,7 @@ public class GUI extends JFrame {
 	 */
 	public static GUI frame;
 	public JPanel contentPane;
+	public static JMenuItem sfl_speichern;
 	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
 	
@@ -117,7 +118,7 @@ public class GUI extends JFrame {
 
 		// Speichern
 		
-		JMenuItem sfl_speichern = new JMenuItem("Daten speichern");
+		sfl_speichern = new JMenuItem("Daten speichern");
 		sfl_speichern.setEnabled(false);
 		mnDatei.add(sfl_speichern);
 		sfl_speichern.addActionListener(new SpeichernListener());

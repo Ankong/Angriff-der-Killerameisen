@@ -67,6 +67,8 @@ public class Datei_oeffnen implements ActionListener {
 			System.out.println("Datei nicht gefunden");
 		}
 
+		GUI.sfl_speichern.setEnabled(true);
+		
 	}
 
 }
