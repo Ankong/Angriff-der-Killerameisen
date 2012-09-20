@@ -5,16 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.swing.JFileChooser;
-
-import sun.awt.DesktopBrowse;
-
 
 public class Datei_oeffnen implements ActionListener {
 
@@ -23,6 +18,7 @@ public class Datei_oeffnen implements ActionListener {
 	public static int xPos;
 	public static String syPos;
 	public static int yPos;
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		String line;
@@ -34,7 +30,7 @@ public class Datei_oeffnen implements ActionListener {
 		}
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
-			for (int i=0;i<6;i++) {
+			for (int i = 0; i < 6; i++) {
 				try {
 					reader.readLine();
 				} catch (IOException e) {
@@ -42,7 +38,7 @@ public class Datei_oeffnen implements ActionListener {
 				}
 			}
 			try {
-				while (!(line = reader.readLine()).equals("EOF") ) {
+				while (!(line = reader.readLine()).equals("EOF")) {
 					StringTokenizer tokenizer = new StringTokenizer(line);
 					while (tokenizer.hasMoreTokens()) {
 						String sid = tokenizer.nextToken();
@@ -51,21 +47,16 @@ public class Datei_oeffnen implements ActionListener {
 						xPos = new Double(sxPos).intValue();
 						syPos = tokenizer.nextToken();
 						yPos = new Double(syPos).intValue();
-						Daten_einlesen einlesen = new Daten_einlesen(id, xPos, yPos);
-						list.add(einlesen); 
+						Daten_einlesen einlesen = new Daten_einlesen(id, xPos,
+								yPos);
+						list.add(einlesen);
 					}
 				}
-				//Test_liste.liste_ausgeben();
-				//Liste Probeweise ausgeben...
-				//for (int j = 0; j < list.size();j++){
-					//System.out.println(list.get(j));
-					//System.out.println(list.get(j));
-				//}	
 			} catch (IOException e) {
 				System.out.println("Exception");
 			}
 		} catch (FileNotFoundException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			System.out.println("Datei nicht gefunden");
 		}
 
