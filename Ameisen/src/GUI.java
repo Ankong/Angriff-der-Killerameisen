@@ -285,6 +285,7 @@ public class GUI extends JFrame {
 
 		l_Slidewert = new JLabel("0,5");
 		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Slidewert.setFont(new Font("Tahoma", Font.BOLD, 9));
 		p_Para.add(l_Slidewert);
 
 		// initiale Pheromon-Werte
@@ -349,8 +350,8 @@ public class GUI extends JFrame {
 		chb_Erg_gefunden.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_Erg_gefunden);
 
-		JLabel l_Leer22 = new JLabel("");
-		p_Para.add(l_Leer22);
+		JLabel l_Leer20 = new JLabel("");
+		p_Para.add(l_Leer20);
 		
 		// Schwellenwert für Tourlänge erreicht
 		
@@ -359,35 +360,42 @@ public class GUI extends JFrame {
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_Schwelle);
 
-		JLabel l_Leer23 = new JLabel("");
-		p_Para.add(l_Leer23);
+		JLabel l_Leer21 = new JLabel("");
+		p_Para.add(l_Leer21);
 		
-		JLabel l_Leer20 = new JLabel("");
-		p_Para.add(l_Leer20);
+		JLabel l_Leer22 = new JLabel("");
+		p_Para.add(l_Leer22);
 
 		
-		JPanel p_Control = new JPanel();
-		p_Para.add(p_Control,BorderLayout.SOUTH);
-		p_Control.setLayout(new BorderLayout(0,0));
+		JPanel p_ControlStart = new JPanel();
+		p_Para.add(p_ControlStart,BorderLayout.SOUTH);
+		p_ControlStart.setLayout(new GridLayout(1,2));
 		
-		JPanel p_Control2 = new JPanel();
-		p_Para.add(p_Control2,BorderLayout.SOUTH);
-		p_Control2.setLayout(new BorderLayout(0,0));
+		JPanel p_ControlStop = new JPanel();
+		p_Para.add(p_ControlStop,BorderLayout.SOUTH);
+		p_ControlStop.setLayout(new GridLayout(1,2));
 
 		// Startbutton
 		
-		JButton b_Start = new JButton("START");
+		JLabel l_Leer23 = new JLabel("");
+		p_ControlStart.add(l_Leer23);
+		
+		JButton b_Start = new JButton("Start");
+		b_Start.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		//b_Start.setIcon(new ImageIcon("../Ameisen/pfeil_gruen_r.gif"));
-		p_Control.add(b_Start);
+		p_ControlStart.add(b_Start);
 		b_Start.addActionListener(new StartListener());
 
 		// Stopbutton
 		
-		JButton b_Stop = new JButton("STOP");
+		JLabel l_Leer24 = new JLabel("");
+		p_ControlStop.add(l_Leer24);
+		
+		JButton b_Stop = new JButton("Stop");
+		b_Stop.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		//b_Stop.setIcon(new ImageIcon("../Ameisen/quadrat-rot-hi.png"));
-		p_Control2.add(b_Stop);
+		p_ControlStop.add(b_Stop);
 		b_Stop.addActionListener(new StopListener());
-
 
 		/**
 		 * Ergebnispanel
@@ -414,17 +422,17 @@ public class GUI extends JFrame {
 		JLabel l_opt_Strecke = new JLabel("Optimale Strecke:");
 		p_Ergebnisse.add(l_opt_Strecke);
 
-		JLabel l_Leer24 = new JLabel("lokal");
-		l_Leer24.setHorizontalAlignment(SwingConstants.RIGHT);
-		p_Ergebnisse.add(l_Leer24);
+		JLabel l_Leer25 = new JLabel("lokal");
+		l_Leer25.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer25);
 
 		l_local_opt = new JLabel("100");
 		l_local_opt.setHorizontalAlignment(SwingConstants.CENTER);
 		p_Ergebnisse.add(l_local_opt);
 
-		JLabel l_Leer25 = new JLabel("global");
-		l_Leer25.setHorizontalAlignment(SwingConstants.RIGHT);
-		p_Ergebnisse.add(l_Leer25);
+		JLabel l_Leer26 = new JLabel("global");
+		l_Leer26.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer26);
 
 		l_global_opt = new JLabel("100");
 		l_global_opt.setHorizontalAlignment(SwingConstants.CENTER);
@@ -435,17 +443,17 @@ public class GUI extends JFrame {
 		JLabel l_durch_Strecke = new JLabel("Durchschnittliche Strecke:");
 		p_Ergebnisse.add(l_durch_Strecke);
 
-		JLabel l_Leer26 = new JLabel("lokal");
-		l_Leer26.setHorizontalAlignment(SwingConstants.RIGHT);
-		p_Ergebnisse.add(l_Leer26);
+		JLabel l_Leer27 = new JLabel("lokal");
+		l_Leer27.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer27);
 
 		l_local_aver = new JLabel("100");
 		l_local_aver.setHorizontalAlignment(SwingConstants.CENTER);
 		p_Ergebnisse.add(l_local_aver);
 
-		JLabel l_Leer27 = new JLabel("global");
-		l_Leer27.setHorizontalAlignment(SwingConstants.RIGHT);
-		p_Ergebnisse.add(l_Leer27);
+		JLabel l_Leer28 = new JLabel("global");
+		l_Leer28.setHorizontalAlignment(SwingConstants.RIGHT);
+		p_Ergebnisse.add(l_Leer28);
 
 		l_global_aver = new JLabel("100");
 		l_global_aver.setHorizontalAlignment(SwingConstants.CENTER);

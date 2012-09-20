@@ -16,7 +16,7 @@ public class Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		for (int i = 0; i < Datei_oeffnen.list.size(); i++) { 
+		/*for (int i = 0; i < Datei_oeffnen.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < Datei_oeffnen.list.size(); j++) {
 					g.setColor(Color.lightGray);
@@ -24,7 +24,7 @@ public class Point_Canvas extends Component {
 			} catch (IndexOutOfBoundsException e){ 
 				//System.out.println("geht nicht"); }
 			}
-		} 
+		} */
 		for (int i = 0; i < Datei_oeffnen.list.size(); i++) {
 			g.setColor(Color.red);
 			g.fillOval((Datei_oeffnen.list.get(i).getxPos() / 4),(Datei_oeffnen.list.get(i).getyPos() / 4), width, high);
