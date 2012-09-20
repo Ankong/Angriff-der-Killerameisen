@@ -33,6 +33,13 @@ public class Datei_oeffnen implements ActionListener {
 			for (int i = 0; i < 6; i++) {
 				try {
 					reader.readLine();
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

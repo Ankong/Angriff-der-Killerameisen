@@ -31,6 +31,7 @@ public class GUI extends JFrame {
 	 */
 	public static GUI frame;
 	public JPanel contentPane;
+	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
 	
 	/**
@@ -70,6 +71,26 @@ public class GUI extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * TSP zeichnen
+	 */
+	
+	public static void draw_TSP() {
+		try {
+			p_TSP.add(new Point_Canvas());
+		} catch (Exception e) {
+			System.out.println("geht nicht");
+		}
+	}
+	
+	/**
+	 * Frame refreshen
+	 */
+	
+	public static void frame_refresh() {
+		frame.repaint();
+	}
 
 	/**
 	 * Fenster definieren
@@ -99,16 +120,19 @@ public class GUI extends JFrame {
 		JMenuItem sfl_speichern = new JMenuItem("Daten speichern");
 		sfl_speichern.setEnabled(false);
 		mnDatei.add(sfl_speichern);
+		sfl_speichern.addActionListener(new SpeichernListener());
 
 		// Doku
 		
 		JMenuItem sfl_Doku = new JMenuItem("Dokumentation");
 		mnDatei.add(sfl_Doku);
+		sfl_Doku.addActionListener(new DokuListener());
 
 		// Info
 		
 		JMenuItem sfl_Info = new JMenuItem("Info");
 		mnDatei.add(sfl_Info);
+		sfl_Info.addActionListener(new InfoListener());
 
 		// Beenden
 		
@@ -343,12 +367,14 @@ public class GUI extends JFrame {
 		JButton b_Start = new JButton("");
 		b_Start.setIcon(new ImageIcon("../Ameisen/pfeil_gruen_r.gif"));
 		p_Control.add(b_Start);
+		b_Start.addActionListener(new StartListener());
 
 		// Stopbutton
 		
 		JButton b_Stop = new JButton("");
 		b_Stop.setIcon(new ImageIcon("../Ameisen/quadrat-rot-hi.png"));
 		p_Control.add(b_Stop);
+		b_Stop.addActionListener(new StopListener());
 
 		// Schwellenwert für Tourlänge erreicht
 		
@@ -441,17 +467,11 @@ public class GUI extends JFrame {
 		 * TSP-Panel
 		 */
 		
-		JPanel p_TSP = new JPanel();
+		p_TSP = new JPanel();
 		p_TSP.setBackground(Color.WHITE);
 		contentPane.add(p_TSP, BorderLayout.CENTER);
 		p_TSP.setLayout(new BorderLayout(0, 0));
-
-		try {
-			p_TSP.add(new Point_Canvas());
-		} catch (Exception e) {
-			System.out.println("geht nicht");
-		}
-
+		
 		JPanel p_north = new JPanel();
 		p_TSP.add(p_north, BorderLayout.NORTH);
 
@@ -463,6 +483,8 @@ public class GUI extends JFrame {
 
 		JPanel p_east = new JPanel();
 		p_TSP.add(p_east, BorderLayout.EAST);
+		
+		draw_TSP();
 	}
 
 }
