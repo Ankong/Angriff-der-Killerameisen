@@ -1,10 +1,10 @@
-public class Daten_einlesen {
+public class TSP_Formatierung {
 
 	private int id;
 	private int xPos;
 	private int yPos;
 
-	public Daten_einlesen(int id, int xPos, int yPos) {
+	public TSP_Formatierung(int id, int xPos, int yPos) {
 		super();
 		this.id = id;
 		this.xPos = xPos;
@@ -37,7 +37,7 @@ public class Daten_einlesen {
 
 	@Override
 	public String toString() {
-		return "Daten_einlesen [id=" + id + ", xPos=" + xPos + ", yPos=" + yPos
+		return "TSP_Formatierung [id=" + id + ", xPos=" + xPos + ", yPos=" + yPos
 				+ "]";
 	}
 

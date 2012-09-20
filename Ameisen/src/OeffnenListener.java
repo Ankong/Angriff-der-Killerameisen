@@ -11,9 +11,9 @@ import java.util.StringTokenizer;
 
 import javax.swing.JFileChooser;
 
-public class Datei_oeffnen implements ActionListener {
+public class OeffnenListener implements ActionListener {
 
-	public static List<Daten_einlesen> list = new ArrayList<Daten_einlesen>();
+	public static List<TSP_Formatierung> list = new ArrayList<TSP_Formatierung>();
 	public static String sxPos;
 	public static int xPos;
 	public static String syPos;
@@ -54,9 +54,8 @@ public class Datei_oeffnen implements ActionListener {
 						xPos = new Double(sxPos).intValue();
 						syPos = tokenizer.nextToken();
 						yPos = new Double(syPos).intValue();
-						Daten_einlesen einlesen = new Daten_einlesen(id, xPos,
-								yPos);
-						list.add(einlesen);
+						TSP_Formatierung daten = new TSP_Formatierung(id, xPos, yPos);
+						list.add(daten);
 					}
 				}
 			} catch (IOException e) {

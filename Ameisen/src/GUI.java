@@ -115,7 +115,7 @@ public class GUI extends JFrame {
 		
 		JMenuItem sfl_offnen = new JMenuItem("Datei \u00F6ffnen");
 		mnDatei.add(sfl_offnen);
-		sfl_offnen.addActionListener(new Datei_oeffnen());
+		sfl_offnen.addActionListener(new OeffnenListener());
 
 		// Speichern
 		
