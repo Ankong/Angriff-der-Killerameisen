@@ -33,13 +33,6 @@ public class OeffnenListener implements ActionListener {
 			for (int i = 0; i < 6; i++) {
 				try {
 					reader.readLine();
-					
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -54,7 +47,8 @@ public class OeffnenListener implements ActionListener {
 						xPos = new Double(sxPos).intValue();
 						syPos = tokenizer.nextToken();
 						yPos = new Double(syPos).intValue();
-						TSP_Formatierung daten = new TSP_Formatierung(id, xPos, yPos);
+						TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
+								yPos);
 						list.add(daten);
 					}
 				}
@@ -67,7 +61,7 @@ public class OeffnenListener implements ActionListener {
 		}
 
 		GUI.sfl_speichern.setEnabled(true);
-		
+
 	}
 
 }
