@@ -23,6 +23,9 @@ public class OeffnenListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		String line;
 		File file = new File("");
+		if (!list.isEmpty()) {
+			list.clear();
+		}
 		JFileChooser chooser = new JFileChooser();
 		int wert = chooser.showOpenDialog(null);
 		if (wert == JFileChooser.APPROVE_OPTION) {
@@ -30,30 +33,40 @@ public class OeffnenListener implements ActionListener {
 		}
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
-			for (int i = 0; i < 6; i++) {
+			/*for (int i = 0; i < 5; i++) {
 				try {
 					reader.readLine();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}
+			}*/
 			try {
-				while (!(line = reader.readLine()).equals("EOF")) {
-					StringTokenizer tokenizer = new StringTokenizer(line);
-					while (tokenizer.hasMoreTokens()) {
-						String sid = tokenizer.nextToken();
-						int id = Integer.parseInt(sid);
-						sxPos = tokenizer.nextToken();
-						xPos = new Double(sxPos).intValue();
-						syPos = tokenizer.nextToken();
-						yPos = new Double(syPos).intValue();
-						TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
-								yPos);
-						list.add(daten);
-					}
+				while (!reader.readLine().equals("NODE_COORD_SECTION")) {
 				}
-			} catch (IOException e) {
-				System.out.println("Exception");
+				try {
+					while (!(line = reader.readLine()).equals("EOF")) {
+						StringTokenizer tokenizer = new StringTokenizer(line);
+						while (tokenizer.hasMoreTokens()) {
+							String sid = tokenizer.nextToken();
+							int id = Integer.parseInt(sid);
+							sxPos = tokenizer.nextToken();
+							xPos = new Double(sxPos).intValue();
+							syPos = tokenizer.nextToken();
+							yPos = new Double(syPos).intValue();
+							TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
+									yPos);
+							list.add(daten);
+						}
+					}
+					for (int i = 0; i < list.size();i++) {
+						System.out.println(list.get(i));
+					}
+				} catch (IOException e) {
+					System.out.println("Exception");
+				}
+			} catch (NullPointerException | NumberFormatException | IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("bla");
 			}
 		} catch (FileNotFoundException e) {
 			// e.printStackTrace();
