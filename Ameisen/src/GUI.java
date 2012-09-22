@@ -72,6 +72,13 @@ public class GUI extends JFrame {
 			}
 		});
 	}
+	/**
+	 * Frame refreshen
+	 */
+
+	public static void frame_refresh() {
+		frame.repaint();
+	}
 
 	/**
 	 * TSP zeichnen
@@ -80,18 +87,12 @@ public class GUI extends JFrame {
 	public static void draw_TSP() {
 		try {
 			p_TSP.add(new Point_Canvas());
+			frame_refresh();
 		} catch (Exception e) {
 			System.out.println("geht nicht");
 		}
 	}
 
-	/**
-	 * Frame refreshen
-	 */
-
-	public static void frame_refresh() {
-		frame.repaint();
-	}
 
 	/**
 	 * Fenster definieren

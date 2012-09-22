@@ -23,9 +23,13 @@ public class OeffnenListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		String line;
 		File file = new File("");
+		
+		//Liste leeren
 		if (!list.isEmpty()) {
 			list.clear();
 		}
+		
+		//File-Explorer zum Datei-Öffnen auswählen
 		JFileChooser chooser = new JFileChooser();
 		int wert = chooser.showOpenDialog(null);
 		if (wert == JFileChooser.APPROVE_OPTION) {
@@ -33,17 +37,12 @@ public class OeffnenListener implements ActionListener {
 		}
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
-			/*for (int i = 0; i < 5; i++) {
-				try {
-					reader.readLine();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}*/
 			try {
+				//Erste Zeilen ignorieren
 				while (!reader.readLine().equals("NODE_COORD_SECTION")) {
 				}
 				try {
+					//String-Tokenizer zum Aufteilen der Zeile
 					while (!(line = reader.readLine()).equals("EOF")) {
 						StringTokenizer tokenizer = new StringTokenizer(line);
 						while (tokenizer.hasMoreTokens()) {
@@ -58,9 +57,15 @@ public class OeffnenListener implements ActionListener {
 							list.add(daten);
 						}
 					}
+					//Punkte automatisch zeichnen
+					
+					GUI.frame_refresh();
+					
+					/*
 					for (int i = 0; i < list.size();i++) {
 						System.out.println(list.get(i));
-					}
+					}*/
+					
 				} catch (IOException e) {
 					System.out.println("Exception");
 				}
@@ -72,7 +77,8 @@ public class OeffnenListener implements ActionListener {
 			// e.printStackTrace();
 			System.out.println("Datei nicht gefunden");
 		}
-
+		
+		// Speichern-Button aktivieren
 		GUI.sfl_speichern.setEnabled(true);
 
 	}
