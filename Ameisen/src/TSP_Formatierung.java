@@ -1,10 +1,10 @@
 public class TSP_Formatierung {
 
 	private int id;
-	private int xPos;
-	private int yPos;
+	private double xPos;
+	private double yPos;
 
-	public TSP_Formatierung(int id, int xPos, int yPos) {
+	public TSP_Formatierung(int id, double xPos, double yPos) {
 		super();
 		this.id = id;
 		this.xPos = xPos;
@@ -19,19 +19,19 @@ public class TSP_Formatierung {
 		this.id = id;
 	}
 
-	public int getxPos() {
+	public Double getxPos() {
 		return xPos;
 	}
 
-	public void setxPos(int xPos) {
+	public void setxPos(double xPos) {
 		this.xPos = xPos;
 	}
 
-	public int getyPos() {
+	public Double getyPos() {
 		return yPos;
 	}
 
-	public void setyPos(int yPos) {
+	public void setyPos(double yPos) {
 		this.yPos = yPos;
 	}
 

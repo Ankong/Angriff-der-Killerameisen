@@ -15,9 +15,9 @@ public class OeffnenListener implements ActionListener {
 
 	public static List<TSP_Formatierung> list = new ArrayList<TSP_Formatierung>();
 	public static String sxPos;
-	public static int xPos;
+	public static double xPos;
 	public static String syPos;
-	public static int yPos;
+	public static double yPos;
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -49,18 +49,20 @@ public class OeffnenListener implements ActionListener {
 							String sid = tokenizer.nextToken();
 							int id = Integer.parseInt(sid);
 							sxPos = tokenizer.nextToken();
-							xPos = new Double(sxPos).intValue();
+							//xPos = new Double(sxPos).intValue();
+							xPos = Double.parseDouble(sxPos);
 							syPos = tokenizer.nextToken();
-							yPos = new Double(syPos).intValue();
+							//yPos = new Double(syPos).intValue();
+							yPos = Double.parseDouble(syPos);
 							TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
 									yPos);
 							list.add(daten);
 						}
 					}
 					//Punkte automatisch zeichnen
-					System.out.println(ChangeParameter.getMaximum_X_Wert());
-					System.out.println(ChangeParameter.getMaximum_Y_Wert());
-					System.out.println(ChangeParameter.grossterParam());
+					System.out.println(new Double(ChangeParameter.getMinimum_X_Wert()).intValue());
+					System.out.println((1 - new Double(ChangeParameter.getMinumum_Y_Wert()).intValue()));
+					//System.out.println(ChangeParameter.grossterParam());
 					GUI.frame_refresh();
 					
 					/*

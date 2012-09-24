@@ -16,25 +16,19 @@ public class Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		g.translate(250, 213);
-		//g.fillOval(500, 425, width, high);
-		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
+		//g.translate((5 - new Double(ChangeParameter.getMinimum_X_Wert()).intValue()), (5 - new Double(ChangeParameter.getMinumum_Y_Wert()).intValue()));
+		for (int i = 0; i < OeffnenListener.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
 					g.setColor(Color.lightGray);
-					g.drawLine(((OeffnenListener.list.get(i).getxPos()/4)+4),((OeffnenListener.list.get(i).getyPos()/4)+4),((OeffnenListener.list.get(j).getxPos()/4)+4),((OeffnenListener.list.get(j).getyPos()/4)+4)); } 
+					g.drawLine((int)(((OeffnenListener.list.get(i).getxPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(i).getyPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(j).getxPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(j).getyPos()/ ChangeParameter.grossterParam()))+4)); } 
 			} catch (IndexOutOfBoundsException e){ 
 				//System.out.println("geht nicht"); }
 			}
-		} */
+		} 
 		for (int i = 0; i < OeffnenListener.list.size(); i++) {
 			g.setColor(Color.red);
-			if (ChangeParameter.getMaximum_X_Wert() > 500) {
-				g.fillOval((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam()),(OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam()), width, high);
-			}
-			else {
-				g.fillOval((OeffnenListener.list.get(i).getxPos() * ChangeParameter.kleinsterParam()),(OeffnenListener.list.get(i).getyPos() * ChangeParameter.kleinsterParam()), width, high);
-			}
+			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam())),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam())), width, high);
 		}	
 	}
 }

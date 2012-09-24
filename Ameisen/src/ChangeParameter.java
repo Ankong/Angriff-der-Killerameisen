@@ -1,8 +1,8 @@
 
 public class ChangeParameter {
 
-	public static Integer getMaximum_X_Wert() {
-		int groessterX = 0;
+	public static Double getMaximum_X_Wert() {
+		double groessterX = Integer.MIN_VALUE;
 		for (int i= 0; i < OeffnenListener.list.size(); i++) {
 			if (OeffnenListener.list.get(i).getxPos() > groessterX) {
 				groessterX = OeffnenListener.list.get(i).getxPos();		
@@ -11,8 +11,8 @@ public class ChangeParameter {
 		return groessterX;
 	}
 	
-	public static Integer getMaximum_Y_Wert() {
-		int groessterY = 0;
+	public static Double getMaximum_Y_Wert() {
+		double groessterY = Integer.MIN_VALUE;
 		for (int i= 0; i < OeffnenListener.list.size(); i++) {
 			if (OeffnenListener.list.get(i).getyPos() > groessterY) {
 				groessterY = OeffnenListener.list.get(i).getyPos();		
@@ -21,29 +21,39 @@ public class ChangeParameter {
 		return groessterY;
 	}
 	
-	public static Integer berechneXParam() {
-		int xParam = 0;
-		if (getMaximum_X_Wert() < 250) {
-			xParam = (250 / getMaximum_X_Wert())-1;
+	public static Double getMinimum_X_Wert() {
+		double kleinsterX = Integer.MAX_VALUE;
+		for (int i= 0; i < OeffnenListener.list.size(); i++) {
+			if (OeffnenListener.list.get(i).getxPos() < kleinsterX) {
+				kleinsterX = OeffnenListener.list.get(i).getxPos();		
+			}
 		}
-		else {
-			xParam = (getMaximum_X_Wert() / 250) + 1;
+		return kleinsterX;
+	}
+	
+	public static Double getMinumum_Y_Wert() {
+		double kleinsterY = Integer.MAX_VALUE;
+		for (int i= 0; i < OeffnenListener.list.size(); i++) {
+			if (OeffnenListener.list.get(i).getyPos() < kleinsterY) {
+				kleinsterY = OeffnenListener.list.get(i).getyPos();		
+			}
 		}
+		return kleinsterY;
+	}
+	
+	public static Double berechneXParam() {
+		double xParam = 0;
+		xParam = getMaximum_X_Wert() / (500 /*- getMinimum_X_Wert()*/);
 		return xParam;
 	}
 	
-	public static Integer berechneYParam() {
-		int yParam = 0;
-		if (getMaximum_Y_Wert() < 213) {
-			yParam = (213 / getMaximum_Y_Wert()) -1;
-		}
-		else {
-			yParam = (getMaximum_Y_Wert() / 213) + 1;
-		}
+	public static Double berechneYParam() {
+		double yParam = 0;
+		yParam = getMaximum_Y_Wert() / (425 /*- getMinumum_Y_Wert()*/);
 		return yParam;
 	}
-	public static Integer grossterParam () {
-		int grossterPara = 0;
+	public static Double grossterParam () {
+		double grossterPara = 0;
 		if (berechneXParam() < berechneYParam()){
 			grossterPara = berechneYParam();
 		}
@@ -51,15 +61,5 @@ public class ChangeParameter {
 			grossterPara = berechneXParam();
 		}
 		return grossterPara;
-	}
-	public static Integer kleinsterParam () {
-		int kleinsterPara = 0;
-		if (berechneXParam() < berechneYParam()){
-			kleinsterPara = berechneXParam();
-		}
-		else {
-			kleinsterPara = berechneYParam();
-		}
-		return kleinsterPara;
 	}
 }
