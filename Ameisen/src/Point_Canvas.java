@@ -16,6 +16,8 @@ public class Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
+		g.translate(250, 213);
+		//g.fillOval(500, 425, width, high);
 		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
@@ -27,7 +29,12 @@ public class Point_Canvas extends Component {
 		} */
 		for (int i = 0; i < OeffnenListener.list.size(); i++) {
 			g.setColor(Color.red);
-			g.fillOval((OeffnenListener.list.get(i).getxPos() / 4),(OeffnenListener.list.get(i).getyPos() / 4), width, high);
-		}
+			if (ChangeParameter.getMaximum_X_Wert() > 500) {
+				g.fillOval((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam()),(OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam()), width, high);
+			}
+			else {
+				g.fillOval((OeffnenListener.list.get(i).getxPos() * ChangeParameter.kleinsterParam()),(OeffnenListener.list.get(i).getyPos() * ChangeParameter.kleinsterParam()), width, high);
+			}
+		}	
 	}
 }

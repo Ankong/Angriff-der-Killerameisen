@@ -58,7 +58,9 @@ public class OeffnenListener implements ActionListener {
 						}
 					}
 					//Punkte automatisch zeichnen
-					
+					System.out.println(ChangeParameter.getMaximum_X_Wert());
+					System.out.println(ChangeParameter.getMaximum_Y_Wert());
+					System.out.println(ChangeParameter.grossterParam());
 					GUI.frame_refresh();
 					
 					/*
