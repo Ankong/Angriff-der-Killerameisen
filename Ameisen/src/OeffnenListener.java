@@ -60,9 +60,7 @@ public class OeffnenListener implements ActionListener {
 						}
 					}
 					//Punkte automatisch zeichnen
-					System.out.println(new Double(ChangeParameter.getMinimum_X_Wert()).intValue());
-					System.out.println((1 - new Double(ChangeParameter.getMinumum_Y_Wert()).intValue()));
-					//System.out.println(ChangeParameter.grossterParam());
+					
 					GUI.frame_refresh();
 					
 					/*

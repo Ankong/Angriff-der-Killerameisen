@@ -31,7 +31,7 @@ public class ChangeParameter {
 		return kleinsterX;
 	}
 	
-	public static Double getMinumum_Y_Wert() {
+	public static Double getMinimum_Y_Wert() {
 		double kleinsterY = Integer.MAX_VALUE;
 		for (int i= 0; i < OeffnenListener.list.size(); i++) {
 			if (OeffnenListener.list.get(i).getyPos() < kleinsterY) {
@@ -43,15 +43,17 @@ public class ChangeParameter {
 	
 	public static Double berechneXParam() {
 		double xParam = 0;
-		xParam = getMaximum_X_Wert() / (500 /*- getMinimum_X_Wert()*/);
+		xParam = getMaximum_X_Wert() / (500- getMinimum_X_Wert());
 		return xParam;
 	}
 	
 	public static Double berechneYParam() {
 		double yParam = 0;
-		yParam = getMaximum_Y_Wert() / (425 /*- getMinumum_Y_Wert()*/);
+		yParam = getMaximum_Y_Wert() / (425 - getMinimum_Y_Wert());
 		return yParam;
 	}
+	
+	
 	public static Double grossterParam () {
 		double grossterPara = 0;
 		if (berechneXParam() < berechneYParam()){

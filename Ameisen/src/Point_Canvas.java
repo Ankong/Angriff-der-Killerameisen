@@ -16,8 +16,8 @@ public class Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		//g.translate((5 - new Double(ChangeParameter.getMinimum_X_Wert()).intValue()), (5 - new Double(ChangeParameter.getMinumum_Y_Wert()).intValue()));
-		for (int i = 0; i < OeffnenListener.list.size(); i++) { 
+		g.translate((int)(0 - (ChangeParameter.getMinimum_X_Wert())/ChangeParameter.grossterParam()), (int)(0 - (ChangeParameter.getMinimum_Y_Wert()/ChangeParameter.grossterParam())));
+		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
 					g.setColor(Color.lightGray);
@@ -25,7 +25,7 @@ public class Point_Canvas extends Component {
 			} catch (IndexOutOfBoundsException e){ 
 				//System.out.println("geht nicht"); }
 			}
-		} 
+		} */
 		for (int i = 0; i < OeffnenListener.list.size(); i++) {
 			g.setColor(Color.red);
 			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam())),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam())), width, high);
