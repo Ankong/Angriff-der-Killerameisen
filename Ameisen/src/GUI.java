@@ -34,6 +34,7 @@ public class GUI extends JFrame {
 	public static JMenuItem sfl_speichern;
 	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
+	public static JSlider s_Zoom;
 
 	/**
 	 * Parametervariablen
@@ -88,6 +89,7 @@ public class GUI extends JFrame {
 		try {
 			p_TSP.add(new Point_Canvas());
 			frame_refresh();
+			
 		} catch (Exception e) {
 			System.out.println("geht nicht");
 		}
@@ -170,11 +172,7 @@ public class GUI extends JFrame {
 				p_Para.getPreferredSize().height));
 		p_Para.setLayout(new GridLayout(23, 2, 0, 0));
 
-		JLabel l_Leer01 = new JLabel("");
-		p_Para.add(l_Leer01);
-
-		JLabel l_Leer02 = new JLabel("");
-		p_Para.add(l_Leer02);
+		
 
 		// Anzahl der Ameisen
 
@@ -359,13 +357,37 @@ public class GUI extends JFrame {
 				"<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_Schwelle);
+		
+		JLabel l_Leer01 = new JLabel("");
+		p_Para.add(l_Leer01);
 
+		JLabel l_Leer02 = new JLabel("");
+		p_Para.add(l_Leer02);
+		
+		//Zoomer
+		
+		JLabel l_Zoom = new JLabel(
+				"<HTML><BODY> Zoom:</BODY></HTML>");
+		l_Verdunst.setFont(new Font("Tahoma", Font.BOLD, 9));
+		l_Verdunst.setHorizontalAlignment(SwingConstants.LEFT);
+		p_Para.add(l_Zoom);
+
+		s_Zoom = new JSlider();
+		s_Zoom.setPaintTicks(true);
+		s_Zoom.setMinorTickSpacing(10);
+		p_Para.add(s_Zoom);
+		s_Zoom.addChangeListener(new Zoom_SlideListener());
+		
 		JLabel l_Leer21 = new JLabel("");
 		p_Para.add(l_Leer21);
 
-		JLabel l_Leer22 = new JLabel("");
-		p_Para.add(l_Leer22);
-
+		l_Slidewert = new JLabel("0");
+		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Slidewert.setFont(new Font("Tahoma", Font.BOLD, 7));
+		p_Para.add(l_Slidewert);
+		
+		//Buttons
+		
 		JPanel p_ControlStart = new JPanel();
 		p_Para.add(p_ControlStart, BorderLayout.SOUTH);
 		p_ControlStart.setLayout(new GridLayout(1, 2));

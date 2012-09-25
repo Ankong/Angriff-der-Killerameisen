@@ -16,7 +16,7 @@ public class Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		g.translate((int)(0 - (ChangeParameter.getMinimum_X_Wert())/ChangeParameter.grossterParam()), (int)(0 - (ChangeParameter.getMinimum_Y_Wert()/ChangeParameter.grossterParam())));
+		g.translate((int)(0 - (ChangeParameter.getMinimum_X_Wert())/ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)), (int)(0 - (ChangeParameter.getMinimum_Y_Wert()/ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))));
 		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
@@ -28,7 +28,7 @@ public class Point_Canvas extends Component {
 		} */
 		for (int i = 0; i < OeffnenListener.list.size(); i++) {
 			g.setColor(Color.red);
-			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam())),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam())), width, high);
+			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), width, high);
 		}	
 	}
 }

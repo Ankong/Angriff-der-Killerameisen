@@ -41,26 +41,29 @@ public class ChangeParameter {
 		return kleinsterY;
 	}
 	
-	public static Double berechneXParam() {
+	public static Double berechneXParam(double sliderzahl) {
 		double xParam = 0;
-		xParam = getMaximum_X_Wert() / (500- getMinimum_X_Wert());
+		double slider = sliderzahl;
+		xParam = getMaximum_X_Wert() / (500- getMinimum_X_Wert()+slider);
 		return xParam;
 	}
 	
-	public static Double berechneYParam() {
+	public static Double berechneYParam(double sliderzahl) {
 		double yParam = 0;
-		yParam = getMaximum_Y_Wert() / (425 - getMinimum_Y_Wert());
+		double slider = sliderzahl;
+		yParam = getMaximum_Y_Wert() / (425 - getMinimum_Y_Wert()+slider);
 		return yParam;
 	}
 	
 	
-	public static Double grossterParam () {
+	public static Double grossterParam (double slidezahl) {
 		double grossterPara = 0;
-		if (berechneXParam() < berechneYParam()){
-			grossterPara = berechneYParam();
+		double slider = slidezahl;
+		if (berechneXParam(slider) < berechneYParam(slider)){
+			grossterPara = berechneYParam(slider);
 		}
 		else {
-			grossterPara = berechneXParam();
+			grossterPara = berechneXParam(slider);
 		}
 		return grossterPara;
 	}

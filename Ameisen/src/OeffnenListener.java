@@ -29,6 +29,9 @@ public class OeffnenListener implements ActionListener {
 			list.clear();
 		}
 		
+		//Zoom-Slider reseten
+		Zoom_SlideListener.reset(GUI.s_Zoom);
+		
 		//File-Explorer zum Datei-Öffnen auswählen
 		JFileChooser chooser = new JFileChooser();
 		int wert = chooser.showOpenDialog(null);
@@ -49,10 +52,8 @@ public class OeffnenListener implements ActionListener {
 							String sid = tokenizer.nextToken();
 							int id = Integer.parseInt(sid);
 							sxPos = tokenizer.nextToken();
-							//xPos = new Double(sxPos).intValue();
 							xPos = Double.parseDouble(sxPos);
 							syPos = tokenizer.nextToken();
-							//yPos = new Double(syPos).intValue();
 							yPos = Double.parseDouble(syPos);
 							TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
 									yPos);
