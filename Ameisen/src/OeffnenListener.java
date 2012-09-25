@@ -33,7 +33,7 @@ public class OeffnenListener implements ActionListener {
 		Zoom_SlideListener.reset(GUI.s_Zoom);
 		
 		//File-Explorer zum Datei-Öffnen auswählen
-		JFileChooser chooser = new JFileChooser();
+		JFileChooser chooser = new JFileChooser("c:/Users/Boris/workspace/Angriff-der-Killerameisen/Ameisen");
 		int wert = chooser.showOpenDialog(null);
 		if (wert == JFileChooser.APPROVE_OPTION) {
 			file = chooser.getSelectedFile();

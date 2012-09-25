@@ -21,7 +21,7 @@ public class Point_Canvas extends Component {
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
 					g.setColor(Color.lightGray);
-					g.drawLine((int)(((OeffnenListener.list.get(i).getxPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(i).getyPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(j).getxPos()/ ChangeParameter.grossterParam()))+4),((int)((OeffnenListener.list.get(j).getyPos()/ ChangeParameter.grossterParam()))+4)); } 
+					g.drawLine((int)(((OeffnenListener.list.get(i).getxPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(i).getyPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(j).getxPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(j).getyPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4)); } 
 			} catch (IndexOutOfBoundsException e){ 
 				//System.out.println("geht nicht"); }
 			}

@@ -37,8 +37,7 @@ public class TSP_Formatierung {
 
 	@Override
 	public String toString() {
-		return "TSP_Formatierung [id=" + id + ", xPos=" + xPos + ", yPos="
-				+ yPos + "]";
+		return " " + id + " " + xPos + " " + yPos;
 	}
 
 }

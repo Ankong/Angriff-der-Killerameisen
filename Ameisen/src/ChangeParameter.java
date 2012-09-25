@@ -44,17 +44,16 @@ public class ChangeParameter {
 	public static Double berechneXParam(double sliderzahl) {
 		double xParam = 0;
 		double slider = sliderzahl;
-		xParam = getMaximum_X_Wert() / (500- getMinimum_X_Wert()+slider);
+		xParam = getMaximum_X_Wert() / (500 - getMinimum_X_Wert()+slider);
 		return xParam;
 	}
 	
 	public static Double berechneYParam(double sliderzahl) {
 		double yParam = 0;
 		double slider = sliderzahl;
-		yParam = getMaximum_Y_Wert() / (425 - getMinimum_Y_Wert()+slider);
+		yParam = getMaximum_Y_Wert() / (425 + getMinimum_Y_Wert()+slider);
 		return yParam;
 	}
-	
 	
 	public static Double grossterParam (double slidezahl) {
 		double grossterPara = 0;

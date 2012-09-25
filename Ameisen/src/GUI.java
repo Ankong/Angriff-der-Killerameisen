@@ -78,7 +78,7 @@ public class GUI extends JFrame {
 	 */
 
 	public static void frame_refresh() {
-		frame.repaint();
+		p_TSP.repaint();
 	}
 
 	/**
@@ -88,7 +88,8 @@ public class GUI extends JFrame {
 	public static void draw_TSP() {
 		try {
 			p_TSP.add(new Point_Canvas());
-			frame_refresh();
+			//frame_refresh();
+			p_TSP.addMouseListener(new Edit_TSPpoint());
 			
 		} catch (Exception e) {
 			System.out.println("geht nicht");
