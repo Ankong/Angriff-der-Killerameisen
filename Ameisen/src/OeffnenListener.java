@@ -8,17 +8,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import javax.swing.JFileChooser;
+
+
 
 public class OeffnenListener implements ActionListener {
 
 	public static List<TSP_Formatierung> list = new ArrayList<TSP_Formatierung>();
+	public static  Vector vector = new Vector<>();
 	public static String sxPos;
 	public static double xPos;
 	public static String syPos;
 	public static double yPos;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		String line;
@@ -27,6 +32,10 @@ public class OeffnenListener implements ActionListener {
 		//Liste leeren
 		if (!list.isEmpty()) {
 			list.clear();
+		}
+		//Vetor leeren
+		if (!vector.isEmpty()) {
+			vector.clear();
 		}
 		
 		//Zoom-Slider reseten
@@ -42,8 +51,19 @@ public class OeffnenListener implements ActionListener {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			try {
 				//Erste Zeilen ignorieren
-				while (!reader.readLine().equals("NODE_COORD_SECTION")) {
+				int count = 1;
+				while (!(line = reader.readLine()).equals("NODE_COORD_SECTION")) {
+					if (count < 5) {
+						StringTokenizer tokens = new StringTokenizer(line);
+						String begin = tokens.nextToken();
+						vector.add(begin);
+						count++;
+					}
+					else {
+						vector.add(line);
+					}
 				}
+				vector.add("NODE_COORD_SECTION");
 				try {
 					//String-Tokenizer zum Aufteilen der Zeile
 					while (!(line = reader.readLine()).equals("EOF")) {
@@ -63,11 +83,9 @@ public class OeffnenListener implements ActionListener {
 					//Punkte automatisch zeichnen
 					
 					GUI.frame_refresh();
-					
-					/*
-					for (int i = 0; i < list.size();i++) {
-						System.out.println(list.get(i));
-					}*/
+					for (int i = 0; i < vector.size(); i++) {
+						System.out.println(vector.get(i));
+					}
 					
 				} catch (IOException e) {
 					System.out.println("Exception");
