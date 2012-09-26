@@ -13,7 +13,7 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 
 
-
+@SuppressWarnings("rawtypes")
 public class OeffnenListener implements ActionListener {
 
 	public static List<TSP_Formatierung> list = new ArrayList<TSP_Formatierung>();
@@ -50,7 +50,7 @@ public class OeffnenListener implements ActionListener {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			try {
-				//Erste Zeilen ignorieren
+				//Erste Zeilen werden eingelesen und zum schreiben weitergegeben
 				int count = 1;
 				while (!(line = reader.readLine()).equals("NODE_COORD_SECTION")) {
 					if (count < 5) {

@@ -66,6 +66,7 @@ public class SpeichernListener implements ActionListener {
 			}
 			writer.write("EOF");
 			writer.close();
+			JOptionPane.showMessageDialog(null, "Die Datei wurde gespeichert");
 			} catch (IOException e1) {
 				
 			}

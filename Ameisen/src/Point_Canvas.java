@@ -31,4 +31,5 @@ public class Point_Canvas extends Component {
 			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), width, high);
 		}	
 	}
+	
 }

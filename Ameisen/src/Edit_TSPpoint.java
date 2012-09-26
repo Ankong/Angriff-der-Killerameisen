@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 public class Edit_TSPpoint implements MouseListener {
 
+
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -38,7 +39,6 @@ public class Edit_TSPpoint implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -47,5 +47,8 @@ public class Edit_TSPpoint implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
+	
 
 }
+
+
