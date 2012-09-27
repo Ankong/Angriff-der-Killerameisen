@@ -35,6 +35,7 @@ public class GUI extends JFrame {
 	public static JMenuItem sfl_speichern;
 	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
+	public static JLabel l_Zoomwert;
 	public static JSlider s_Zoom;
 
 	/**
@@ -385,10 +386,10 @@ public class GUI extends JFrame {
 		JLabel l_Leer21 = new JLabel("");
 		p_Para.add(l_Leer21);
 
-		l_Slidewert = new JLabel("0");
-		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
-		l_Slidewert.setFont(new Font("Tahoma", Font.BOLD, 7));
-		p_Para.add(l_Slidewert);
+		l_Zoomwert = new JLabel("0");
+		l_Zoomwert.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Zoomwert.setFont(new Font("Tahoma", Font.BOLD, 9));
+		p_Para.add(l_Zoomwert);
 		
 		//Buttons
 		

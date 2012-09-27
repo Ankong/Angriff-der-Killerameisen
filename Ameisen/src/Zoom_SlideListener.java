@@ -11,7 +11,7 @@ public class Zoom_SlideListener implements ChangeListener {
 	public void stateChanged(ChangeEvent slide_event) {
 		JSlider quelle = (JSlider) slide_event.getSource();
 		slidezahl =  quelle.getValue();
-		GUI.l_Slidewert.setText(Double.toString((slidezahl - 50)/10));
+		GUI.l_Zoomwert.setText(Double.toString((slidezahl - 50)/10));
 
 		GUI.frame_refresh();
 	}
