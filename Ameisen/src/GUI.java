@@ -25,11 +25,18 @@ public class GUI extends JFrame {
 	/**
 	 * ClassID
 	 */
+	
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Diese Klasse hat die Aufgabe die GUI zu initialisieren.
+	 * Außerdem ist eine Methode enthalten, die den Frame aktualisiert.
+	 */
 
 	/**
 	 * Klassenrelevante Variablen
 	 */
+	
 	public static GUI frame;
 	public JPanel contentPane;
 	public static JMenuItem sfl_speichern;
@@ -41,6 +48,7 @@ public class GUI extends JFrame {
 	/**
 	 * Parametervariablen
 	 */
+	
 	public JTextField t_Ameisen;
 	public JTextField t_Stadte;
 	public JTextField t_Iteration;
@@ -52,6 +60,7 @@ public class GUI extends JFrame {
 	/**
 	 * Ergebnisvariablen
 	 */
+	
 	public JLabel l_local_opt;
 	public JLabel l_global_opt;
 	public JLabel l_local_aver;
@@ -61,6 +70,7 @@ public class GUI extends JFrame {
 	/**
 	 * Programm starten
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -75,24 +85,22 @@ public class GUI extends JFrame {
 			}
 		});
 	}
+	
 	/**
 	 * Frame refreshen
 	 */
-
+	
 	public static void frame_refresh() {
 		p_TSP.repaint();
 	}
 	
-	
-
 	/**
 	 * TSP zeichnen
 	 */
-
+	
 	public static void draw_TSP() {
 		try {
 			p_TSP.add(new Point_Canvas());
-			//frame_refresh();
 			p_TSP.addMouseListener(new Edit_TSPpoint());
 			
 		} catch (Exception e) {
@@ -100,10 +108,10 @@ public class GUI extends JFrame {
 		}
 	}
 
-
 	/**
 	 * Fenster definieren
 	 */
+	
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Ameisen-Algorithmus");
@@ -112,7 +120,7 @@ public class GUI extends JFrame {
 		/**
 		 * Tableiste
 		 */
-
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -177,20 +185,19 @@ public class GUI extends JFrame {
 				p_Para.getPreferredSize().height));
 		p_Para.setLayout(new GridLayout(23, 2, 0, 0));
 
-		
-
 		// Anzahl der Ameisen
 
-		JLabel l_Ameisen = new JLabel(
-				"<HTML><BODY>Anzahl der Ameisen:</BODY></HTML>");
+		JLabel l_Ameisen = new JLabel("<HTML><BODY>Anzahl der Ameisen:</BODY></HTML>");
 		l_Ameisen.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Ameisen.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Ameisen);
 
 		t_Ameisen = new JTextField();
-		p_Para.add(t_Ameisen);
 		t_Ameisen.setColumns(10);
+		p_Para.add(t_Ameisen);
 
+		// Leerzeile
+		
 		JLabel l_Leer03 = new JLabel("");
 		p_Para.add(l_Leer03);
 
@@ -199,16 +206,17 @@ public class GUI extends JFrame {
 
 		// Anzahl der Städte
 
-		JLabel l_Stadte = new JLabel(
-				"<HTML><BODY>Anzahl der St\u00E4dte:</BODY></HTML>");
+		JLabel l_Stadte = new JLabel("<HTML><BODY>Anzahl der St\u00E4dte:</BODY></HTML>");
 		l_Stadte.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Stadte.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Stadte);
 
 		t_Stadte = new JTextField();
-		p_Para.add(t_Stadte);
 		t_Stadte.setColumns(10);
+		p_Para.add(t_Stadte);
 
+		// Leerzeile
+		
 		JLabel l_Leer05 = new JLabel("");
 		p_Para.add(l_Leer05);
 
@@ -217,16 +225,17 @@ public class GUI extends JFrame {
 
 		// Anzahl der Iterationen
 
-		JLabel l_Iteration = new JLabel(
-				"<HTML><BODY>Anzahl der Iterationen:</BODY></HTML>");
+		JLabel l_Iteration = new JLabel("<HTML><BODY>Anzahl der Iterationen:</BODY></HTML>");
 		l_Iteration.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Iteration.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Iteration);
 
 		t_Iteration = new JTextField();
-		p_Para.add(t_Iteration);
 		t_Iteration.setColumns(10);
+		p_Para.add(t_Iteration);
 
+		// Leerzeile
+		
 		JLabel l_Leer07 = new JLabel("");
 		p_Para.add(l_Leer07);
 
@@ -235,15 +244,17 @@ public class GUI extends JFrame {
 
 		// Pheromon Parameter
 
-		JLabel l_Pheromon = new JLabel(
-				"<HTML><BODY>\u03B1, Pheromon Parameter:</BODY></HTML>");
+		JLabel l_Pheromon = new JLabel("<HTML><BODY>\u03B1, Pheromon Parameter:</BODY></HTML>");
 		l_Pheromon.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Pheromon.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Pheromon);
 
 		t_Pheromon = new JTextField();
-		p_Para.add(t_Pheromon);
 		t_Pheromon.setColumns(10);
+		t_Pheromon.setToolTipText("alpha > 0");
+		p_Para.add(t_Pheromon);
+
+		// Leerzeile
 
 		JLabel l_Leer09 = new JLabel("");
 		p_Para.add(l_Leer09);
@@ -253,16 +264,17 @@ public class GUI extends JFrame {
 
 		// heuristischer Parameter
 
-		JLabel l_heuristisch = new JLabel(
-				"<HTML><BODY>\u03B2, heuristischer Parameter:</BODY></HTML>");
+		JLabel l_heuristisch = new JLabel("<HTML><BODY>\u03B2, heuristischer Parameter:</BODY></HTML>");
 		l_heuristisch.setFont(new Font("Tahoma", Font.BOLD, 9));
-		l_heuristisch.setToolTipText("");
 		l_heuristisch.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_heuristisch);
 
 		t_heuristisch = new JTextField();
-		p_Para.add(t_heuristisch);
 		t_heuristisch.setColumns(10);
+		t_heuristisch.setToolTipText("beta > 0");
+		p_Para.add(t_heuristisch);
+
+		// Leerzeile
 
 		JLabel l_Leer11 = new JLabel("");
 		p_Para.add(l_Leer11);
@@ -272,21 +284,24 @@ public class GUI extends JFrame {
 
 		// Verdunstungsfaktor
 
-		JLabel l_Verdunst = new JLabel(
-				"<HTML><BODY>\u03C1, Verdunstungsfaktor:</BODY></HTML>");
+		JLabel l_Verdunst = new JLabel("<HTML><BODY>\u03C1, Verdunstungsfaktor:</BODY></HTML>");
 		l_Verdunst.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Verdunst.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Verdunst);
-
+		
 		JSlider s_Verdunst = new JSlider();
 		s_Verdunst.setPaintTicks(true);
 		s_Verdunst.setMinorTickSpacing(10);
 		p_Para.add(s_Verdunst);
 		s_Verdunst.addChangeListener(new SlideListener());
 
+		// Leerfläche
+		
 		JLabel l_Leer13 = new JLabel("");
 		p_Para.add(l_Leer13);
 
+		// Betrag des Slider
+		
 		l_Slidewert = new JLabel("0,5");
 		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
 		l_Slidewert.setFont(new Font("Tahoma", Font.BOLD, 9));
@@ -294,16 +309,17 @@ public class GUI extends JFrame {
 
 		// initiale Pheromon-Werte
 
-		JLabel l_init_Pheromon = new JLabel(
-				"<HTML><BODY>\u03C40, initiale Pheromon-Werte:</BODY></HTML>");
+		JLabel l_init_Pheromon = new JLabel("<HTML><BODY>\u03C40, initiale Pheromon-Werte:</BODY></HTML>");
 		l_init_Pheromon.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_init_Pheromon.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_init_Pheromon);
 
 		t_init_Pheromon = new JTextField();
-		p_Para.add(t_init_Pheromon);
 		t_init_Pheromon.setColumns(10);
+		p_Para.add(t_init_Pheromon);
 
+		// Leerzeile
+		
 		JLabel l_Leer15 = new JLabel("");
 		p_Para.add(l_Leer15);
 
@@ -312,15 +328,16 @@ public class GUI extends JFrame {
 
 		// heuristischer Parameter
 
-		JLabel l_heur_Pheromon = new JLabel(
-				"<HTML><BODY>Q, heuristischer Parameter:</BODY></HTML>");
+		JLabel l_heur_Pheromon = new JLabel("<HTML><BODY>Q, heuristischer Parameter:</BODY></HTML>");
 		l_heur_Pheromon.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_heur_Pheromon.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_heur_Pheromon);
 
 		t_heur_Pheromon = new JTextField();
-		p_Para.add(t_heur_Pheromon);
 		t_heur_Pheromon.setColumns(10);
+		p_Para.add(t_heur_Pheromon);
+
+		// Leerzeile
 
 		JLabel l_Leer17 = new JLabel("");
 		p_Para.add(l_Leer17);
@@ -330,38 +347,40 @@ public class GUI extends JFrame {
 
 		// Stoppkriterien
 
-		JLabel l_Stoppkrit = new JLabel(
-				"<HTML><BODY>Stoppkriterien:</BODY></HTML>");
+		JLabel l_Stoppkrit = new JLabel("<HTML><BODY>Stoppkriterien:</BODY></HTML>");
 		l_Stoppkrit.setFont(new Font("Tahoma", Font.BOLD, 11));
 		l_Stoppkrit.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Stoppkrit);
 
 		// Anzahl von Iterationen erreicht
 
-		JCheckBox chb_It_erreicht = new JCheckBox(
-				"<HTML><BODY>Anzahl von Iterationen erreicht</BODY></HTML>");
+		JCheckBox chb_It_erreicht = new JCheckBox("<HTML><BODY>Anzahl von Iterationen erreicht</BODY></HTML>");
 		chb_It_erreicht.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_It_erreicht);
 
+		// Leerfläche
+		
 		JLabel l_Leer19 = new JLabel("");
 		p_Para.add(l_Leer19);
 
 		// Lösung gefunden
 
-		JCheckBox chb_Erg_gefunden = new JCheckBox(
-				"<HTML><BODY>L\u00F6sung gefunden</BODY></HTML>");
+		JCheckBox chb_Erg_gefunden = new JCheckBox("<HTML><BODY>L\u00F6sung gefunden</BODY></HTML>");
 		chb_Erg_gefunden.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_Erg_gefunden);
 
+		// Leerfläche
+		
 		JLabel l_Leer20 = new JLabel("");
 		p_Para.add(l_Leer20);
 
 		// Schwellenwert für Tourlänge erreicht
 
-		JCheckBox chb_Schwelle = new JCheckBox(
-				"<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
+		JCheckBox chb_Schwelle = new JCheckBox("<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		p_Para.add(chb_Schwelle);
+		
+		// Leerzeile
 		
 		JLabel l_Leer01 = new JLabel("");
 		p_Para.add(l_Leer01);
@@ -369,10 +388,9 @@ public class GUI extends JFrame {
 		JLabel l_Leer02 = new JLabel("");
 		p_Para.add(l_Leer02);
 		
-		//Zoomer
+		// Zoom-Slider
 		
-		JLabel l_Zoom = new JLabel(
-				"<HTML><BODY> Zoom:</BODY></HTML>");
+		JLabel l_Zoom = new JLabel("<HTML><BODY> Zoom:</BODY></HTML>");
 		l_Verdunst.setFont(new Font("Tahoma", Font.BOLD, 9));
 		l_Verdunst.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Zoom);
@@ -383,15 +401,19 @@ public class GUI extends JFrame {
 		p_Para.add(s_Zoom);
 		s_Zoom.addChangeListener(new Zoom_SlideListener());
 		
+		// Leerfläche
+		
 		JLabel l_Leer21 = new JLabel("");
 		p_Para.add(l_Leer21);
 
+		// Betrag des Zoom-Slider
+		
 		l_Zoomwert = new JLabel("0");
 		l_Zoomwert.setHorizontalAlignment(SwingConstants.CENTER);
 		l_Zoomwert.setFont(new Font("Tahoma", Font.BOLD, 9));
 		p_Para.add(l_Zoomwert);
 		
-		//Buttons
+		// Buttonflächen
 		
 		JPanel p_ControlStart = new JPanel();
 		p_Para.add(p_ControlStart, BorderLayout.SOUTH);
@@ -433,7 +455,7 @@ public class GUI extends JFrame {
 
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
-		l_warten.setVisible(true);
+		l_warten.setVisible(false);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 
 		JPanel p_Ergebnisse = new JPanel();
@@ -510,6 +532,8 @@ public class GUI extends JFrame {
 		contentPane.add(p_TSP, BorderLayout.CENTER);
 		p_TSP.setLayout(new BorderLayout(0, 0));
 
+		// Rahmen
+		
 		JPanel p_north = new JPanel();
 		p_TSP.add(p_north, BorderLayout.NORTH);
 
@@ -522,6 +546,8 @@ public class GUI extends JFrame {
 		JPanel p_east = new JPanel();
 		p_TSP.add(p_east, BorderLayout.EAST);
 
+		// Punkte zeichnen
+		
 		draw_TSP();
 	}
 
