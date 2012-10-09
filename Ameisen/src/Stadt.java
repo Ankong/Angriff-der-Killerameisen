@@ -1,16 +1,30 @@
-public class TSP_Formatierung {
+public class Stadt {
 
+	/**
+	 * Klasse zur Definition der Städte
+	 */
+	
+	/**
+	 * Klassenrelevante Variablen
+	 */
+	
 	private int id;
 	private double xPos;
 	private double yPos;
 
-	public TSP_Formatierung(int id, double xPos, double yPos) {
+	public Stadt(int id, double xPos, double yPos) {
 		super();
 		this.id = id;
 		this.xPos = xPos;
 		this.yPos = yPos;
 	}
 
+	/**
+	 * Getter und Setter für die Städte
+	 */
+	
+	// Stadt ID
+	
 	public int getId() {
 		return id;
 	}
@@ -19,6 +33,8 @@ public class TSP_Formatierung {
 		this.id = id;
 	}
 
+	// Stadt x-Koordinate
+	
 	public Double getxPos() {
 		return xPos;
 	}
@@ -27,6 +43,8 @@ public class TSP_Formatierung {
 		this.xPos = xPos;
 	}
 
+	// Stadt y-Koordinate
+	
 	public Double getyPos() {
 		return yPos;
 	}
@@ -35,7 +53,10 @@ public class TSP_Formatierung {
 		this.yPos = yPos;
 	}
 
-	@Override
+	/**
+	 * Methode zum Ausgeben der Städte
+	 */
+	
 	public String toString() {
 		return " " + id + " " + xPos + " " + yPos;
 	}

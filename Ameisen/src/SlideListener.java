@@ -10,7 +10,6 @@ public class SlideListener implements ChangeListener {
 	
 	public float slidezahl;
 
-	@Override
 	public void stateChanged(ChangeEvent slide_event) {
 		JSlider quelle = (JSlider) slide_event.getSource();
 		slidezahl = quelle.getValue();

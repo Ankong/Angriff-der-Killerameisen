@@ -2,12 +2,14 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
 public class Zoom_SlideListener implements ChangeListener {
-
+	
+	/**
+	 * Actionlistener zur Veränderung der dargestelleten Größe des TSP
+	 */
+	
 	public static double slidezahl = 50;
 	
-	@Override
 	public void stateChanged(ChangeEvent slide_event) {
 		JSlider quelle = (JSlider) slide_event.getSource();
 		slidezahl =  quelle.getValue();

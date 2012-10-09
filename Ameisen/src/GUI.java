@@ -49,13 +49,14 @@ public class GUI extends JFrame {
 	 * Parametervariablen
 	 */
 	
-	public JTextField t_Ameisen;
-	public JTextField t_Stadte;
-	public JTextField t_Iteration;
-	public JTextField t_Pheromon;
-	public JTextField t_heuristisch;
-	public JTextField t_init_Pheromon;
-	public JTextField t_heur_Pheromon;
+	public static JTextField t_Ameisen;
+	public static JTextField t_Stadte;
+	public static JTextField t_Iteration;
+	public static JTextField t_Pheromon;
+	public static JTextField t_heuristisch;
+	public static JSlider s_Verdunst;
+	public static JTextField t_init_Pheromon;
+	public static JTextField t_heur_Pheromon;
 
 	/**
 	 * Ergebnisvariablen
@@ -136,7 +137,7 @@ public class GUI extends JFrame {
 		// Speichern
 
 		sfl_speichern = new JMenuItem("Daten speichern");
-		sfl_speichern.setEnabled(false);
+		sfl_speichern.setEnabled(true);
 		mnDatei.add(sfl_speichern);
 		sfl_speichern.addActionListener(new SpeichernListener());
 
@@ -194,6 +195,7 @@ public class GUI extends JFrame {
 
 		t_Ameisen = new JTextField();
 		t_Ameisen.setColumns(10);
+		t_Ameisen.setText("0");
 		p_Para.add(t_Ameisen);
 
 		// Leerzeile
@@ -213,6 +215,8 @@ public class GUI extends JFrame {
 
 		t_Stadte = new JTextField();
 		t_Stadte.setColumns(10);
+		t_Stadte.setEditable(false);
+		t_Stadte.setBackground(Color.WHITE);
 		p_Para.add(t_Stadte);
 
 		// Leerzeile
@@ -232,6 +236,7 @@ public class GUI extends JFrame {
 
 		t_Iteration = new JTextField();
 		t_Iteration.setColumns(10);
+		t_Iteration.setText("0");
 		p_Para.add(t_Iteration);
 
 		// Leerzeile
@@ -251,6 +256,7 @@ public class GUI extends JFrame {
 
 		t_Pheromon = new JTextField();
 		t_Pheromon.setColumns(10);
+		t_Pheromon.setText("1");
 		t_Pheromon.setToolTipText("alpha > 0");
 		p_Para.add(t_Pheromon);
 
@@ -271,6 +277,7 @@ public class GUI extends JFrame {
 
 		t_heuristisch = new JTextField();
 		t_heuristisch.setColumns(10);
+		t_heuristisch.setText("1");
 		t_heuristisch.setToolTipText("beta > 0");
 		p_Para.add(t_heuristisch);
 
@@ -289,7 +296,7 @@ public class GUI extends JFrame {
 		l_Verdunst.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Verdunst);
 		
-		JSlider s_Verdunst = new JSlider();
+		s_Verdunst = new JSlider();
 		s_Verdunst.setPaintTicks(true);
 		s_Verdunst.setMinorTickSpacing(10);
 		p_Para.add(s_Verdunst);
@@ -316,6 +323,7 @@ public class GUI extends JFrame {
 
 		t_init_Pheromon = new JTextField();
 		t_init_Pheromon.setColumns(10);
+		t_init_Pheromon.setText("1");
 		p_Para.add(t_init_Pheromon);
 
 		// Leerzeile
@@ -335,6 +343,7 @@ public class GUI extends JFrame {
 
 		t_heur_Pheromon = new JTextField();
 		t_heur_Pheromon.setColumns(10);
+		t_heur_Pheromon.setText("1");
 		p_Para.add(t_heur_Pheromon);
 
 		// Leerzeile
@@ -455,7 +464,7 @@ public class GUI extends JFrame {
 
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
-		l_warten.setVisible(false);
+		l_warten.setVisible(true);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 
 		JPanel p_Ergebnisse = new JPanel();

@@ -9,6 +9,10 @@ public class Point_Canvas extends Component {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Klasse zum Zeichnen aller Elemente
+	 */
+	
 	public Point_Canvas() {
 
 	}
@@ -26,10 +30,28 @@ public class Point_Canvas extends Component {
 				//System.out.println("geht nicht"); }
 			}
 		} */
+		
+		/**
+		 * Zeichnen der Städte
+		 */
+		
 		for (int i = 0; i < OeffnenListener.list.size(); i++) {
-			g.setColor(Color.red);
+			g.setColor(Color.RED);
 			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), width, high);
-		}	
+		}
+		
+		/**
+		 * Zeichnen der Ameisen
+		 */
+		
+		for (int j = 0; j < TSP_Algorithmus.antList.size(); j++) {
+			g.setColor(Color.GREEN);
+			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), 6, 6);
+		}
+		
+		// Anzahl der Städte im Textfeld ausgeben
+		
+		GUI.t_Stadte.setText(String.valueOf(OeffnenListener.list.size()));
 	}
 	
 }

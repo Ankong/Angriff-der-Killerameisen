@@ -8,11 +8,14 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-
 public class SpeichernListener implements ActionListener {
 
+	/**
+	 * Actionlistener zum Speichern einer TSP über den Menüpunkt: Datei speichern
+	 */
+	
 	public static String line;
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		File file = null;
 		JFileChooser fileChooser = new JFileChooser();

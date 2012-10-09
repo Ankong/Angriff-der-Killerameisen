@@ -1,6 +1,10 @@
 
 public class ChangeParameter {
 
+	/**
+	 * Klasse zum Skalieren der TSP
+	 */
+	
 	public static Double getMaximum_X_Wert() {
 		double groessterX = Integer.MIN_VALUE;
 		for (int i= 0; i < OeffnenListener.list.size(); i++) {

@@ -12,19 +12,21 @@ import java.util.Vector;
 
 import javax.swing.JFileChooser;
 
-
 @SuppressWarnings("rawtypes")
 public class OeffnenListener implements ActionListener {
 
-	public static List<TSP_Formatierung> list = new ArrayList<TSP_Formatierung>();
-	public static  Vector vector = new Vector<>();
+	/**
+	 * Actionlistener zum Öffnen einer TSP über den Menüpunkt: Datei öffnen
+	 */
+	
+	public static List<Stadt> list = new ArrayList<Stadt>();
+	public static Vector vector = new Vector<>();
 	public static String sxPos;
 	public static double xPos;
 	public static String syPos;
 	public static double yPos;
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public void actionPerformed(ActionEvent event) {
 		String line;
 		File file = new File("");
@@ -75,7 +77,7 @@ public class OeffnenListener implements ActionListener {
 							xPos = Double.parseDouble(sxPos);
 							syPos = tokenizer.nextToken();
 							yPos = Double.parseDouble(syPos);
-							TSP_Formatierung daten = new TSP_Formatierung(id, xPos,
+							Stadt daten = new Stadt(id, xPos,
 									yPos);
 							list.add(daten);
 						}
@@ -83,15 +85,11 @@ public class OeffnenListener implements ActionListener {
 					//Punkte automatisch zeichnen
 					
 					GUI.frame_refresh();
-					for (int i = 0; i < vector.size(); i++) {
-						System.out.println(vector.get(i));
-					}
 					
 				} catch (IOException e) {
 					System.out.println("Exception");
 				}
 			} catch (NullPointerException | NumberFormatException | IOException e) {
-				// TODO Auto-generated catch block
 				System.out.println("bla");
 			}
 		} catch (FileNotFoundException e) {
