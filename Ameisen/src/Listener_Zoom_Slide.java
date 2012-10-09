@@ -2,7 +2,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Zoom_SlideListener implements ChangeListener {
+public class Listener_Zoom_Slide implements ChangeListener {
 	
 	/**
 	 * Actionlistener zur Veränderung der dargestelleten Größe des TSP

@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 
-public class Point_Canvas extends Component {
+public class TSP_Point_Canvas extends Component {
 
 	/**
 	 * ClassID
@@ -13,14 +13,14 @@ public class Point_Canvas extends Component {
 	 * Klasse zum Zeichnen aller Elemente
 	 */
 	
-	public Point_Canvas() {
+	public TSP_Point_Canvas() {
 
 	}
 
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		g.translate((int)(0 - (ChangeParameter.getMinimum_X_Wert())/ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)), (int)(0 - (ChangeParameter.getMinimum_Y_Wert()/ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))));
+		g.translate((int)(0 - (TSP_ChangeParameter.getMinimum_X_Wert())/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)), (int)(0 - (TSP_ChangeParameter.getMinimum_Y_Wert()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))));
 		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
 			try { 
 				for (int j = 0; j < OeffnenListener.list.size(); j++) {
@@ -35,9 +35,9 @@ public class Point_Canvas extends Component {
 		 * Zeichnen der Städte
 		 */
 		
-		for (int i = 0; i < OeffnenListener.list.size(); i++) {
+		for (int i = 0; i < Listener_Oeffnen.list.size(); i++) {
 			g.setColor(Color.RED);
-			g.fillOval((int)((OeffnenListener.list.get(i).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((OeffnenListener.list.get(i).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), width, high);
+			g.fillOval((int)((Listener_Oeffnen.list.get(i).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((Listener_Oeffnen.list.get(i).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), width, high);
 		}
 		
 		/**
@@ -46,12 +46,12 @@ public class Point_Canvas extends Component {
 		
 		for (int j = 0; j < TSP_Algorithmus.antList.size(); j++) {
 			g.setColor(Color.GREEN);
-			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5))), 6, 6);
+			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), 6, 6);
 		}
 		
 		// Anzahl der Städte im Textfeld ausgeben
 		
-		GUI.t_Stadte.setText(String.valueOf(OeffnenListener.list.size()));
+		GUI.t_Stadte.setText(String.valueOf(Listener_Oeffnen.list.size()));
 	}
 	
 }

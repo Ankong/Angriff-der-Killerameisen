@@ -1,7 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StartListener implements ActionListener {
+public class Listener_Start implements ActionListener {
 
 	/**
 	 * Actionlistener zum Starten des Algorythmus über den Startbutton

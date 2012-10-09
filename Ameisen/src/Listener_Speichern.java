@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-public class SpeichernListener implements ActionListener {
+public class Listener_Speichern implements ActionListener {
 
 	/**
 	 * Actionlistener zum Speichern einer TSP über den Menüpunkt: Datei speichern
@@ -28,22 +28,22 @@ public class SpeichernListener implements ActionListener {
 			file = new File(path);
 			try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-			for (int k = 0; k < OeffnenListener.vector.size(); k++) {
+			for (int k = 0; k < Listener_Oeffnen.vector.size(); k++) {
 				if (k == 0) {
-					line = OeffnenListener.vector.get(0).toString();
+					line = Listener_Oeffnen.vector.get(0).toString();
 					writer.write(line);
 					writer.write(" ");
 					String input = JOptionPane.showInputDialog("Stadtname:");
-					writer.write(input + OeffnenListener.list.size());
+					writer.write(input + Listener_Oeffnen.list.size());
 					writer.newLine();
 				}
 				else if (k == 1) {
-					line = OeffnenListener.vector.get(1).toString();
+					line = Listener_Oeffnen.vector.get(1).toString();
 					writer.write(line+" TSP");
 					writer.newLine();
 				}
 				else if (k == 2) {
-					line = OeffnenListener.vector.get(2).toString();
+					line = Listener_Oeffnen.vector.get(2).toString();
 					writer.write(line);
 					writer.write(" ");
 					String input = JOptionPane.showInputDialog(line);
@@ -51,19 +51,19 @@ public class SpeichernListener implements ActionListener {
 					writer.newLine();
 				}
 				else if (k == 3) {
-					line = OeffnenListener.vector.get(3).toString();
+					line = Listener_Oeffnen.vector.get(3).toString();
 					writer.write(line);
-					writer.write(" "+ OeffnenListener.list.size());
+					writer.write(" "+ Listener_Oeffnen.list.size());
 					writer.newLine();
 				}
 				else {
-					line = OeffnenListener.vector.get(k).toString();
+					line = Listener_Oeffnen.vector.get(k).toString();
 					writer.write(line);
 					writer.newLine();
 				}
 			}
-			for (int i = 0; i < OeffnenListener.list.size();i++) {
-					line = OeffnenListener.list.get(i).toString();
+			for (int i = 0; i < Listener_Oeffnen.list.size();i++) {
+					line = Listener_Oeffnen.list.get(i).toString();
 					writer.write(line);
 					writer.newLine();
 			}

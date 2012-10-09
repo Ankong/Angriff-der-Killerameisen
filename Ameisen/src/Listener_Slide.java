@@ -2,7 +2,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class SlideListener implements ChangeListener {
+public class Listener_Slide implements ChangeListener {
 	
 	/**
 	 * Actionlistener zum Erfassen und Darstellen der Werte des Verdunstundsfaktors

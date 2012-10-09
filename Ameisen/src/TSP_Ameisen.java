@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ameisen {
+public class TSP_Ameisen {
 	
 	/**
 	 * Klasse zum definieren der Ameisen
@@ -15,18 +15,18 @@ public class Ameisen {
 	int id;
 	double xPos;
 	double yPos;
-	static List<Stadt> tabuList = new ArrayList<Stadt>();
+	static List<TSP_Stadt> tabuList = new ArrayList<TSP_Stadt>();
 	
 	/**
 	 * Definition
 	 */
 	
-	public Ameisen (int antid, int id0, double x0Pos, double y0Pos ) {
+	public TSP_Ameisen (int antid, int id0, double x0Pos, double y0Pos ) {
 		antID = antid;
 		id = id0;
 		xPos = x0Pos;
 		yPos = y0Pos;
-		Stadt home = new Stadt(id0, x0Pos, y0Pos);
+		TSP_Stadt home = new TSP_Stadt(id0, x0Pos, y0Pos);
 		tabuList.add(home);
 	}
 	
@@ -34,7 +34,7 @@ public class Ameisen {
 	 * Möglichkeitsabfrage
 	 */
 	
-	public static Boolean check_posibility(Stadt test){
+	public static Boolean check_posibility(TSP_Stadt test){
 		boolean check;
 		
 		check = true;
@@ -54,7 +54,6 @@ public class Ameisen {
 	 */
 	
 	public static void berechne_Tour(int antid) {
-		double antTour;
 		
 	}
 
@@ -104,12 +103,12 @@ public class Ameisen {
 
 	// Tabu-Liste
 	
-	public static List<Stadt> getTabuList() {
+	public static List<TSP_Stadt> getTabuList() {
 		return tabuList;
 	}
 
-	public static void setTabuList(ArrayList<Stadt> tabuList) {
-		Ameisen.tabuList = tabuList;
+	public static void setTabuList(ArrayList<TSP_Stadt> tabuList) {
+		TSP_Ameisen.tabuList = tabuList;
 	}
 
 	/**

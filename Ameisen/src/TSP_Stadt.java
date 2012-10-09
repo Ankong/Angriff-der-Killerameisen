@@ -1,4 +1,4 @@
-public class Stadt {
+public class TSP_Stadt {
 
 	/**
 	 * Klasse zur Definition der Städte
@@ -12,7 +12,7 @@ public class Stadt {
 	private double xPos;
 	private double yPos;
 
-	public Stadt(int id, double xPos, double yPos) {
+	public TSP_Stadt(int id, double xPos, double yPos) {
 		super();
 		this.id = id;
 		this.xPos = xPos;

@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JToolTip;
 
 @SuppressWarnings("serial")
-public class TextTool extends JPanel {
+public class GUI_TextTool extends JPanel {
 	
 	/**
 	 * Klasse zum Generieren der Tooltips

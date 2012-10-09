@@ -1,12 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InfoListener implements ActionListener {
+public class Listener_Doku implements ActionListener {
 
 	/**
-	 * Actionlistener zum Öffnen der Info über den Menüpunkt: Info
+	 * Actionlistener zum Öffnen der Doku über den Menüpunkt: Dokumentation
 	 */
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 

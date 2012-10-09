@@ -12,7 +12,7 @@ public class TSP_Algorithmus {
 	 * Klassenrelevante Variablen
 	 */
 	
-	public static List<Ameisen> antList = new ArrayList<Ameisen>();
+	public static List<TSP_Ameisen> antList = new ArrayList<TSP_Ameisen>();
 	
 	/**
 	 * Parametervariablen
@@ -51,7 +51,7 @@ public class TSP_Algorithmus {
 		
 		for (int i = 0; i < v_Ameisen; i++) {
 			zufall = (int)(Math.random() * v_Stadte);
-			Ameisen ameisen = new Ameisen(i, OeffnenListener.list.get(zufall).getId(), OeffnenListener.list.get(zufall).getxPos(), OeffnenListener.list.get(zufall).getyPos());
+			TSP_Ameisen ameisen = new TSP_Ameisen(i, Listener_Oeffnen.list.get(zufall).getId(), Listener_Oeffnen.list.get(zufall).getxPos(), Listener_Oeffnen.list.get(zufall).getyPos());
 			antList.add(ameisen);	
 		}
 	}

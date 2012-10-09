@@ -1,4 +1,4 @@
-public class GUITest {
+public class Test_GUI {
 
 	/**
 	 * GUI-Testklasse

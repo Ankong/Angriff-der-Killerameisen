@@ -13,13 +13,13 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 
 @SuppressWarnings("rawtypes")
-public class OeffnenListener implements ActionListener {
+public class Listener_Oeffnen implements ActionListener {
 
 	/**
 	 * Actionlistener zum Öffnen einer TSP über den Menüpunkt: Datei öffnen
 	 */
 	
-	public static List<Stadt> list = new ArrayList<Stadt>();
+	public static List<TSP_Stadt> list = new ArrayList<TSP_Stadt>();
 	public static Vector vector = new Vector<>();
 	public static String sxPos;
 	public static double xPos;
@@ -41,7 +41,7 @@ public class OeffnenListener implements ActionListener {
 		}
 		
 		//Zoom-Slider reseten
-		Zoom_SlideListener.reset(GUI.s_Zoom);
+		Listener_Zoom_Slide.reset(GUI.s_Zoom);
 		
 		//File-Explorer zum Datei-Öffnen auswählen
 		JFileChooser chooser = new JFileChooser("c:/Users/Boris/workspace/Angriff-der-Killerameisen/Ameisen");
@@ -77,7 +77,7 @@ public class OeffnenListener implements ActionListener {
 							xPos = Double.parseDouble(sxPos);
 							syPos = tokenizer.nextToken();
 							yPos = Double.parseDouble(syPos);
-							Stadt daten = new Stadt(id, xPos,
+							TSP_Stadt daten = new TSP_Stadt(id, xPos,
 									yPos);
 							list.add(daten);
 						}
