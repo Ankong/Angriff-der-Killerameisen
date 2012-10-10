@@ -20,16 +20,22 @@ public class TSP_Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
+		
 		g.translate((int)(0 - (TSP_ChangeParameter.getMinimum_X_Wert())/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)), (int)(0 - (TSP_ChangeParameter.getMinimum_Y_Wert()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))));
-		/*for (int i = 0; i < OeffnenListener.list.size(); i++) { 
-			try { 
-				for (int j = 0; j < OeffnenListener.list.size(); j++) {
-					g.setColor(Color.lightGray);
-					g.drawLine((int)(((OeffnenListener.list.get(i).getxPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(i).getyPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(j).getxPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4),((int)((OeffnenListener.list.get(j).getyPos()/ ChangeParameter.grossterParam((Zoom_SlideListener.slidezahl - 50)*5)))+4)); } 
-			} catch (IndexOutOfBoundsException e){ 
-				//System.out.println("geht nicht"); }
-			}
-		} */
+		
+		/**
+		 * Zeichnen der Strecken
+		 */
+		
+		try { 
+			for (int k = 0; k < TSP_Algorithmus.streckenList.size(); k++) {
+				g.setColor(Color.lightGray);
+				g.drawLine((int)(((TSP_Algorithmus.streckenList.get(k).getStartxPos()/ TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)))+4),((int)((TSP_Algorithmus.streckenList.get(k).getStartyPos()/ TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)))+4),((int)((TSP_Algorithmus.streckenList.get(k).getEndxPos()/ TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)))+4),((int)((TSP_Algorithmus.streckenList.get(k).getEndxPos()/ TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)))+4));
+				System.out.println(TSP_Algorithmus.streckenList.get(k));
+			} 
+		} catch (IndexOutOfBoundsException e){ 
+			System.out.println("Streckenzeichnenfail");
+		}
 		
 		/**
 		 * Zeichnen der Städte

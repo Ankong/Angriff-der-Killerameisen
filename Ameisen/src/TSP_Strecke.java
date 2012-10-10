@@ -73,11 +73,13 @@ public class TSP_Strecke {
 		this.pheromon = pheromon;
 	}
 
+	@Override
 	public String toString() {
-		return "TSP_Strecke [startxPos=" + startxPos + ", startyPos="
-				+ startyPos + ", endxPos=" + endxPos + ", endyPos=" + endyPos
+		return "TSP_Strecke [ " + startxPos + ", "
+				+ startyPos + ", " + endxPos + ", " + endyPos
 				+ ", laenge=" + laenge + ", pheromon=" + pheromon + "]";
 	}
+	
 	
 	
 }
