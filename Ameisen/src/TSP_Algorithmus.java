@@ -13,6 +13,7 @@ public class TSP_Algorithmus {
 	 */
 	
 	public static List<TSP_Ameisen> antList = new ArrayList<TSP_Ameisen>();
+	public static List<TSP_Strecke> streckenList = new ArrayList<TSP_Strecke>();
 	
 	/**
 	 * Parametervariablen
@@ -50,9 +51,22 @@ public class TSP_Algorithmus {
 		int zufall;
 		
 		for (int i = 0; i < v_Ameisen; i++) {
-			zufall = (int)(Math.random() * v_Stadte);
+			zufall = (int)( Math.random() * v_Stadte );
 			TSP_Ameisen ameisen = new TSP_Ameisen(i, Listener_Oeffnen.list.get(zufall).getId(), Listener_Oeffnen.list.get(zufall).getxPos(), Listener_Oeffnen.list.get(zufall).getyPos());
 			antList.add(ameisen);	
+		}
+	}
+	
+	public static void strecken_generieren() {
+		for (int j = 0; j < Listener_Oeffnen.list.size(); j++) { 
+		try { 
+			for (int k = 0; k < Listener_Oeffnen.list.size(); k++) {
+				TSP_Strecke element = new TSP_Strecke(Listener_Oeffnen.list.get(j).getxPos(), Listener_Oeffnen.list.get(j).getyPos(), Listener_Oeffnen.list.get(k).getxPos(), Listener_Oeffnen.list.get(k).getyPos(), Math.sqrt( Math.pow( ( Listener_Oeffnen.list.get(k).getxPos() - Listener_Oeffnen.list.get(j).getxPos() ), 2) + Math.pow( ( Listener_Oeffnen.list.get(k).getyPos() - Listener_Oeffnen.list.get(j).getyPos() ), 2) ), v_init_Pheromon);
+				streckenList.add(element);
+			}	
+		} catch (IndexOutOfBoundsException e){ 
+			System.out.println("Streckenfail");
+			}
 		}
 	}
 	

@@ -11,10 +11,10 @@ public class TSP_Ameisen {
 	 * Klassenrelevante Variablen
 	 */
 	
-	int antID;
-	int id;
-	double xPos;
-	double yPos;
+	private int antID;
+	private int id;
+	private double xPos;
+	private double yPos;
 	static List<TSP_Stadt> tabuList = new ArrayList<TSP_Stadt>();
 	
 	/**
