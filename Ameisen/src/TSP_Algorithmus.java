@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,22 +51,42 @@ public class TSP_Algorithmus {
 		
 		for (int i = 0; i < v_Ameisen; i++) {
 			zufall = (int)( Math.random() * v_Stadte );
-			TSP_Ameisen ameisen = new TSP_Ameisen(i, Listener_Oeffnen.list.get(zufall).getId(), Listener_Oeffnen.list.get(zufall).getxPos(), Listener_Oeffnen.list.get(zufall).getyPos());
+			TSP_Ameisen ameisen = new TSP_Ameisen(Listener_Oeffnen.cityList.get(zufall).getId(), Listener_Oeffnen.cityList.get(zufall).getxPos(), Listener_Oeffnen.cityList.get(zufall).getyPos());
 			antList.add(ameisen);	
 		}
 	}
 	
 	public static void strecken_generieren() {
-		for (int j = 0; j < Listener_Oeffnen.list.size(); j++) { 
+		for (int j = 0; j < Listener_Oeffnen.cityList.size(); j++) { 
 		try { 
-			for (int k = 0; k < Listener_Oeffnen.list.size(); k++) {
-				TSP_Strecke element = new TSP_Strecke(Listener_Oeffnen.list.get(j).getxPos(), Listener_Oeffnen.list.get(j).getyPos(), Listener_Oeffnen.list.get(k).getxPos(), Listener_Oeffnen.list.get(k).getyPos(), Math.sqrt( Math.pow( ( Listener_Oeffnen.list.get(k).getxPos() - Listener_Oeffnen.list.get(j).getxPos() ), 2) + Math.pow( ( Listener_Oeffnen.list.get(k).getyPos() - Listener_Oeffnen.list.get(j).getyPos() ), 2) ), v_init_Pheromon);
-				streckenList.add(element);
+			for (int k = 0; k < Listener_Oeffnen.cityList.size(); k++) {
+				TSP_Strecke element = new TSP_Strecke(Listener_Oeffnen.cityList.get(j).getxPos(), Listener_Oeffnen.cityList.get(j).getyPos(), Listener_Oeffnen.cityList.get(k).getxPos(), Listener_Oeffnen.cityList.get(k).getyPos(), Math.sqrt( Math.pow( ( Listener_Oeffnen.cityList.get(k).getxPos() - Listener_Oeffnen.cityList.get(j).getxPos() ), 2) + Math.pow( ( Listener_Oeffnen.cityList.get(k).getyPos() - Listener_Oeffnen.cityList.get(j).getyPos() ), 2) ), v_init_Pheromon);
+				if (k != j) {
+					streckenList.add(element);
+				}
 			}	
 		} catch (IndexOutOfBoundsException e){ 
 			System.out.println("Streckenfail");
 			}
 		}
 	}
+	
+	public static double[] kuerzeste_Dist (int ameisenid, double startx, double starty) {
+		double[] endpunkt = new double[2];
+		double kurz = Integer.MAX_VALUE;
+		
+		for (int k= 0; k < streckenList.size(); k++) {
+			if ( (startx == streckenList.get(k).getStartxPos() ) & ( starty == streckenList.get(k).getStartyPos() ) ) {
+				if ( ( streckenList.get(k).getLaenge() < kurz ) & ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ) {
+					kurz = streckenList.get(k).getLaenge();
+					endpunkt[0] = streckenList.get(k).getEndxPos();
+					endpunkt[1] = streckenList.get(k).getEndyPos();
+				}	
+			}
+		}
+		
+		return endpunkt;
+	}
+	
 	
 }

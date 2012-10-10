@@ -34,7 +34,7 @@ public class Listener_Speichern implements ActionListener {
 					writer.write(line);
 					writer.write(" ");
 					String input = JOptionPane.showInputDialog("Stadtname:");
-					writer.write(input + Listener_Oeffnen.list.size());
+					writer.write(input + Listener_Oeffnen.cityList.size());
 					writer.newLine();
 				}
 				else if (k == 1) {
@@ -53,7 +53,7 @@ public class Listener_Speichern implements ActionListener {
 				else if (k == 3) {
 					line = Listener_Oeffnen.vector.get(3).toString();
 					writer.write(line);
-					writer.write(" "+ Listener_Oeffnen.list.size());
+					writer.write(" "+ Listener_Oeffnen.cityList.size());
 					writer.newLine();
 				}
 				else {
@@ -62,8 +62,8 @@ public class Listener_Speichern implements ActionListener {
 					writer.newLine();
 				}
 			}
-			for (int i = 0; i < Listener_Oeffnen.list.size();i++) {
-					line = Listener_Oeffnen.list.get(i).toString();
+			for (int i = 0; i < Listener_Oeffnen.cityList.size();i++) {
+					line = Listener_Oeffnen.cityList.get(i).toString();
 					writer.write(line);
 					writer.newLine();
 			}

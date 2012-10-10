@@ -11,42 +11,60 @@ public class TSP_Ameisen {
 	 * Klassenrelevante Variablen
 	 */
 	
-	private int antID;
 	private int id;
 	private double xPos;
 	private double yPos;
-	static List<TSP_Stadt> tabuList = new ArrayList<TSP_Stadt>();
+	static List<double[]> tabuList = new ArrayList<double[]>();
 	
 	/**
 	 * Definition
 	 */
 	
-	public TSP_Ameisen (int antid, int id0, double x0Pos, double y0Pos ) {
-		antID = antid;
+	public TSP_Ameisen (int id0, double x0Pos, double y0Pos ) {
 		id = id0;
 		xPos = x0Pos;
 		yPos = y0Pos;
-		TSP_Stadt home = new TSP_Stadt(id0, x0Pos, y0Pos);
-		tabuList.add(home);
 	}
 	
 	/**
 	 * Möglichkeitsabfrage
 	 */
 	
-	public static Boolean check_posibility(TSP_Stadt test){
+	public static Boolean check_posibility(int ameisenid, double testx, double testy){
 		boolean check;
+		double[] test = {testx, testy};
 		
 		check = true;
 		
-		for (int i = 0; i < tabuList.size(); i++) {
-			if (test.getId() == tabuList.get(i).getId()) {
+		for (int i = 0; i < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); i++) {
+			if ( TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(test) ) {
 				check = false;
 				break;
 			}		
 		}
 		
+		if (TSP_Algorithmus.antList.get(ameisenid).getTabuList().size() == Listener_Oeffnen.cityList.size() ) {
+			TSP_Algorithmus.antList.get(ameisenid).getTabuList().add( TSP_Algorithmus.antList.get(ameisenid).getTabuList().get(0) );
+		}
+		
 		return check;
+	}
+	
+	/**
+	 * Neue Stadt zur Tabuliste hinzufügen
+	 */
+	
+	public static void add_city(int ameisenid, double[] punkt) {
+		TSP_Algorithmus.antList.get(ameisenid).getTabuList().add(punkt);
+	}
+	
+	/**
+	 * Ameise auf neue Stadt
+	 */
+	
+	public static void next_city(int meisenid, double[] punkt) {
+		TSP_Algorithmus.antList.get(meisenid).setxPos(punkt[0]);
+		TSP_Algorithmus.antList.get(meisenid).setyPos(punkt[1]);
 	}
 	
 	/**
@@ -56,22 +74,18 @@ public class TSP_Ameisen {
 	public static void berechne_Tour(int antid) {
 		
 	}
+	
+	public static void printListDouble(List<double[]> liste) {
+		for (double[] line: liste) {
+			for (double d: line) {
+				System.out.print(d + " ");
+			}
+		}
+	}
 
 	/**
 	 * Getter und Setter für die Ameisen
 	 */
-	
-	// Ameisen ID
-	
-	public int getAntID() {
-		return antID;
-	}
-
-	public void setAntID(int antID) {
-		this.antID = antID;
-	}
-
-	// Heimatstadt ID
 	
 	public int getId() {
 		return id;
@@ -81,8 +95,6 @@ public class TSP_Ameisen {
 		this.id = id;
 	}
 
-	// Heimatstadt x-Koordinate
-	
 	public double getxPos() {
 		return xPos;
 	}
@@ -91,8 +103,6 @@ public class TSP_Ameisen {
 		this.xPos = xPos;
 	}
 
-	// Heimatstadt y-Koordinate
-	
 	public double getyPos() {
 		return yPos;
 	}
@@ -100,25 +110,21 @@ public class TSP_Ameisen {
 	public void setyPos(double yPos) {
 		this.yPos = yPos;
 	}
-
-	// Tabu-Liste
 	
-	public static List<TSP_Stadt> getTabuList() {
+	public List<double[]> getTabuList() {
 		return tabuList;
 	}
 
-	public static void setTabuList(ArrayList<TSP_Stadt> tabuList) {
-		TSP_Ameisen.tabuList = tabuList;
+	public void setTabuList(List<double[]> tabuList) {
+		this.tabuList = tabuList;
 	}
 
-	/**
-	 * Methode zur Ausgabe der Ameisen
-	 */
-	
+	@Override
 	public String toString() {
-		return " " + antID + " Home " + id + " " + xPos
-				+ " " + yPos + "]";
+		return "TSP_Ameisen [id=" + id + ", xPos=" + xPos + ", yPos=" + yPos
+				+ "]";
 	}
 
+	
 	
 }

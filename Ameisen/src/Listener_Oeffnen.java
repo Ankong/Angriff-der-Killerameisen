@@ -19,7 +19,7 @@ public class Listener_Oeffnen implements ActionListener {
 	 * Actionlistener zum Öffnen einer TSP über den Menüpunkt: Datei öffnen
 	 */
 	
-	public static List<TSP_Stadt> list = new ArrayList<TSP_Stadt>();
+	public static List<TSP_Stadt> cityList = new ArrayList<TSP_Stadt>();
 	public static Vector vector = new Vector<>();
 	public static String sxPos;
 	public static double xPos;
@@ -32,8 +32,8 @@ public class Listener_Oeffnen implements ActionListener {
 		File file = new File("");
 		
 		//Liste leeren
-		if (!list.isEmpty()) {
-			list.clear();
+		if (!cityList.isEmpty()) {
+			cityList.clear();
 		}
 		//Vetor leeren
 		if (!vector.isEmpty()) {
@@ -79,7 +79,7 @@ public class Listener_Oeffnen implements ActionListener {
 							yPos = Double.parseDouble(syPos);
 							TSP_Stadt daten = new TSP_Stadt(id, xPos,
 									yPos);
-							list.add(daten);
+							cityList.add(daten);
 						}
 					}
 					//Punkte automatisch zeichnen

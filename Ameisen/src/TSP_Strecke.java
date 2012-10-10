@@ -75,11 +75,9 @@ public class TSP_Strecke {
 
 	@Override
 	public String toString() {
-		return "TSP_Strecke [ " + startxPos + ", "
-				+ startyPos + ", " + endxPos + ", " + endyPos
+		return "TSP_Strecke [startxPos=" + startxPos + ", startyPos="
+				+ startyPos + ", endxPos=" + endxPos + ", endyPos=" + endyPos
 				+ ", laenge=" + laenge + ", pheromon=" + pheromon + "]";
 	}
-	
-	
 	
 }
