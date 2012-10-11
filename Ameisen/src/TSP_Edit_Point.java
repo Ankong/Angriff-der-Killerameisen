@@ -8,11 +8,6 @@ public class TSP_Edit_Point implements MouseListener {
 	 */
 	
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void mousePressed(MouseEvent e) {
 		int posx = e.getX();
 		int posy = e.getY();
 		int id = Listener_Oeffnen.cityList.size();
@@ -20,6 +15,11 @@ public class TSP_Edit_Point implements MouseListener {
 				Math.round(TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)*posx), 
 				Math.round(TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)*posy)));
 		GUI.frame_refresh();
+		
+	}
+	
+	public void mousePressed(MouseEvent e) {
+		
 	}
 
 	public void mouseReleased(MouseEvent e) {

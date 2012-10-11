@@ -95,6 +95,14 @@ public class GUI extends JFrame {
 		p_TSP.repaint();
 	}
 	
+	public static void neue_Stadt() {
+		try {
+			p_TSP.addMouseListener(new TSP_Edit_Point());
+		} catch (Exception e)	{
+			System.out.println("hola");
+		}
+	}
+	
 	/**
 	 * TSP zeichnen
 	 */
@@ -102,7 +110,7 @@ public class GUI extends JFrame {
 	public static void draw_TSP() {
 		try {
 			p_TSP.add(new TSP_Point_Canvas());
-			p_TSP.addMouseListener(new TSP_Edit_Point());
+			//p_TSP.addMouseListener(new TSP_Edit_Point());
 			
 		} catch (Exception e) {
 			System.out.println("geht nicht");
@@ -133,6 +141,8 @@ public class GUI extends JFrame {
 		JMenuItem sfl_offnen = new JMenuItem("Datei \u00F6ffnen");
 		mnDatei.add(sfl_offnen);
 		sfl_offnen.addActionListener(new Listener_Oeffnen());
+		
+		
 
 		// Speichern
 
@@ -558,6 +568,7 @@ public class GUI extends JFrame {
 		// Punkte zeichnen
 		
 		draw_TSP();
+		neue_Stadt();
 	}
 
 }
