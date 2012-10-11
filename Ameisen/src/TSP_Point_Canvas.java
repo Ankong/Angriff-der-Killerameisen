@@ -58,7 +58,7 @@ public class TSP_Point_Canvas extends Component {
 		
 		for (int j = 0; j < TSP_Algorithmus.antList.size(); j++) {
 			g.setColor(Color.GREEN);
-			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), 6, 6);
+			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), 9, 9);
 		}
 		
 		// Anzahl der Städte im Textfeld ausgeben

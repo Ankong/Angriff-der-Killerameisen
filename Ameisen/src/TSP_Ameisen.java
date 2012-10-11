@@ -14,7 +14,7 @@ public class TSP_Ameisen {
 	private int id;
 	private double xPos;
 	private double yPos;
-	static List<double[]> tabuList = new ArrayList<double[]>();
+	List<double[]> tabuList = new ArrayList<double[]>();
 	
 	/**
 	 * Definition

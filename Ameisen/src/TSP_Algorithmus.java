@@ -78,11 +78,10 @@ public class TSP_Algorithmus {
 		for (int k= 0; k < streckenList.size(); k++) {
 			if ( (startx == streckenList.get(k).getStartxPos() ) & ( starty == streckenList.get(k).getStartyPos() ) ) {
 				posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ;
-				if ( ( streckenList.get(k).getLaenge() < kurz ) && (posible) ) {
+				if ( ( streckenList.get(k).getLaenge() < kurz ) & (posible) ) {
 					kurz = streckenList.get(k).getLaenge();
 					endpunkt[0] = streckenList.get(k).getEndxPos();
 					endpunkt[1] = streckenList.get(k).getEndyPos();
-					break;
 				}	
 			}
 		}
