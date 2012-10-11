@@ -65,10 +65,6 @@ public class TSP_Ameisen {
 			}		
 		}
 		
-		if (TSP_Algorithmus.antList.get(ameisenid).getTabuList().size() == Listener_Oeffnen.cityList.size() ) {
-			TSP_Algorithmus.antList.get(ameisenid).getTabuList().add( TSP_Algorithmus.antList.get(ameisenid).getTabuList().get(0) );
-		}
-		
 		return check;
 	}
 	

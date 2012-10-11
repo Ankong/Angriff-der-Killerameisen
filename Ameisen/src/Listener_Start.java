@@ -41,8 +41,11 @@ public class Listener_Start implements ActionListener {
 				endp = TSP_Algorithmus.kuerzeste_Dist(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
 				TSP_Ameisen.add_city(l, endp);
 				TSP_Ameisen.next_city(l, endp);
-				TSP_Ameisen.printListDouble(TSP_Algorithmus.antList.get(l).getTabuList());
-			} //while (TSP_Algorithmus.antList.get(l).getTabuList().size() == (Listener_Oeffnen.cityList.size() + 1));
+				if (TSP_Algorithmus.antList.get(l).getTabuList().size() == Listener_Oeffnen.cityList.size() ) {
+					TSP_Algorithmus.antList.get(l).getTabuList().add( TSP_Algorithmus.antList.get(l).getTabuList().get(0) );
+					break;
+				}	
+			}
 		}
 
 		
