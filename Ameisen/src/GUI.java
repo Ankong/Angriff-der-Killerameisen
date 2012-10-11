@@ -173,7 +173,7 @@ public class GUI extends JFrame {
 		 */
 
 		JLabel l_Ameise = new JLabel("");
-		l_Ameise.setIcon(new ImageIcon("../Ameisen/ameise.gif"));
+		l_Ameise.setIcon(new ImageIcon("ameise.gif"));
 		contentPane.add(l_Ameise, BorderLayout.EAST);
 
 		/**
@@ -463,7 +463,7 @@ public class GUI extends JFrame {
 		// Wartebild
 
 		JLabel l_warten = new JLabel("");
-		l_warten.setIcon(new ImageIcon("../Ameisen/ameise-0005.gif"));
+		l_warten.setIcon(new ImageIcon("ameise-0005.gif"));
 		l_warten.setVisible(true);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 

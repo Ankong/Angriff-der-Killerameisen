@@ -26,7 +26,7 @@ public class TSP_Algorithmus {
 	public static double v_Verdunst;
 	public static int v_init_Pheromon;
 	public static int v_heur_Pheromon;
-	
+	static boolean posible;
 	/**
 	 * Einlesen der Parameter aus den Textfeldern
 	 */
@@ -77,10 +77,12 @@ public class TSP_Algorithmus {
 		
 		for (int k= 0; k < streckenList.size(); k++) {
 			if ( (startx == streckenList.get(k).getStartxPos() ) & ( starty == streckenList.get(k).getStartyPos() ) ) {
-				if ( ( streckenList.get(k).getLaenge() < kurz ) & ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ) {
+				posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ;
+				if ( ( streckenList.get(k).getLaenge() < kurz ) && (posible) ) {
 					kurz = streckenList.get(k).getLaenge();
 					endpunkt[0] = streckenList.get(k).getEndxPos();
 					endpunkt[1] = streckenList.get(k).getEndyPos();
+					break;
 				}	
 			}
 		}

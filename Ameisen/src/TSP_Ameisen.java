@@ -29,15 +29,37 @@ public class TSP_Ameisen {
 	/**
 	 * Möglichkeitsabfrage
 	 */
+	public static Boolean inhalt_check(int ameisenid, double testx, double testy) {
+		boolean check = false;
+		double[] koord;
+		double x;
+		double y;
+		
+		for ( int z =0; z < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); z++){
+			koord = TSP_Algorithmus.antList.get(ameisenid).tabuList.get(z);
+			x = koord[0];
+			y = koord[1];
+			if ((x == testx) && (y == testy)) {
+				check = true;
+				break;
+			}
+		}
+		
+		return check;
+	}
+	
 	
 	public static Boolean check_posibility(int ameisenid, double testx, double testy){
 		boolean check;
-		double[] test = {testx, testy};
+		boolean is_in;
+		//double[] test = {testx, testy};
 		
 		check = true;
 		
 		for (int i = 0; i < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); i++) {
-			if ( TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(test) ) {
+			is_in = TSP_Ameisen.inhalt_check(ameisenid, testx, testy);
+			//is_in = (TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(testx));
+			if ( is_in ) {
 				check = false;
 				break;
 			}		
@@ -76,6 +98,7 @@ public class TSP_Ameisen {
 	}
 	
 	public static void printListDouble(List<double[]> liste) {
+		System.out.println();
 		for (double[] line: liste) {
 			for (double d: line) {
 				System.out.print(d + " ");
