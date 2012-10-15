@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.AbstractDocument.Content;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -38,7 +39,7 @@ public class GUI extends JFrame {
 	 */
 	
 	public static GUI frame;
-	public JPanel contentPane;
+	public static JPanel contentPane;
 	public static JMenuItem sfl_speichern;
 	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
@@ -64,7 +65,7 @@ public class GUI extends JFrame {
 	
 	public JLabel l_local_opt;
 	public JLabel l_global_opt;
-	public JLabel l_local_aver;
+	public static JLabel l_local_aver;
 	public JLabel l_global_aver;
 	public JLabel l_Time;
 
@@ -512,7 +513,8 @@ public class GUI extends JFrame {
 		l_Leer27.setHorizontalAlignment(SwingConstants.RIGHT);
 		p_Ergebnisse.add(l_Leer27);
 
-		l_local_aver = new JLabel("100");
+		l_local_aver = new JLabel("");
+		//String text = String.valueOf(Math.round((100 *Listener_Start.gesamtLaenge))/100.0);
 		l_local_aver.setHorizontalAlignment(SwingConstants.CENTER);
 		p_Ergebnisse.add(l_local_aver);
 

@@ -24,7 +24,7 @@ public class TSP_Algorithmus {
 	public static int v_Pheromon;
 	public static int v_heuristisch;
 	public static double v_Verdunst;
-	public static int v_init_Pheromon;
+	public static double v_init_Pheromon;
 	public static int v_heur_Pheromon;
 	static boolean posible;
 	/**
@@ -38,7 +38,7 @@ public class TSP_Algorithmus {
 		v_Pheromon = Integer.parseInt(GUI.t_Pheromon.getText());
 		v_heuristisch = Integer.parseInt(GUI.t_heuristisch.getText());
 		v_Verdunst = (double)(GUI.s_Verdunst.getValue())/100;
-		v_init_Pheromon = Integer.parseInt(GUI.t_init_Pheromon.getText());
+		v_init_Pheromon = Double.parseDouble(GUI.t_init_Pheromon.getText());
 		v_heur_Pheromon = Integer.parseInt(GUI.t_heur_Pheromon.getText());
 	}
 	
@@ -51,9 +51,8 @@ public class TSP_Algorithmus {
 		
 		for (int i = 0; i < v_Ameisen; i++) {
 			zufall = (int)( Math.random() * v_Stadte );
-			TSP_Ameisen ameisen = new TSP_Ameisen(Listener_Oeffnen.cityList.get(zufall).getId(), Listener_Oeffnen.cityList.get(zufall).getxPos(), Listener_Oeffnen.cityList.get(zufall).getyPos());
+			TSP_Ameisen ameisen = new TSP_Ameisen(Listener_Oeffnen.cityList.get(zufall).getId(), Listener_Oeffnen.cityList.get(zufall).getxPos(), Listener_Oeffnen.cityList.get(zufall).getyPos(), 0);
 			antList.add(ameisen);
-			System.out.println(ameisen);
 		}
 	}
 	
@@ -97,6 +96,25 @@ public class TSP_Algorithmus {
 			}
 		}
 		return strecke;
+	}
+	
+	
+	public static Double kleinsteLaenge (double gesamtlaenge) {
+		double kleinlaenge = 0;
+		
+		return kleinlaenge;
+	}
+	
+	public static Double pheromonUpdate (int index, TSP_Strecke strecke) {
+		int qparam = v_heur_Pheromon;
+		double update;
+		if (antList.get(index).tabuList.contains(strecke)) {
+			update = qparam / antList.get(index).getGesamtlaenge();
+		}
+		else {
+			update = 0;
+		}
+		return update;
 	}
 	
 }

@@ -13,7 +13,6 @@ public class TSP_Point_Canvas extends Component {
 	 * Klasse zum Zeichnen aller Elemente
 	 */
 	
-	public static double gesamtLaenge = 0;
 	
 	public TSP_Point_Canvas() {
 
@@ -61,6 +60,7 @@ public class TSP_Point_Canvas extends Component {
 		// Anzahl der Städte im Textfeld ausgeben
 		
 		GUI.t_Stadte.setText(String.valueOf(Listener_Oeffnen.cityList.size()));
+		GUI.l_local_aver.setText(String.valueOf(Math.round((100 *Listener_Start.gesamtLaenge))/100.0));
 	}
 	
 }

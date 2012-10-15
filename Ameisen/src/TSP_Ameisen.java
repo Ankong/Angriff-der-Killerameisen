@@ -14,18 +14,22 @@ public class TSP_Ameisen {
 	private int id;
 	private double xPos;
 	private double yPos;
+	private double gesamtlaenge;
 	List<TSP_Strecke> tabuList = new ArrayList<TSP_Strecke>();
 	
 	/**
 	 * Definition
 	 */
 	
-	public TSP_Ameisen (int id0, double x0Pos, double y0Pos ) {
+	public TSP_Ameisen (int id0, double x0Pos, double y0Pos, double gesmtlaenge ) {
 		id = id0;
 		xPos = x0Pos;
 		yPos = y0Pos;
+		gesamtlaenge = gesmtlaenge;
 	}
 	
+	
+
 	/**
 	 * Möglichkeitsabfrage
 	 */
@@ -135,6 +139,14 @@ public class TSP_Ameisen {
 
 	public void setTabuList(List<TSP_Strecke> tabuList) {
 		this.tabuList = tabuList;
+	}
+	
+	public double getGesamtlaenge() {
+		return gesamtlaenge;
+	}
+
+	public void setGesamtlaenge(double gesamtlaenge) {
+		this.gesamtlaenge = gesamtlaenge;
 	}
 
 	@Override
