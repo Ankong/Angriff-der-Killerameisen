@@ -13,8 +13,8 @@ public class Listener_Start implements ActionListener {
 		 * Klassenrelevante Variablen
 		 */
 		
-		double[] startp = new double[2];
-		double[] endp = new double[2];
+		
+		TSP_Strecke strecke = null;
 		
 		/**
 		 * Liste leeren
@@ -32,35 +32,32 @@ public class Listener_Start implements ActionListener {
 		TSP_Algorithmus.ameisen_generieren();
 		TSP_Algorithmus.strecken_generieren();
 		
+		
+		
 		for (int l = 0; l < TSP_Algorithmus.antList.size(); l++) {
-			startp[0] = TSP_Algorithmus.antList.get(l).getxPos();
-			startp[1] = TSP_Algorithmus.antList.get(l).getyPos();
 			
 			if (!TSP_Algorithmus.antList.get(l).tabuList.isEmpty()) {
 				TSP_Algorithmus.antList.get(l).tabuList.clear();
-			}
-			
-			TSP_Algorithmus.antList.get(l).getTabuList().add(startp);
-			
-			for (int t = 0; t < Listener_Oeffnen.cityList.size() + 1; t++) {	
-				endp = TSP_Algorithmus.kuerzeste_Dist(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
-				TSP_Ameisen.add_city(l, endp);
-				TSP_Ameisen.next_city(l, endp);
-				
-				if (TSP_Algorithmus.antList.get(l).getTabuList().size() == Listener_Oeffnen.cityList.size() ) {
-					TSP_Algorithmus.antList.get(l).getTabuList().add( TSP_Algorithmus.antList.get(l).getTabuList().get(0) );
-					TSP_Algorithmus.antList.get(l).setxPos(startp[0]);
-					TSP_Algorithmus.antList.get(l).setyPos(startp[1]);
+			} 
+						
+			for (int t = 0; t < Listener_Oeffnen.cityList.size() + 1  ; t++) {	
+				strecke = TSP_Algorithmus.kuerzeste_Dist(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
+				TSP_Ameisen.add_city(l, strecke);
+				TSP_Ameisen.next_city(l, strecke);
+				System.out.println(TSP_Algorithmus.antList.get(l));
+				if (TSP_Algorithmus.antList.get(l).getTabuList().size() == Listener_Oeffnen.cityList.size()-1 ) {
+					strecke = TSP_Algorithmus.findeStrecke(strecke.getEndxPos(), strecke.getEndyPos(), TSP_Algorithmus.antList.get(l).getTabuList().get(0).getStartxPos(), TSP_Algorithmus.antList.get(l).getTabuList().get(0).getStartyPos());
+					TSP_Algorithmus.antList.get(l).getTabuList().add(strecke);
+					TSP_Ameisen.next_city(l, strecke);
 					break;
 				}	
 			}
 		}
-
 		
 		// Aktualisierung der Zeichnung
 		
 		GUI.draw_TSP();
-		GUI.frame_refresh();
+		GUI.frame_refresh(); 
 	}
 
 }

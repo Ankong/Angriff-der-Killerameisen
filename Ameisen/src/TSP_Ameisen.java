@@ -14,7 +14,7 @@ public class TSP_Ameisen {
 	private int id;
 	private double xPos;
 	private double yPos;
-	List<double[]> tabuList = new ArrayList<double[]>();
+	List<TSP_Strecke> tabuList = new ArrayList<TSP_Strecke>();
 	
 	/**
 	 * Definition
@@ -31,14 +31,14 @@ public class TSP_Ameisen {
 	 */
 	public static Boolean inhalt_check(int ameisenid, double testx, double testy) {
 		boolean check = false;
-		double[] koord;
+		TSP_Strecke koord;
 		double x;
 		double y;
 		
 		for ( int z =0; z < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); z++){
 			koord = TSP_Algorithmus.antList.get(ameisenid).tabuList.get(z);
-			x = koord[0];
-			y = koord[1];
+			x = koord.getStartxPos();
+			y = koord.getStartyPos();
 			if ((x == testx) && (y == testy)) {
 				check = true;
 				break;
@@ -52,7 +52,6 @@ public class TSP_Ameisen {
 	public static Boolean check_posibility(int ameisenid, double testx, double testy){
 		boolean check;
 		boolean is_in;
-		//double[] test = {testx, testy};
 		
 		check = true;
 		
@@ -72,17 +71,17 @@ public class TSP_Ameisen {
 	 * Neue Stadt zur Tabuliste hinzufügen
 	 */
 	
-	public static void add_city(int ameisenid, double[] punkt) {
-		TSP_Algorithmus.antList.get(ameisenid).getTabuList().add(punkt);
+	public static void add_city(int ameisenid, TSP_Strecke strecke) {
+		TSP_Algorithmus.antList.get(ameisenid).getTabuList().add(strecke);
 	}
 	
 	/**
 	 * Ameise auf neue Stadt
 	 */
 	
-	public static void next_city(int meisenid, double[] punkt) {
-		TSP_Algorithmus.antList.get(meisenid).setxPos(punkt[0]);
-		TSP_Algorithmus.antList.get(meisenid).setyPos(punkt[1]);
+	public static void next_city(int meisenid,TSP_Strecke strecke) {
+		TSP_Algorithmus.antList.get(meisenid).setxPos(strecke.getEndxPos());
+		TSP_Algorithmus.antList.get(meisenid).setyPos(strecke.getEndyPos());
 	}
 	
 	/**
@@ -130,11 +129,11 @@ public class TSP_Ameisen {
 		this.yPos = yPos;
 	}
 	
-	public List<double[]> getTabuList() {
+	public List<TSP_Strecke> getTabuList() {
 		return tabuList;
 	}
 
-	public void setTabuList(List<double[]> tabuList) {
+	public void setTabuList(List<TSP_Strecke> tabuList) {
 		this.tabuList = tabuList;
 	}
 

@@ -52,7 +52,8 @@ public class TSP_Algorithmus {
 		for (int i = 0; i < v_Ameisen; i++) {
 			zufall = (int)( Math.random() * v_Stadte );
 			TSP_Ameisen ameisen = new TSP_Ameisen(Listener_Oeffnen.cityList.get(zufall).getId(), Listener_Oeffnen.cityList.get(zufall).getxPos(), Listener_Oeffnen.cityList.get(zufall).getyPos());
-			antList.add(ameisen);	
+			antList.add(ameisen);
+			System.out.println(ameisen);
 		}
 	}
 	
@@ -71,23 +72,31 @@ public class TSP_Algorithmus {
 		}
 	}
 	
-	public static double[] kuerzeste_Dist (int ameisenid, double startx, double starty) {
-		double[] endpunkt = new double[2];
+	public static TSP_Strecke kuerzeste_Dist (int ameisenid, double startx, double starty) {
+		TSP_Strecke strecke = null;
 		double kurz = Integer.MAX_VALUE;
 		
 		for (int k= 0; k < streckenList.size(); k++) {
-			if ( (startx == streckenList.get(k).getStartxPos() ) & ( starty == streckenList.get(k).getStartyPos() ) ) {
+			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
 				posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ;
-				if ( ( streckenList.get(k).getLaenge() < kurz ) & (posible) ) {
+				if ( ( streckenList.get(k).getLaenge() < kurz ) && (posible) ) {
 					kurz = streckenList.get(k).getLaenge();
-					endpunkt[0] = streckenList.get(k).getEndxPos();
-					endpunkt[1] = streckenList.get(k).getEndyPos();
+					strecke = streckenList.get(k);
 				}	
 			}
 		}
+		return strecke;
 		
-		return endpunkt;
 	}
 	
+	public static TSP_Strecke findeStrecke (double startx, double starty, double endx, double endy) {
+		TSP_Strecke strecke = null;
+		for (int a = 0; a < TSP_Algorithmus.streckenList.size(); a++) {
+			if ((startx == TSP_Algorithmus.streckenList.get(a).getStartxPos()) && (starty == TSP_Algorithmus.streckenList.get(a).getStartyPos()) && (endx == TSP_Algorithmus.streckenList.get(a).getEndxPos()) && (endy == TSP_Algorithmus.streckenList.get(a).getEndyPos())) {
+				strecke = TSP_Algorithmus.streckenList.get(a);
+			}
+		}
+		return strecke;
+	}
 	
 }
