@@ -124,8 +124,8 @@ public class TSP_Algorithmus {
 			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
 				for (int i = k; k <= v_Stadte + k; i++) {
 					posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(i).getEndxPos(), streckenList.get(i).getEndyPos()) ) ;
-					if ( ( berechne(i, ameisenid, startx, starty) < auswahl ) && (posible) ) {
-						auswahl = berechne(i, ameisenid, startx, starty);
+					if ( ( berechne((i - (i-k)), ameisenid, startx, starty) < auswahl ) && (posible) ) {
+						auswahl = berechne((i - (i-k)), ameisenid, startx, starty);
 						strecke = streckenList.get(k);
 					}
 				}
