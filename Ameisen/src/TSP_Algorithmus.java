@@ -128,7 +128,7 @@ public class TSP_Algorithmus {
 		for (int k= 0; k < streckenList.size(); k++) {
 			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
 				summe_pos = berechne_summe_strecken(k, ameisenid);
-				for (int i = k; i < (v_Stadte + k); i++) {
+				for (int i = k; i < (v_Stadte - 1 + k); i++) {
 					posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(i).getEndxPos(), streckenList.get(i).getEndyPos()) ) ;
 					if ( ( berechne(i, ameisenid, summe_pos) > auswahl ) && (posible) ) {
 						auswahl = berechne(i, ameisenid, summe_pos);
@@ -146,8 +146,9 @@ public class TSP_Algorithmus {
 		double summe;
 		
 		summe = 0;
+		moglich = false;
 		
-		for (int j = index; j < (v_Stadte + index); j++) {
+		for (int j = index; j < (v_Stadte  - 1 + index); j++) {
 			moglich = ( TSP_Ameisen.check_posibility(amid, streckenList.get(j).getEndxPos(), streckenList.get(j).getEndyPos()) ) ;
 			if (moglich = true) {
 				summe += (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow((1 / streckenList.get(index).getLaenge() ), (v_heuristisch)));
