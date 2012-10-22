@@ -81,6 +81,19 @@ public class TSP_Point_Canvas extends Component {
 		} catch (IndexOutOfBoundsException e){ 
 			System.out.println("Streckenzeichnenfail");
 		}
+		
+		/**
+		 * Zeichnen der optimalen Ameisen
+		 */
+		
+		/**try {
+			for (int p = 0; p < TSP_Algorithmus.optStreckeList.size() - 2; p++) {
+				drawThickLine(g,(int)(TSP_Algorithmus.optStreckeList.get(p).getxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p).getyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p + 1).getxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p + 1).getyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4), 2, Color.MAGENTA);
+			}
+		} catch (IndexOutOfBoundsException e){ 
+			System.out.println("Streckenzeichnen");
+		}**/
+		
 		/**
 		 * Zeichnen der Städte
 		 */

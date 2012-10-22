@@ -19,6 +19,7 @@ import javax.swing.JSlider;
 import javax.swing.JCheckBox;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JProgressBar;
 
 public class GUI extends JFrame {
 
@@ -44,6 +45,7 @@ public class GUI extends JFrame {
 	public static JLabel l_Slidewert;
 	public static JLabel l_Zoomwert;
 	public static JSlider s_Zoom;
+	public static JProgressBar progressBar;
 
 	/**
 	 * Parametervariablen
@@ -470,12 +472,28 @@ public class GUI extends JFrame {
 		p_Erg.setLayout(new BorderLayout(0, 0));
 		p_Erg.setVisible(true);
 
-		// Wartebild
+		// Progressbar
 
-		JLabel l_warten = new JLabel("");
-		l_warten.setIcon(new ImageIcon("ameise-0005.gif"));
-		l_warten.setVisible(false);
-		p_Erg.add(l_warten, BorderLayout.WEST);
+		JPanel p_Progress = new JPanel();
+		p_Progress.setLayout(new BorderLayout(0, 0));
+		p_Erg.add(p_Progress, BorderLayout.WEST);
+		
+		progressBar = new JProgressBar();
+		p_Progress.add(progressBar, BorderLayout.CENTER);
+		
+		JPanel p_North = new JPanel();
+		p_Progress.add(p_North, BorderLayout.NORTH);
+
+		JPanel p_South = new JPanel();
+		p_Progress.add(p_South, BorderLayout.SOUTH);
+
+		JPanel p_West = new JPanel();
+		p_Progress.add(p_West, BorderLayout.WEST);
+
+		JPanel p_East = new JPanel();
+		p_Progress.add(p_East, BorderLayout.EAST);
+		
+		// Ergenisse
 
 		JPanel p_Ergebnisse = new JPanel();
 		p_Erg.add(p_Ergebnisse, BorderLayout.EAST);
@@ -513,7 +531,6 @@ public class GUI extends JFrame {
 		p_Ergebnisse.add(l_Leer27);
 
 		l_local_aver = new JLabel("");
-		//String text = String.valueOf(Math.round((100 *Listener_Start.gesamtLaenge))/100.0);
 		l_local_aver.setHorizontalAlignment(SwingConstants.CENTER);
 		p_Ergebnisse.add(l_local_aver);
 
@@ -542,7 +559,7 @@ public class GUI extends JFrame {
 
 		JLabel l_Leer31 = new JLabel("");
 		p_Ergebnisse.add(l_Leer31);
-
+		
 		/**
 		 * TSP-Panel
 		 */

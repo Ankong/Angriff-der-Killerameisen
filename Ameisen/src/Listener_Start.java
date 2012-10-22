@@ -26,6 +26,7 @@ public class Listener_Start implements ActionListener {
 		TSP_Algorithmus.ameisen_generieren();
 		TSP_Algorithmus.strecken_generieren();
 		TSP_Algorithmus.iterationen_durchlaufen();
+		TSP_Algorithmus.berlin52_opt();
 	}
 
 }
