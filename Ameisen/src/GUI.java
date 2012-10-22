@@ -62,11 +62,11 @@ public class GUI extends JFrame {
 	 * Ergebnisvariablen
 	 */
 	
-	public JLabel l_local_opt;
-	public JLabel l_global_opt;
+	public static JLabel l_local_opt;
+	public static JLabel l_global_opt;
 	public static JLabel l_local_aver;
-	public JLabel l_global_aver;
-	public JLabel l_Time;
+	public static JLabel l_global_aver;
+	public static JLabel l_Time;
 
 	/**
 	 * Programm starten
@@ -468,7 +468,7 @@ public class GUI extends JFrame {
 		JPanel p_Erg = new JPanel();
 		contentPane.add(p_Erg, BorderLayout.SOUTH);
 		p_Erg.setLayout(new BorderLayout(0, 0));
-		p_Erg.setVisible(false);
+		p_Erg.setVisible(true);
 
 		// Wartebild
 

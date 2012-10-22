@@ -14,6 +14,10 @@ public class TSP_Algorithmus {
 	public static List<TSP_Ameisen> antList = new ArrayList<TSP_Ameisen>();
 	public static List<TSP_Strecke> streckenList = new ArrayList<TSP_Strecke>();
 	
+	public static double gesamtLaenge;
+	static double update;
+	static TSP_Strecke strecke = null;
+	
 	/**
 	 * Parametervariablen
 	 */
@@ -104,22 +108,6 @@ public class TSP_Algorithmus {
 		return update;
 	}
 	
-	/**public static TSP_Strecke kuerzeste_Dist (int ameisenid, double startx, double starty) {
-		TSP_Strecke strecke = null;
-		double kurz = Integer.MAX_VALUE;
-		
-		for (int k= 0; k < streckenList.size(); k++) {
-			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
-				posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(k).getEndxPos(), streckenList.get(k).getEndyPos()) ) ;
-				if ( ( streckenList.get(k).getLaenge() < kurz ) && (posible) ) {
-					kurz = streckenList.get(k).getLaenge();
-					strecke = streckenList.get(k);
-				}	
-			}
-		}
-		return strecke;
-	}**/
-	
 	public static TSP_Strecke Stadtauswahl(int ameisenid, double startx, double starty) {
 		double auswahl = Double.MIN_VALUE;
 		double summe_pos;
@@ -167,5 +155,81 @@ public class TSP_Algorithmus {
 		gesamt = posibility / summe;
 		
 		return gesamt;
+	}
+	
+	public static void iterationen_durchlaufen() {
+		for (int b = 0; b < TSP_Algorithmus.v_Iteration; b++) {
+			//Liste leeren und neue Ameisen für neue zufällige Städte erstellen und setzen, nach dem ersten Durchlauf
+			if (!TSP_Algorithmus.antList.isEmpty() & b!=0) {
+				TSP_Algorithmus.antList.clear();
+				TSP_Algorithmus.ameisen_generieren();
+			}
+			for (int l = 0; l < TSP_Algorithmus.antList.size(); l++) {
+				gesamtLaenge = 0;
+				if (!TSP_Algorithmus.antList.get(l).tabuList.isEmpty()) {
+					TSP_Algorithmus.antList.get(l).tabuList.clear();
+				} 
+							
+				for (int t = 0; t < Listener_Oeffnen.cityList.size() + 1  ; t++) {	
+					strecke = TSP_Algorithmus.Stadtauswahl(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
+					gesamtLaenge = gesamtLaenge + strecke.getLaenge();
+					TSP_Ameisen.add_city(l, strecke);
+					TSP_Ameisen.next_city(l, strecke);
+					if (TSP_Algorithmus.antList.get(l).getTabuList().size() == Listener_Oeffnen.cityList.size()-1 ) {
+						strecke = TSP_Algorithmus.findeStrecke(strecke.getEndxPos(), strecke.getEndyPos(), TSP_Algorithmus.antList.get(l).getTabuList().get(0).getStartxPos(), TSP_Algorithmus.antList.get(l).getTabuList().get(0).getStartyPos());
+						TSP_Algorithmus.antList.get(l).getTabuList().add(strecke);
+						TSP_Ameisen.next_city(l, strecke);
+						break;
+					}	
+				}
+				TSP_Algorithmus.antList.get(l).setGesamtlaenge(Math.round((100 *gesamtLaenge))/100.0);
+				
+				for (int a = 0; a < TSP_Algorithmus.antList.get(l).tabuList.size(); a++) {
+					update = TSP_Algorithmus.pheromonUpdate(l, TSP_Algorithmus.antList.get(l).tabuList.get(a));
+					TSP_Algorithmus.antList.get(l).tabuList.get(a).setPheromon(TSP_Algorithmus.antList.get(l).tabuList.get(a).getPheromon()+update);
+				}					
+			}
+			TSP_Algorithmus.v_init_Pheromon = (1 - TSP_Algorithmus.v_Verdunst) * TSP_Algorithmus.v_init_Pheromon;
+			GUI.draw_TSP();
+			GUI.frame_refresh();
+		}	
+	}
+	
+	public static double aver_strecke() {
+		double laenge = 0;
+		
+		for (int h = 0; h < antList.size(); h++) {
+			laenge += antList.get(h).getGesamtlaenge();
+		}
+		
+		laenge = laenge / antList.size();
+		
+		return laenge;
+	}
+	
+	public static double opt_strecke() {
+		double laenge = Double.MAX_VALUE;
+		
+		for (int h = 0; h < antList.size(); h++) {
+			if (antList.get(h).getGesamtlaenge() < laenge) {
+				laenge = antList.get(h).getGesamtlaenge();
+			}
+		}
+		
+		return laenge;
+	}
+	
+	public static int opt_ameise() {
+		double laenge = Double.MAX_VALUE;
+		int opt = 0;
+		
+		for (int h = 0; h < antList.size(); h++) {
+			if (antList.get(h).getGesamtlaenge() < laenge) {
+				laenge = antList.get(h).getGesamtlaenge();
+				opt = h;
+			}
+		}
+		
+		return opt;
 	}
 }
