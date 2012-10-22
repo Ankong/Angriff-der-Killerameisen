@@ -16,6 +16,7 @@ public class TSP_Algorithmus {
 	public static List<TSP_Stadt> optStreckeList = new ArrayList<TSP_Stadt>();
 	
 	public static double gesamtLaenge;
+	public static double gesamtpheromon = 0;
 	static double update;
 	static TSP_Strecke strecke = null;
 	
@@ -192,7 +193,6 @@ public class TSP_Algorithmus {
 		optStreckeList.add(daten52);
 		TSP_Stadt daten = new TSP_Stadt(1, 565.0, 575.0);
 		optStreckeList.add(daten);
-		
 	}
 	
 	public static TSP_Strecke findeStrecke (double startx, double starty, double endx, double endy) {
@@ -215,6 +215,7 @@ public class TSP_Algorithmus {
 		double update;
 		if (antList.get(index).tabuList.contains(strecke)) {
 			update = v_heur_Pheromon / antList.get(index).getGesamtlaenge();
+			gesamtpheromon += update;
 		}
 		else {
 			update = 0;
@@ -235,7 +236,7 @@ public class TSP_Algorithmus {
 	
 	public static void verdunstung() {
 		for (int u = 0; u < streckenList.size(); u++) {
-			streckenList.get(u).setPheromon( (1 - v_Verdunst) * streckenList.get(u).getPheromon());
+			streckenList.get(u).setPheromon( (1 - v_Verdunst) * streckenList.get(u).getPheromon() + gesamtpheromon);
 		}
 	}
 	
