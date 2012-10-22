@@ -27,6 +27,7 @@ public class TSP_Algorithmus {
 	public static double v_init_Pheromon;
 	public static double v_heur_Pheromon;
 	static boolean posible;
+	
 	/**
 	 * Einlesen der Parameter aus den Textfeldern
 	 */
@@ -56,6 +57,10 @@ public class TSP_Algorithmus {
 		}
 	}
 	
+	/**
+	 * Erstellen der Strecken
+	 */
+	
 	public static void strecken_generieren() {
 		for (int j = 0; j < Listener_Oeffnen.cityList.size(); j++) { 
 		try { 
@@ -71,7 +76,35 @@ public class TSP_Algorithmus {
 		}
 	}
 	
-	public static TSP_Strecke kuerzeste_Dist (int ameisenid, double startx, double starty) {
+	public static TSP_Strecke findeStrecke (double startx, double starty, double endx, double endy) {
+		TSP_Strecke strecke = null;
+		for (int a = 0; a < TSP_Algorithmus.streckenList.size(); a++) {
+			if ((startx == TSP_Algorithmus.streckenList.get(a).getStartxPos()) && (starty == TSP_Algorithmus.streckenList.get(a).getStartyPos()) && (endx == TSP_Algorithmus.streckenList.get(a).getEndxPos()) && (endy == TSP_Algorithmus.streckenList.get(a).getEndyPos())) {
+				strecke = TSP_Algorithmus.streckenList.get(a);
+			}
+		}
+		return strecke;
+	}
+	
+	
+	/**public static Double kleinsteLaenge (double gesamtlaenge) {
+		double kleinlaenge = 0;
+		
+		return kleinlaenge;
+	}**/
+	
+	public static Double pheromonUpdate (int index, TSP_Strecke strecke) {
+		double update;
+		if (antList.get(index).tabuList.contains(strecke)) {
+			update = v_heur_Pheromon / antList.get(index).getGesamtlaenge();
+		}
+		else {
+			update = 0;
+		}
+		return update;
+	}
+	
+	/**public static TSP_Strecke kuerzeste_Dist (int ameisenid, double startx, double starty) {
 		TSP_Strecke strecke = null;
 		double kurz = Integer.MAX_VALUE;
 		
@@ -85,48 +118,21 @@ public class TSP_Algorithmus {
 			}
 		}
 		return strecke;
-		
-	}
+	}**/
 	
-	public static TSP_Strecke findeStrecke (double startx, double starty, double endx, double endy) {
+	public static TSP_Strecke Stadtauswahl(int ameisenid, double startx, double starty) {
+		double auswahl = Double.MIN_VALUE;
+		double summe_pos;
 		TSP_Strecke strecke = null;
-		for (int a = 0; a < TSP_Algorithmus.streckenList.size(); a++) {
-			if ((startx == TSP_Algorithmus.streckenList.get(a).getStartxPos()) && (starty == TSP_Algorithmus.streckenList.get(a).getStartyPos()) && (endx == TSP_Algorithmus.streckenList.get(a).getEndxPos()) && (endy == TSP_Algorithmus.streckenList.get(a).getEndyPos())) {
-				strecke = TSP_Algorithmus.streckenList.get(a);
-			}
-		}
-		return strecke;
-	}
-	
-	
-	public static Double kleinsteLaenge (double gesamtlaenge) {
-		double kleinlaenge = 0;
-		
-		return kleinlaenge;
-	}
-	
-	public static Double pheromonUpdate (int index, TSP_Strecke strecke) {
-		double qparam = v_heur_Pheromon;
-		double update;
-		if (antList.get(index).tabuList.contains(strecke)) {
-			update = qparam / antList.get(index).getGesamtlaenge();
-		}
-		else {
-			update = 0;
-		}
-		return update;
-	}
-	public TSP_Strecke Stadtauswahl(int ameisenid, double startx, double starty) {
-		TSP_Strecke strecke = null;
-		double auswahl = Integer.MAX_VALUE;
 		
 		for (int k= 0; k < streckenList.size(); k++) {
 			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
-				for (int i = k; k <= v_Stadte + k; i++) {
+				summe_pos = berechne_summe_strecken(k, ameisenid);
+				for (int i = k; i < (v_Stadte + k); i++) {
 					posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(i).getEndxPos(), streckenList.get(i).getEndyPos()) ) ;
-					if ( ( berechne((i - (i-k)), ameisenid, startx, starty) < auswahl ) && (posible) ) {
-						auswahl = berechne((i - (i-k)), ameisenid, startx, starty);
-						strecke = streckenList.get(k);
+					if ( ( berechne(i, ameisenid, summe_pos) > auswahl ) && (posible) ) {
+						auswahl = berechne(i, ameisenid, summe_pos);
+						strecke = streckenList.get(i);
 					}
 				}
 			break;
@@ -134,19 +140,31 @@ public class TSP_Algorithmus {
 		}
 		return strecke;
 	}
-	public double berechne (int index, int amid, double beginnx, double beginny) {
-		double wert1, wert2, gesamtwert;
-		wert2 = 0;
-		boolean moeglich;
+	
+	public static double berechne_summe_strecken (int index, int amid) {
+		boolean moglich;
+		double summe;
 		
-		wert1 = (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow(streckenList.get(index).getLaenge(), (-v_heuristisch)));
-		for (int j = index; j<= v_Stadte + index; j++) {
-			moeglich = ( TSP_Ameisen.check_posibility(amid, streckenList.get(j).getEndxPos(), streckenList.get(j).getEndyPos()) ) ;
-			if (moeglich = true) {
-				wert2 += (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow(streckenList.get(index).getLaenge(), (-v_heuristisch)));
+		summe = 0;
+		
+		for (int j = index; j < (v_Stadte + index); j++) {
+			moglich = ( TSP_Ameisen.check_posibility(amid, streckenList.get(j).getEndxPos(), streckenList.get(j).getEndyPos()) ) ;
+			if (moglich = true) {
+				summe += (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow((1 / streckenList.get(index).getLaenge() ), (v_heuristisch)));
 			}
 		}
-		gesamtwert = wert1/wert2;
-		return gesamtwert;
+		
+		return summe;
+	}
+	
+	public static double berechne (int index, int amid, double summe) {
+		double posibility;
+		double gesamt;
+		
+		posibility = (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow((1 / streckenList.get(index).getLaenge() ), (v_heuristisch)));
+		
+		gesamt = posibility / summe;
+		
+		return gesamt;
 	}
 }

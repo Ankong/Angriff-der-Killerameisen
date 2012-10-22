@@ -6,7 +6,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.AbstractDocument.Content;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -80,7 +79,6 @@ public class GUI extends JFrame {
 					frame = new GUI();
 					frame.setVisible(true);
 					frame.setResizable(false);
-					frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -470,12 +468,13 @@ public class GUI extends JFrame {
 		JPanel p_Erg = new JPanel();
 		contentPane.add(p_Erg, BorderLayout.SOUTH);
 		p_Erg.setLayout(new BorderLayout(0, 0));
+		p_Erg.setVisible(false);
 
 		// Wartebild
 
 		JLabel l_warten = new JLabel("");
 		l_warten.setIcon(new ImageIcon("ameise-0005.gif"));
-		l_warten.setVisible(true);
+		l_warten.setVisible(false);
 		p_Erg.add(l_warten, BorderLayout.WEST);
 
 		JPanel p_Ergebnisse = new JPanel();

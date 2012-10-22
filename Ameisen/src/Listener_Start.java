@@ -48,7 +48,8 @@ public class Listener_Start implements ActionListener {
 				} 
 							
 				for (int t = 0; t < Listener_Oeffnen.cityList.size() + 1  ; t++) {	
-					strecke = TSP_Algorithmus.kuerzeste_Dist(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
+					//strecke = TSP_Algorithmus.kuerzeste_Dist(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
+					strecke = TSP_Algorithmus.Stadtauswahl(l, TSP_Algorithmus.antList.get(l).getxPos(), TSP_Algorithmus.antList.get(l).getyPos());
 					gesamtLaenge = gesamtLaenge + strecke.getLaenge();
 					TSP_Ameisen.add_city(l, strecke);
 					TSP_Ameisen.next_city(l, strecke);
