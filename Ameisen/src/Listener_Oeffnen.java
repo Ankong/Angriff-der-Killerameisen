@@ -39,6 +39,9 @@ public class Listener_Oeffnen implements ActionListener {
 		if (!vector.isEmpty()) {
 			vector.clear();
 		}
+		if (!TSP_Algorithmus.optStreckeList.isEmpty()) {
+			TSP_Algorithmus.optStreckeList.clear();
+		} 
 		
 		//Zoom-Slider reseten
 		Listener_Zoom_Slide.reset(GUI.s_Zoom);

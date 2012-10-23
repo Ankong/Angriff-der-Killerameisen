@@ -16,6 +16,7 @@ public class TSP_Ameisen {
 	private double yPos;
 	private double gesamtlaenge;
 	List<TSP_Strecke> tabuList = new ArrayList<TSP_Strecke>();
+	List<TSP_Strecke> tabuList2 = new ArrayList<TSP_Strecke>();
 	
 	/**
 	 * Definition
@@ -33,6 +34,7 @@ public class TSP_Ameisen {
 	/**
 	 * Möglichkeitsabfrage
 	 */
+	
 	public static Boolean inhalt_check(int ameisenid, double testx, double testy) {
 		boolean check = false;
 		TSP_Strecke koord;
@@ -69,8 +71,26 @@ public class TSP_Ameisen {
 		}
 		
 		return check;
+	} 
+	/*public static void add_city2(int ameisenid, TSP_Strecke strecke) {
+		TSP_Algorithmus.antList.get(ameisenid).getTabuList2().add(strecke);
 	}
 	
+	public static Boolean check_posibility (int ameisenid, TSP_Strecke stecke) {
+		boolean check = true;
+		TSP_Strecke retour = null;
+		
+		retour = TSP_Algorithmus.finde_retour(stecke);
+		
+		for (int a = 0; a < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); a++) {
+			if (TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(stecke) || TSP_Algorithmus.antList.get(ameisenid).getTabuList2().contains(retour)) {
+				check = false;
+				break;
+			}
+		}
+		
+		return check;
+	}*/
 	/**
 	 * Neue Stadt zur Tabuliste hinzufügen
 	 */
@@ -86,14 +106,6 @@ public class TSP_Ameisen {
 	public static void next_city(int meisenid,TSP_Strecke strecke) {
 		TSP_Algorithmus.antList.get(meisenid).setxPos(strecke.getEndxPos());
 		TSP_Algorithmus.antList.get(meisenid).setyPos(strecke.getEndyPos());
-	}
-	
-	/**
-	 * Berechnung der Tour einer Ameise
-	 */
-	
-	public static void berechne_Tour(int antid) {
-		
 	}
 	
 	public static void printListDouble(List<double[]> liste) {
@@ -148,6 +160,19 @@ public class TSP_Ameisen {
 	public void setGesamtlaenge(double gesamtlaenge) {
 		this.gesamtlaenge = gesamtlaenge;
 	}
+	
+
+	public List<TSP_Strecke> getTabuList2() {
+		return tabuList2;
+	}
+
+
+
+	public void setTabuList2(List<TSP_Strecke> tabuList2) {
+		this.tabuList2 = tabuList2;
+	}
+
+
 
 	@Override
 	public String toString() {

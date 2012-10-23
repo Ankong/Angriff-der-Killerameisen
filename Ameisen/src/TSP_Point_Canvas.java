@@ -50,7 +50,6 @@ public class TSP_Point_Canvas extends Component {
 	public void paint(Graphics g) {
 		int width = 8;
 		int high = 8;
-		int opt_meise = 0;
 		
 		g.translate((int)(0 - (TSP_ChangeParameter.getMinimum_X_Wert())/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)), (int)(0 - (TSP_ChangeParameter.getMinimum_Y_Wert()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))));
 		
@@ -74,25 +73,12 @@ public class TSP_Point_Canvas extends Component {
 		 */
 		
 		try {
-			opt_meise = TSP_Algorithmus.opt_ameise();
-			for (int o = 0; o < TSP_Algorithmus.antList.get(opt_meise).getTabuList().size() ; o++) {
-				drawThickLine(g,(int)(TSP_Algorithmus.antList.get(opt_meise).getTabuList().get(o).getStartxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.antList.get(opt_meise).getTabuList().get(o).getStartyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.antList.get(opt_meise).getTabuList().get(o).getEndxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.antList.get(opt_meise).getTabuList().get(o).getEndyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4), 4, Color.BLUE);
+			for (int o = 0; o < TSP_Algorithmus.optStreckeList.size() ; o++) {
+				drawThickLine(g,(int)(TSP_Algorithmus.optStreckeList.get(o).getStartxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(o).getStartyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(o).getEndxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(o).getEndyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4), 4, Color.BLUE);
 			}
 		} catch (IndexOutOfBoundsException e){ 
-			System.out.println("Streckenzeichnenfail");
+			System.out.println("Streckenfail");
 		}
-		
-		/**
-		 * Zeichnen der optimalen Ameisen
-		 */
-		
-		/**try {
-			for (int p = 0; p < TSP_Algorithmus.optStreckeList.size() - 2; p++) {
-				drawThickLine(g,(int)(TSP_Algorithmus.optStreckeList.get(p).getxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p).getyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p + 1).getxPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4),(int)(TSP_Algorithmus.optStreckeList.get(p + 1).getyPos()/TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5)+4), 2, Color.MAGENTA);
-			}
-		} catch (IndexOutOfBoundsException e){ 
-			System.out.println("Streckenzeichnen");
-		}**/
 		
 		/**
 		 * Zeichnen der Städte
@@ -103,20 +89,11 @@ public class TSP_Point_Canvas extends Component {
 			g.fillOval((int)((Listener_Oeffnen.cityList.get(i).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((Listener_Oeffnen.cityList.get(i).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), width, high);
 		}
 		
-		/**
-		 * Zeichnen der Ameisen
-		 */
-		
-		for (int j = 0; j < TSP_Algorithmus.antList.size(); j++) {
-			g.setColor(Color.GREEN);
-			g.fillOval((int)((TSP_Algorithmus.antList.get(j).getxPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))),(int)((TSP_Algorithmus.antList.get(j).getyPos() / TSP_ChangeParameter.grossterParam((Listener_Zoom_Slide.slidezahl - 50)*5))), 9, 9);
-		}
-		
 		// Anzahl der Städte im Textfeld ausgeben
 		
 		GUI.t_Stadte.setText(String.valueOf(Listener_Oeffnen.cityList.size()));
-		GUI.l_local_opt.setText(String.valueOf(Math.round((100 *TSP_Algorithmus.opt_strecke()))/100.0));
-		GUI.l_local_aver.setText(String.valueOf(Math.round((100 *TSP_Algorithmus.aver_strecke()))/100.0));
+		//GUI.l_local_opt.setText(String.valueOf(Math.round((100 *TSP_Algorithmus.opt_strecke()))/100.0));
+		//GUI.l_local_aver.setText(String.valueOf(Math.round((100 *TSP_Algorithmus.aver_strecke()))/100.0));
 	}
 	
 }

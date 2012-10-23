@@ -6,12 +6,14 @@ public class Listener_Start implements ActionListener {
 	/**
 	 * Actionlistener zum Starten des Algorythmus über den Startbutton
 	 */
+	
+	/**
+	 * Klassenrelevante Variablen
+	 */
+	
+
+	
 	public void actionPerformed(ActionEvent e) {
-		
-		/**
-		 * Klassenrelevante Variablen
-		 */
-		
 		
 		/**
 		 * Liste leeren
@@ -25,8 +27,8 @@ public class Listener_Start implements ActionListener {
 		TSP_Algorithmus.parameter_einlesen();
 		TSP_Algorithmus.ameisen_generieren();
 		TSP_Algorithmus.strecken_generieren();
-		TSP_Algorithmus.iterationen_durchlaufen();
-		TSP_Algorithmus.berlin52_opt();
+		//TSP_Algorithmus.iterationen_durchlaufen();
+		TSP_Algorithmus tsp_Algorithmus = new TSP_Algorithmus();
+		tsp_Algorithmus.start();
 	}
-
 }

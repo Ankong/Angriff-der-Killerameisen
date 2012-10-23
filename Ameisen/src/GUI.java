@@ -479,6 +479,7 @@ public class GUI extends JFrame {
 		p_Erg.add(p_Progress, BorderLayout.WEST);
 		
 		progressBar = new JProgressBar();
+		progressBar.setStringPainted(true);
 		p_Progress.add(progressBar, BorderLayout.CENTER);
 		
 		JPanel p_North = new JPanel();

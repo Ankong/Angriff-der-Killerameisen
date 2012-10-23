@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class TSP_Algorithmus {
+public class TSP_Algorithmus extends Thread {
 	
 	/**
 	 * Klasse zur Berechnung des Ameisen-Algorithmus
@@ -13,8 +13,9 @@ public class TSP_Algorithmus {
 	
 	public static List<TSP_Ameisen> antList = new ArrayList<TSP_Ameisen>();
 	public static List<TSP_Strecke> streckenList = new ArrayList<TSP_Strecke>();
-	public static List<TSP_Stadt> optStreckeList = new ArrayList<TSP_Stadt>();
+	public static List<TSP_Strecke> optStreckeList = new ArrayList<TSP_Strecke>();
 	
+	static double opt_laenge = Double.MAX_VALUE;
 	public static double gesamtLaenge;
 	public static double gesamtpheromon = 0;
 	static double update;
@@ -68,10 +69,11 @@ public class TSP_Algorithmus {
 	 */
 	
 	public static void strecken_generieren() {
+		double random = (Math.random() * v_init_Pheromon);
 		for (int j = 0; j < Listener_Oeffnen.cityList.size(); j++) { 
 		try { 
 			for (int k = 0; k < Listener_Oeffnen.cityList.size(); k++) {
-				TSP_Strecke element = new TSP_Strecke(Listener_Oeffnen.cityList.get(j).getxPos(), Listener_Oeffnen.cityList.get(j).getyPos(), Listener_Oeffnen.cityList.get(k).getxPos(), Listener_Oeffnen.cityList.get(k).getyPos(), Math.sqrt( Math.pow( ( Listener_Oeffnen.cityList.get(k).getxPos() - Listener_Oeffnen.cityList.get(j).getxPos() ), 2) + Math.pow( ( Listener_Oeffnen.cityList.get(k).getyPos() - Listener_Oeffnen.cityList.get(j).getyPos() ), 2) ), v_init_Pheromon);
+				TSP_Strecke element = new TSP_Strecke(Listener_Oeffnen.cityList.get(j).getxPos(), Listener_Oeffnen.cityList.get(j).getyPos(), Listener_Oeffnen.cityList.get(k).getxPos(), Listener_Oeffnen.cityList.get(k).getyPos(), Math.sqrt( Math.pow( ( Listener_Oeffnen.cityList.get(k).getxPos() - Listener_Oeffnen.cityList.get(j).getxPos() ), 2) + Math.pow( ( Listener_Oeffnen.cityList.get(k).getyPos() - Listener_Oeffnen.cityList.get(j).getyPos() ), 2) ), random);
 				if (k != j) {
 					streckenList.add(element);
 				}
@@ -86,7 +88,7 @@ public class TSP_Algorithmus {
 	 * Testweise die Lösung für Berlin52
 	 */
 	
-	public static void berlin52_opt() {
+	/**public static void berlin52_opt() {
 		TSP_Stadt daten1 = new TSP_Stadt(1, 565.0, 575.0);
 		optStreckeList.add(daten1);
 		TSP_Stadt daten2 = new TSP_Stadt(49, 605.0, 625.0);
@@ -193,13 +195,13 @@ public class TSP_Algorithmus {
 		optStreckeList.add(daten52);
 		TSP_Stadt daten = new TSP_Stadt(1, 565.0, 575.0);
 		optStreckeList.add(daten);
-	}
+	}**/
 	
 	public static TSP_Strecke findeStrecke (double startx, double starty, double endx, double endy) {
 		TSP_Strecke strecke = null;
-		for (int a = 0; a < TSP_Algorithmus.streckenList.size(); a++) {
-			if ((startx == TSP_Algorithmus.streckenList.get(a).getStartxPos()) && (starty == TSP_Algorithmus.streckenList.get(a).getStartyPos()) && (endx == TSP_Algorithmus.streckenList.get(a).getEndxPos()) && (endy == TSP_Algorithmus.streckenList.get(a).getEndyPos())) {
-				strecke = TSP_Algorithmus.streckenList.get(a);
+		for (int a = 0; a < streckenList.size(); a++) {
+			if ((startx == streckenList.get(a).getStartxPos()) && (starty == streckenList.get(a).getStartyPos()) && (endx == streckenList.get(a).getEndxPos()) && (endy == streckenList.get(a).getEndyPos())) {
+				strecke = streckenList.get(a);
 			}
 		}
 		return strecke;
@@ -253,7 +255,7 @@ public class TSP_Algorithmus {
 		summe = 0;
 		moglich = false;
 		
-		for (int j = index; j < (v_Stadte  - 1 + index); j++) {
+		for (int j = index; j < (v_Stadte - 1 + index); j++) {
 			moglich = ( TSP_Ameisen.check_posibility(amid, streckenList.get(j).getEndxPos(), streckenList.get(j).getEndyPos()) ) ;
 			if (moglich = true) {
 				summe += (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow((1 / streckenList.get(index).getLaenge() ), (v_heuristisch)));
@@ -270,7 +272,7 @@ public class TSP_Algorithmus {
 		double gesamt;
 		
 		posibility = (Math.pow(streckenList.get(index).getPheromon(), v_Pheromon)) * (Math.pow((1 / streckenList.get(index).getLaenge() ), (v_heuristisch)));
-		
+		//if (antList.get(index))
 		gesamt = posibility / summe;
 		
 		return gesamt;
@@ -287,7 +289,7 @@ public class TSP_Algorithmus {
 			if ( (startx == streckenList.get(k).getStartxPos() ) && ( starty == streckenList.get(k).getStartyPos() ) ) {
 				summe_pos = berechne_summe_strecken(k, ameisenid);
 				for (int i = k; i < (v_Stadte - 1 + k); i++) {
-					posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(i).getEndxPos(), streckenList.get(i).getEndyPos()) ) ;
+					posible = ( TSP_Ameisen.check_posibility(ameisenid, streckenList.get(i).getEndxPos(), streckenList.get(i).getEndyPos())) ;
 					if ( ( berechne(i, ameisenid, summe_pos) > auswahl ) && (posible) ) {
 						auswahl = berechne(i, ameisenid, summe_pos);
 						strecke = streckenList.get(i);
@@ -298,9 +300,11 @@ public class TSP_Algorithmus {
 		}
 		return strecke;
 	}
-
-	public static void iterationen_durchlaufen() {
+	@Override
+	public void run () {
+	//public static void iterationen_durchlaufen() {
 		GUI.progressBar.setMaximum(v_Iteration);
+		long start_time = System.currentTimeMillis();
 		
 		for (int b = 0; b < v_Iteration; b++) {
 			//Liste leeren und neue Ameisen für neue zufällige Städte erstellen und setzen, nach dem ersten Durchlauf
@@ -314,24 +318,37 @@ public class TSP_Algorithmus {
 					antList.get(l).tabuList.clear();
 				} 
 							
-				for (int t = 0; t < Listener_Oeffnen.cityList.size() + 1  ; t++) {	
+				for (int t = 0; t < Listener_Oeffnen.cityList.size()   ; t++) {	
 					strecke = Stadtauswahl(l, antList.get(l).getxPos(), antList.get(l).getyPos());
 					gesamtLaenge = gesamtLaenge + strecke.getLaenge();
 					TSP_Ameisen.add_city(l, strecke);
+					//TSP_Ameisen.add_city2(l, finde_retour(strecke));
 					TSP_Ameisen.next_city(l, strecke);
-					if (antList.get(l).getTabuList().size() == Listener_Oeffnen.cityList.size()-1 ) {
+					System.out.println(strecke);
+					if (antList.get(l).getTabuList().size() == (Listener_Oeffnen.cityList.size() - 1) ) {
 						strecke = findeStrecke(strecke.getEndxPos(), strecke.getEndyPos(), antList.get(l).getTabuList().get(0).getStartxPos(), antList.get(l).getTabuList().get(0).getStartyPos());
+						gesamtLaenge = gesamtLaenge + strecke.getLaenge();
 						antList.get(l).getTabuList().add(strecke);
 						TSP_Ameisen.next_city(l, strecke);
 						break;
-					}	
+					}
 				}
 				antList.get(l).setGesamtlaenge(Math.round((100 *gesamtLaenge))/100.0);
-				pheromonUpdate(l);				
+				pheromonUpdate(l);
+				GUI.progressBar.setValue(b + 1);
+				long dauer = System.currentTimeMillis() - start_time;
+				GUI.l_Time.setText(String.valueOf(dauer/1000)+" sekunden");
+				GUI.draw_TSP();
+				GUI.frame_refresh();
 			}
 			verdunstung();
 			
-			GUI.progressBar.setValue(b + 1);
+			/*GUI.progressBar.setValue(b + 1);
+			long dauer = System.currentTimeMillis() - start_time;
+			GUI.l_Time.setText(String.valueOf(dauer/1000)+" sekunden");*/
+			glob_opt_strecke();
+			GUI.l_local_opt.setText(String.valueOf(Math.round((100 *opt_strecke()))/100.0));
+			GUI.l_local_aver.setText(String.valueOf(Math.round((100 *aver_strecke()))/100.0));
 			GUI.draw_TSP();
 			GUI.frame_refresh();
 		}	
@@ -374,4 +391,46 @@ public class TSP_Algorithmus {
 		
 		return opt;
 	}
+	
+	public static TSP_Strecke finde_retour (TSP_Strecke tour) {
+		TSP_Strecke retour = null;
+		
+		retour = TSP_Algorithmus.findeStrecke(tour.getEndxPos(), tour.getEndyPos(), tour.getStartxPos(), tour.getStartyPos());
+		
+		return retour;
+	}
+	
+	public static void glob_opt_strecke () {
+		double laenge = Double.MAX_VALUE;
+		int opt = -1;
+		TSP_Strecke strecke = null;
+		
+		for (int h = 0; h < antList.size(); h++) {
+			if (antList.get(h).getGesamtlaenge() < laenge) {
+				laenge = antList.get(h).getGesamtlaenge();
+				opt = h;
+			}
+		}
+		
+		if (opt_laenge == Double.MAX_VALUE) {
+			opt_laenge = laenge;
+			for (int q = 0; q < antList.get(opt).getTabuList().size(); q++) {
+				strecke = antList.get(opt).getTabuList().get(q);
+				optStreckeList.add(strecke);
+			}
+		} else {
+			if (laenge < opt_laenge) {
+				opt_laenge = laenge;
+				if (!optStreckeList.isEmpty()) {
+					optStreckeList.clear();
+				} 
+				for (int q = 0; q < antList.get(opt).getTabuList().size(); q++) {
+					strecke = antList.get(opt).getTabuList().get(q);
+					optStreckeList.add(strecke);
+				}
+			}
+		}
+		
+		GUI.l_global_opt.setText(String.valueOf(Math.round((100 *opt_laenge))/100.0));
+	}	
 }

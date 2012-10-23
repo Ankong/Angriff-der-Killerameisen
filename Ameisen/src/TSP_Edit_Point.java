@@ -8,6 +8,9 @@ public class TSP_Edit_Point implements MouseListener {
 	 */
 	
 	public void mouseClicked(MouseEvent e) {
+		if (!TSP_Algorithmus.optStreckeList.isEmpty()) {
+			TSP_Algorithmus.optStreckeList.clear();
+		} 
 		int posx = e.getX();
 		int posy = e.getY();
 		int id = Listener_Oeffnen.cityList.size();
