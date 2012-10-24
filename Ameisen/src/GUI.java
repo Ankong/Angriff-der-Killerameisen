@@ -205,6 +205,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Ameisen);
 
 		t_Ameisen = new JTextField();
+		t_Ameisen.addKeyListener(new Key_Listener());
 		t_Ameisen.setColumns(10);
 		t_Ameisen.setText("0");
 		p_Para.add(t_Ameisen);
@@ -225,6 +226,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Stadte);
 
 		t_Stadte = new JTextField();
+		t_Stadte.addKeyListener(new Key_Listener());
 		t_Stadte.setColumns(10);
 		t_Stadte.setEditable(false);
 		t_Stadte.setBackground(Color.WHITE);
@@ -246,6 +248,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Iteration);
 
 		t_Iteration = new JTextField();
+		t_Iteration.addKeyListener(new Key_Listener());
 		t_Iteration.setColumns(10);
 		t_Iteration.setText("0");
 		p_Para.add(t_Iteration);
@@ -266,6 +269,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Pheromon);
 
 		t_Pheromon = new JTextField();
+		t_Pheromon.addKeyListener(new Key_Listener());
 		t_Pheromon.setColumns(10);
 		t_Pheromon.setText("1");
 		t_Pheromon.setToolTipText("alpha > 0");
@@ -287,6 +291,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_heuristisch);
 
 		t_heuristisch = new JTextField();
+		t_heuristisch.addKeyListener(new Key_Listener());
 		t_heuristisch.setColumns(10);
 		t_heuristisch.setText("1");
 		t_heuristisch.setToolTipText("beta > 0");
@@ -333,6 +338,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_init_Pheromon);
 
 		t_init_Pheromon = new JTextField();
+		t_init_Pheromon.addKeyListener(new Key_Listener());
 		t_init_Pheromon.setColumns(10);
 		t_init_Pheromon.setText("1");
 		p_Para.add(t_init_Pheromon);
@@ -353,6 +359,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_heur_Pheromon);
 
 		t_heur_Pheromon = new JTextField();
+		t_heur_Pheromon.addKeyListener(new Key_Listener());
 		t_heur_Pheromon.setColumns(10);
 		t_heur_Pheromon.setText("1");
 		p_Para.add(t_heur_Pheromon);
