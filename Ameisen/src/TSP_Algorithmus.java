@@ -43,8 +43,8 @@ public class TSP_Algorithmus extends Thread {
 		v_Ameisen = Integer.parseInt(GUI.t_Ameisen.getText());
 		v_Stadte = Integer.parseInt(GUI.t_Stadte.getText());
 		v_Iteration = Integer.parseInt(GUI.t_Iteration.getText());
-		v_Pheromon = Double.parseDouble(GUI.t_Pheromon.getText());
-		v_heuristisch = Double.parseDouble(GUI.t_heuristisch.getText());
+		v_Pheromon = (double)(GUI.s_Pheromon.getValue())/100;
+		v_heuristisch = (double)(GUI.s_heuristisch.getValue())/100;
 		v_Verdunst = (double)(GUI.s_Verdunst.getValue())/100;
 		v_init_Pheromon = Double.parseDouble(GUI.t_init_Pheromon.getText());
 		v_heur_Pheromon = Double.parseDouble(GUI.t_heur_Pheromon.getText());

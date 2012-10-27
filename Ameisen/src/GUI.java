@@ -43,6 +43,8 @@ public class GUI extends JFrame {
 	public static JMenuItem sfl_speichern;
 	public static JPanel p_TSP;
 	public static JLabel l_Slidewert;
+	public static JLabel l_Slidewert_pheromon;
+	public static JLabel l_Slidewert_heuristisch;
 	public static JLabel l_Zoomwert;
 	public static JSlider s_Zoom;
 	public static JProgressBar progressBar;
@@ -54,12 +56,11 @@ public class GUI extends JFrame {
 	public static JTextField t_Ameisen;
 	public static JTextField t_Stadte;
 	public static JTextField t_Iteration;
-	public static JTextField t_Pheromon;
-	public static JTextField t_heuristisch;
+	public static JSlider s_Pheromon;
+	public static JSlider s_heuristisch;
 	public static JSlider s_Verdunst;
 	public static JTextField t_init_Pheromon;
 	public static JTextField t_heur_Pheromon;
-
 	/**
 	 * Ergebnisvariablen
 	 */
@@ -268,20 +269,23 @@ public class GUI extends JFrame {
 		l_Pheromon.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_Pheromon);
 
-		t_Pheromon = new JTextField();
-		t_Pheromon.addKeyListener(new Key_Listener());
-		t_Pheromon.setColumns(10);
-		t_Pheromon.setText("1");
-		t_Pheromon.setToolTipText("alpha > 0");
-		p_Para.add(t_Pheromon);
+		s_Pheromon = new JSlider();
+		s_Pheromon.setPaintTicks(true);
+		s_Pheromon.setMinorTickSpacing(10);
+		p_Para.add(s_Pheromon);
+		s_Pheromon.addChangeListener(new Listener_Pheromon_Slide());
 
 		// Leerzeile
 
 		JLabel l_Leer09 = new JLabel("");
 		p_Para.add(l_Leer09);
 
-		JLabel l_Leer10 = new JLabel("");
-		p_Para.add(l_Leer10);
+		// Betrag des Slider
+		
+		l_Slidewert_pheromon = new JLabel("0,5");
+		l_Slidewert_pheromon.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Slidewert_pheromon.setFont(new Font("Tahoma", Font.BOLD, 9));
+		p_Para.add(l_Slidewert_pheromon);
 
 		// heuristischer Parameter
 
@@ -290,21 +294,25 @@ public class GUI extends JFrame {
 		l_heuristisch.setHorizontalAlignment(SwingConstants.LEFT);
 		p_Para.add(l_heuristisch);
 
-		t_heuristisch = new JTextField();
-		t_heuristisch.addKeyListener(new Key_Listener());
-		t_heuristisch.setColumns(10);
-		t_heuristisch.setText("1");
-		t_heuristisch.setToolTipText("beta > 0");
-		p_Para.add(t_heuristisch);
+		s_heuristisch = new JSlider();
+		s_heuristisch.setPaintTicks(true);
+		s_heuristisch.setMinorTickSpacing(10);
+		p_Para.add(s_heuristisch);
+		s_heuristisch.addChangeListener(new Listener_Heuristisch_Slide());
 
 		// Leerzeile
 
 		JLabel l_Leer11 = new JLabel("");
 		p_Para.add(l_Leer11);
 
-		JLabel l_Leer12 = new JLabel("");
-		p_Para.add(l_Leer12);
 
+		// Betrag des Slider
+		
+		l_Slidewert_heuristisch = new JLabel("0,5");
+		l_Slidewert_heuristisch.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Slidewert_heuristisch.setFont(new Font("Tahoma", Font.BOLD, 9));
+		p_Para.add(l_Slidewert_heuristisch);
+		
 		// Verdunstungsfaktor
 
 		JLabel l_Verdunst = new JLabel("<HTML><BODY>\u03C1, Verdunstungsfaktor:</BODY></HTML>");
