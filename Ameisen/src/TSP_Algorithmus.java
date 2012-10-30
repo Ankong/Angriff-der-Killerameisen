@@ -16,6 +16,7 @@ public class TSP_Algorithmus extends Thread {
 	public static List<TSP_Strecke> optStreckeList = new ArrayList<TSP_Strecke>();
 	
 	static double opt_laenge = Double.MAX_VALUE;
+	static double aver_glob;
 	public static double gesamtLaenge;
 	public static double gesamtpheromon = 0;
 	static double update;
@@ -324,7 +325,6 @@ public class TSP_Algorithmus extends Thread {
 					TSP_Ameisen.add_city(l, strecke);
 					//TSP_Ameisen.add_city2(l, finde_retour(strecke));
 					TSP_Ameisen.next_city(l, strecke);
-					System.out.println(strecke);
 					if (antList.get(l).getTabuList().size() == (Listener_Oeffnen.cityList.size() - 1) ) {
 						strecke = findeStrecke(strecke.getEndxPos(), strecke.getEndyPos(), antList.get(l).getTabuList().get(0).getStartxPos(), antList.get(l).getTabuList().get(0).getStartyPos());
 						gesamtLaenge = gesamtLaenge + strecke.getLaenge();
@@ -337,7 +337,8 @@ public class TSP_Algorithmus extends Thread {
 				pheromonUpdate(l);
 				GUI.progressBar.setValue(b + 1);
 				long dauer = System.currentTimeMillis() - start_time;
-				GUI.l_Time.setText(String.valueOf(dauer/1000)+" sekunden");
+				GUI.l_Time.setText(String.valueOf(dauer/1000)+" Sekunden");
+				GUI.l_global_aver.setText(String.valueOf(Math.round((100 *( aver_glob / b )))/100.0));
 				GUI.draw_TSP();
 				GUI.frame_refresh();
 			}
@@ -362,6 +363,7 @@ public class TSP_Algorithmus extends Thread {
 		}
 		
 		laenge = laenge / antList.size();
+		aver_glob += laenge;
 		
 		return laenge;
 	}

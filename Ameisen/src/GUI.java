@@ -65,6 +65,7 @@ public class GUI extends JFrame {
 	 * Ergebnisvariablen
 	 */
 	
+	public static JPanel p_Erg;
 	public static JLabel l_local_opt;
 	public static JLabel l_global_opt;
 	public static JLabel l_local_aver;
@@ -208,7 +209,8 @@ public class GUI extends JFrame {
 		t_Ameisen = new JTextField();
 		t_Ameisen.addKeyListener(new Key_Listener());
 		t_Ameisen.setColumns(10);
-		t_Ameisen.setText("0");
+		t_Ameisen.setText("10");
+		t_Ameisen.setToolTipText("Wert zwischen 1 und 100");
 		p_Para.add(t_Ameisen);
 
 		// Leerzeile
@@ -251,7 +253,8 @@ public class GUI extends JFrame {
 		t_Iteration = new JTextField();
 		t_Iteration.addKeyListener(new Key_Listener());
 		t_Iteration.setColumns(10);
-		t_Iteration.setText("0");
+		t_Iteration.setText("10");
+		t_Iteration.setToolTipText("Wert zwischen 1 und 100");
 		p_Para.add(t_Iteration);
 
 		// Leerzeile
@@ -272,6 +275,8 @@ public class GUI extends JFrame {
 		s_Pheromon = new JSlider();
 		s_Pheromon.setPaintTicks(true);
 		s_Pheromon.setMinorTickSpacing(10);
+		s_Pheromon.setValue(50);
+		s_Pheromon.setToolTipText("Optimaler Wert bei 0.5");
 		p_Para.add(s_Pheromon);
 		s_Pheromon.addChangeListener(new Listener_Pheromon_Slide());
 
@@ -297,6 +302,8 @@ public class GUI extends JFrame {
 		s_heuristisch = new JSlider();
 		s_heuristisch.setPaintTicks(true);
 		s_heuristisch.setMinorTickSpacing(10);
+		s_heuristisch.setValue(100);
+		s_heuristisch.setToolTipText("Optimaler Wert bei 1");
 		p_Para.add(s_heuristisch);
 		s_heuristisch.addChangeListener(new Listener_Heuristisch_Slide());
 
@@ -308,7 +315,7 @@ public class GUI extends JFrame {
 
 		// Betrag des Slider
 		
-		l_Slidewert_heuristisch = new JLabel("0,5");
+		l_Slidewert_heuristisch = new JLabel("1");
 		l_Slidewert_heuristisch.setHorizontalAlignment(SwingConstants.CENTER);
 		l_Slidewert_heuristisch.setFont(new Font("Tahoma", Font.BOLD, 9));
 		p_Para.add(l_Slidewert_heuristisch);
@@ -323,6 +330,8 @@ public class GUI extends JFrame {
 		s_Verdunst = new JSlider();
 		s_Verdunst.setPaintTicks(true);
 		s_Verdunst.setMinorTickSpacing(10);
+		s_Verdunst.setValue(30);
+		s_Verdunst.setToolTipText("Optimaler Wert bei 0.3");
 		p_Para.add(s_Verdunst);
 		s_Verdunst.addChangeListener(new Listener_Slide());
 
@@ -333,7 +342,7 @@ public class GUI extends JFrame {
 
 		// Betrag des Slider
 		
-		l_Slidewert = new JLabel("0,5");
+		l_Slidewert = new JLabel("0,3");
 		l_Slidewert.setHorizontalAlignment(SwingConstants.CENTER);
 		l_Slidewert.setFont(new Font("Tahoma", Font.BOLD, 9));
 		p_Para.add(l_Slidewert);
@@ -348,7 +357,8 @@ public class GUI extends JFrame {
 		t_init_Pheromon = new JTextField();
 		t_init_Pheromon.addKeyListener(new Key_Listener());
 		t_init_Pheromon.setColumns(10);
-		t_init_Pheromon.setText("1");
+		t_init_Pheromon.setToolTipText("Optimaler Wert bei 10");
+		t_init_Pheromon.setText("10");
 		p_Para.add(t_init_Pheromon);
 
 		// Leerzeile
@@ -369,7 +379,8 @@ public class GUI extends JFrame {
 		t_heur_Pheromon = new JTextField();
 		t_heur_Pheromon.addKeyListener(new Key_Listener());
 		t_heur_Pheromon.setColumns(10);
-		t_heur_Pheromon.setText("1");
+		t_heur_Pheromon.setToolTipText("Optimaler Wert bei 0.0001");
+		t_heur_Pheromon.setText("0.0001");
 		p_Para.add(t_heur_Pheromon);
 
 		// Leerzeile
@@ -380,40 +391,46 @@ public class GUI extends JFrame {
 		JLabel l_Leer18 = new JLabel("");
 		p_Para.add(l_Leer18);
 
-		// Stoppkriterien
+		/*// Stoppkriterien
 
 		JLabel l_Stoppkrit = new JLabel("<HTML><BODY>Stoppkriterien:</BODY></HTML>");
 		l_Stoppkrit.setFont(new Font("Tahoma", Font.BOLD, 11));
 		l_Stoppkrit.setHorizontalAlignment(SwingConstants.LEFT);
+		l_Stoppkrit.setVisible(false);
 		p_Para.add(l_Stoppkrit);
 
 		// Anzahl von Iterationen erreicht
 
 		JCheckBox chb_It_erreicht = new JCheckBox("<HTML><BODY>Anzahl von Iterationen erreicht</BODY></HTML>");
 		chb_It_erreicht.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		chb_It_erreicht.setVisible(false);
 		p_Para.add(chb_It_erreicht);
 
 		// Leerfläche
 		
 		JLabel l_Leer19 = new JLabel("");
+		l_Leer19.setVisible(false);
 		p_Para.add(l_Leer19);
 
 		// Lösung gefunden
 
 		JCheckBox chb_Erg_gefunden = new JCheckBox("<HTML><BODY>L\u00F6sung gefunden</BODY></HTML>");
 		chb_Erg_gefunden.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		chb_Erg_gefunden.setVisible(false);
 		p_Para.add(chb_Erg_gefunden);
 
 		// Leerfläche
 		
 		JLabel l_Leer20 = new JLabel("");
+		l_Leer20.setVisible(false);
 		p_Para.add(l_Leer20);
 
 		// Schwellenwert für Tourlänge erreicht
 
 		JCheckBox chb_Schwelle = new JCheckBox("<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		p_Para.add(chb_Schwelle);
+		chb_Schwelle.setVisible(false);
+		p_Para.add(chb_Schwelle);*/
 		
 		// Leerzeile
 		
@@ -482,10 +499,10 @@ public class GUI extends JFrame {
 		 * Ergebnispanel
 		 */
 
-		JPanel p_Erg = new JPanel();
+		p_Erg = new JPanel();
 		contentPane.add(p_Erg, BorderLayout.SOUTH);
 		p_Erg.setLayout(new BorderLayout(0, 0));
-		p_Erg.setVisible(true);
+		p_Erg.setVisible(false);
 
 		// Progressbar
 

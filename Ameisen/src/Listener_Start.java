@@ -23,7 +23,7 @@ public class Listener_Start implements ActionListener {
 			TSP_Algorithmus.antList.clear();
 		}
 		
-		
+		GUI.p_Erg.setVisible(true);
 		TSP_Algorithmus.parameter_einlesen();
 		TSP_Algorithmus.ameisen_generieren();
 		TSP_Algorithmus.strecken_generieren();
