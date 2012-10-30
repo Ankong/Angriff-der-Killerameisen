@@ -352,10 +352,6 @@ public class TSP_Algorithmus extends Thread {
 				}
 			}
 			verdunstung();
-			
-			/*GUI.progressBar.setValue(b + 1);
-			long dauer = System.currentTimeMillis() - start_time;
-			GUI.l_Time.setText(String.valueOf(dauer/1000)+" sekunden");*/
 			glob_opt_strecke();
 			GUI.l_local_opt.setText(String.valueOf(Math.round((100 *opt_strecke()))/100.0));
 			GUI.l_local_aver.setText(String.valueOf(Math.round((100 *aver_strecke()))/100.0));
@@ -404,14 +400,6 @@ public class TSP_Algorithmus extends Thread {
 		}
 		
 		return opt;
-	}
-	
-	public static TSP_Strecke finde_retour (TSP_Strecke tour) {
-		TSP_Strecke retour = null;
-		
-		retour = TSP_Algorithmus.findeStrecke(tour.getEndxPos(), tour.getEndyPos(), tour.getStartxPos(), tour.getStartyPos());
-		
-		return retour;
 	}
 	
 	public static void glob_opt_strecke () {

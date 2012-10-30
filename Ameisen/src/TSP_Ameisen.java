@@ -63,7 +63,6 @@ public class TSP_Ameisen {
 		
 		for (int i = 0; i < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); i++) {
 			is_in = TSP_Ameisen.inhalt_check(ameisenid, testx, testy);
-			//is_in = (TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(testx));
 			if ( is_in ) {
 				check = false;
 				break;
@@ -72,25 +71,7 @@ public class TSP_Ameisen {
 		
 		return check;
 	} 
-	/*public static void add_city2(int ameisenid, TSP_Strecke strecke) {
-		TSP_Algorithmus.antList.get(ameisenid).getTabuList2().add(strecke);
-	}
-	
-	public static Boolean check_posibility (int ameisenid, TSP_Strecke stecke) {
-		boolean check = true;
-		TSP_Strecke retour = null;
-		
-		retour = TSP_Algorithmus.finde_retour(stecke);
-		
-		for (int a = 0; a < TSP_Algorithmus.antList.get(ameisenid).getTabuList().size(); a++) {
-			if (TSP_Algorithmus.antList.get(ameisenid).getTabuList().contains(stecke) || TSP_Algorithmus.antList.get(ameisenid).getTabuList2().contains(retour)) {
-				check = false;
-				break;
-			}
-		}
-		
-		return check;
-	}*/
+
 	/**
 	 * Neue Stadt zur Tabuliste hinzufügen
 	 */
@@ -160,19 +141,6 @@ public class TSP_Ameisen {
 	public void setGesamtlaenge(double gesamtlaenge) {
 		this.gesamtlaenge = gesamtlaenge;
 	}
-	
-
-	public List<TSP_Strecke> getTabuList2() {
-		return tabuList2;
-	}
-
-
-
-	public void setTabuList2(List<TSP_Strecke> tabuList2) {
-		this.tabuList2 = tabuList2;
-	}
-
-
 
 	@Override
 	public String toString() {

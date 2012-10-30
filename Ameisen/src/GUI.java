@@ -207,7 +207,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Ameisen);
 
 		t_Ameisen = new JTextField();
-		t_Ameisen.addKeyListener(new Key_Listener());
+		t_Ameisen.addKeyListener(new Listener_Key());
 		t_Ameisen.setColumns(10);
 		t_Ameisen.setText("10");
 		t_Ameisen.setToolTipText("Wert zwischen 1 und 100");
@@ -229,7 +229,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Stadte);
 
 		t_Stadte = new JTextField();
-		t_Stadte.addKeyListener(new Key_Listener());
+		t_Stadte.addKeyListener(new Listener_Key());
 		t_Stadte.setColumns(10);
 		t_Stadte.setEditable(false);
 		t_Stadte.setBackground(Color.WHITE);
@@ -251,7 +251,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_Iteration);
 
 		t_Iteration = new JTextField();
-		t_Iteration.addKeyListener(new Key_Listener());
+		t_Iteration.addKeyListener(new Listener_Key());
 		t_Iteration.setColumns(10);
 		t_Iteration.setText("10");
 		t_Iteration.setToolTipText("Wert zwischen 1 und 100");
@@ -355,7 +355,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_init_Pheromon);
 
 		t_init_Pheromon = new JTextField();
-		t_init_Pheromon.addKeyListener(new Key_Listener());
+		t_init_Pheromon.addKeyListener(new Listener_Key());
 		t_init_Pheromon.setColumns(10);
 		t_init_Pheromon.setToolTipText("Optimaler Wert bei 10");
 		t_init_Pheromon.setText("10");
@@ -377,7 +377,7 @@ public class GUI extends JFrame {
 		p_Para.add(l_heur_Pheromon);
 
 		t_heur_Pheromon = new JTextField();
-		t_heur_Pheromon.addKeyListener(new Key_Listener());
+		t_heur_Pheromon.addKeyListener(new Listener_Key());
 		t_heur_Pheromon.setColumns(10);
 		t_heur_Pheromon.setToolTipText("Optimaler Wert bei 0.0001");
 		t_heur_Pheromon.setText("0.0001");

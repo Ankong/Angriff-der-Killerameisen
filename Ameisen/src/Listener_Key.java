@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
 
-public class Key_Listener implements KeyListener{
+public class Listener_Key implements KeyListener{
 	
     private static final char[] NUMERIC_CHARS = {
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '\b'
