@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSlider;
-import javax.swing.JCheckBox;
+//import javax.swing.JCheckBox;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;

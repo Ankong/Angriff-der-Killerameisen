@@ -6,6 +6,11 @@ import java.awt.Font;
 
 
 public class GUI_Info extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public GUI_Info() {
 		setTitle("Info");
 		getContentPane().setLayout(new BorderLayout(0, 0));

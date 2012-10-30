@@ -3,8 +3,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.bcel.internal.generic.GETFIELD;
-
 
 public class Key_Listener implements KeyListener{
 	
@@ -12,7 +10,7 @@ public class Key_Listener implements KeyListener{
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '\b'
     };
     
-    private String keyset;
+    //private String keyset;
     
 	public boolean checkInput(char C){
         boolean result = false;
