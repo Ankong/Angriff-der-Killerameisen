@@ -19,6 +19,7 @@ public class TSP_Algorithmus extends Thread {
 	static double aver_glob;
 	public static double gesamtLaenge;
 	public static double gesamtpheromon = 0;
+	public static boolean stop_btn = false;
 	static double update;
 	static TSP_Strecke strecke = null;
 	
@@ -306,6 +307,11 @@ public class TSP_Algorithmus extends Thread {
 	//public static void iterationen_durchlaufen() {
 		GUI.progressBar.setMaximum(v_Iteration);
 		long start_time = System.currentTimeMillis();
+		stop_btn = false;
+		
+		aver_glob = 0;
+		opt_laenge = Double.MAX_VALUE;
+		GUI.progressBar.setForeground(null);
 		
 		for (int b = 0; b < v_Iteration; b++) {
 			//Liste leeren und neue Ameisen für neue zufällige Städte erstellen und setzen, nach dem ersten Durchlauf
@@ -341,6 +347,9 @@ public class TSP_Algorithmus extends Thread {
 				GUI.l_global_aver.setText(String.valueOf(Math.round((100 *( aver_glob / b )))/100.0));
 				GUI.draw_TSP();
 				GUI.frame_refresh();
+				if (stop_btn){
+					break;
+				}
 			}
 			verdunstung();
 			
@@ -352,6 +361,9 @@ public class TSP_Algorithmus extends Thread {
 			GUI.l_local_aver.setText(String.valueOf(Math.round((100 *aver_strecke()))/100.0));
 			GUI.draw_TSP();
 			GUI.frame_refresh();
+			if (stop_btn){
+				break;
+			}
 		}	
 	}
 	
