@@ -16,8 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSlider;
-//import javax.swing.JCheckBox;
+import javax.swing.JCheckBox;
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
@@ -47,6 +48,9 @@ public class GUI extends JFrame {
 	public static JLabel l_Slidewert_heuristisch;
 	public static JLabel l_Zoomwert;
 	public static JSlider s_Zoom;
+	public static JCheckBox chb_It_erreicht;
+	public static JCheckBox chb_Erg_gefunden;
+	public static JCheckBox chb_Schwelle;
 	public static JProgressBar progressBar;
 
 	/**
@@ -56,6 +60,7 @@ public class GUI extends JFrame {
 	public static JTextField t_Ameisen;
 	public static JTextField t_Stadte;
 	public static JTextField t_Iteration;
+	public static JTextField t_Schwellenwert;
 	public static JSlider s_Pheromon;
 	public static JSlider s_heuristisch;
 	public static JSlider s_Verdunst;
@@ -391,54 +396,55 @@ public class GUI extends JFrame {
 		JLabel l_Leer18 = new JLabel("");
 		p_Para.add(l_Leer18);
 
-		/*// Stoppkriterien
+		// Stoppkriterien
 
 		JLabel l_Stoppkrit = new JLabel("<HTML><BODY>Stoppkriterien:</BODY></HTML>");
 		l_Stoppkrit.setFont(new Font("Tahoma", Font.BOLD, 11));
 		l_Stoppkrit.setHorizontalAlignment(SwingConstants.LEFT);
-		l_Stoppkrit.setVisible(false);
 		p_Para.add(l_Stoppkrit);
 
 		// Anzahl von Iterationen erreicht
 
-		JCheckBox chb_It_erreicht = new JCheckBox("<HTML><BODY>Anzahl von Iterationen erreicht</BODY></HTML>");
+		chb_It_erreicht = new JCheckBox("<HTML><BODY>Anzahl von Iterationen erreicht</BODY></HTML>");
 		chb_It_erreicht.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		chb_It_erreicht.setVisible(false);
+		chb_It_erreicht.addItemListener(new Listener_Check2());
 		p_Para.add(chb_It_erreicht);
 
 		// Leerfläche
 		
 		JLabel l_Leer19 = new JLabel("");
-		l_Leer19.setVisible(false);
 		p_Para.add(l_Leer19);
 
 		// Lösung gefunden
 
-		JCheckBox chb_Erg_gefunden = new JCheckBox("<HTML><BODY>L\u00F6sung gefunden</BODY></HTML>");
+		chb_Erg_gefunden = new JCheckBox("<HTML><BODY>L\u00F6sung gefunden</BODY></HTML>");
 		chb_Erg_gefunden.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		chb_Erg_gefunden.setVisible(false);
+		chb_Erg_gefunden.addItemListener(new Listener_Check3());
 		p_Para.add(chb_Erg_gefunden);
 
 		// Leerfläche
 		
 		JLabel l_Leer20 = new JLabel("");
-		l_Leer20.setVisible(false);
 		p_Para.add(l_Leer20);
 
 		// Schwellenwert für Tourlänge erreicht
 
-		JCheckBox chb_Schwelle = new JCheckBox("<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
+		chb_Schwelle = new JCheckBox("<HTML><BODY>Schwellenwert f\u00FCr Tourl\u00E4nge</BODY></HTML>");
 		chb_Schwelle.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		chb_Schwelle.setVisible(false);
-		p_Para.add(chb_Schwelle);*/
+		chb_Schwelle.addItemListener(new Listener_Check());
+		p_Para.add(chb_Schwelle);
 		
 		// Leerzeile
 		
 		JLabel l_Leer01 = new JLabel("");
 		p_Para.add(l_Leer01);
 
-		JLabel l_Leer02 = new JLabel("");
-		p_Para.add(l_Leer02);
+		t_Schwellenwert = new JTextField();
+		t_Schwellenwert.addKeyListener(new Listener_Key());
+		t_Schwellenwert.setColumns(10);
+		t_Schwellenwert.setToolTipText("Hier Wert eingeben, bei irrealistischer Angabe endet der Durchlauf nach den eigegebenen Iterationen.");
+		t_Schwellenwert.setVisible(false);
+		p_Para.add(t_Schwellenwert);
 		
 		// Zoom-Slider
 		

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class TSP_Algorithmus extends Thread {
 	public static double v_Verdunst;
 	public static double v_init_Pheromon;
 	public static double v_heur_Pheromon;
+	public static double v_Schwelle;
+	public static double v_Berlinopt = 8183;
 	static boolean posible;
 	
 	/**
@@ -50,6 +53,7 @@ public class TSP_Algorithmus extends Thread {
 		v_Verdunst = (double)(GUI.s_Verdunst.getValue())/100;
 		v_init_Pheromon = Double.parseDouble(GUI.t_init_Pheromon.getText());
 		v_heur_Pheromon = Double.parseDouble(GUI.t_heur_Pheromon.getText());
+		v_Schwelle = Double.parseDouble(GUI.t_Schwellenwert.getText());
 	}
 	
 	/**
@@ -357,6 +361,23 @@ public class TSP_Algorithmus extends Thread {
 			GUI.l_local_aver.setText(String.valueOf(Math.round((100 *aver_strecke()))/100.0));
 			GUI.draw_TSP();
 			GUI.frame_refresh();
+			
+			// opt für berlin 52 tsp
+			if (GUI.chb_Erg_gefunden.isSelected()) {
+				if (Double.parseDouble(GUI.l_global_opt.getText()) < v_Berlinopt) {
+					stop_btn = true;
+					GUI.progressBar.setForeground(Color.RED);
+				}
+			}
+			
+			// Schwellenwert
+			if (GUI.chb_Schwelle.isSelected()) {
+				if (Double.parseDouble(GUI.l_global_opt.getText()) < v_Schwelle) {
+					stop_btn = true;
+					GUI.progressBar.setForeground(Color.RED);
+				}
+			}
+			
 			if (stop_btn){
 				break;
 			}
